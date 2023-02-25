@@ -26,7 +26,6 @@ $MainMenu = {
     if ($select -eq 3) {$edition = "ProfessionalWorkstation"; $productkey = "NRG8B-VKK3Q-CXVCJ-9G2XF-6Q84J"}
     if ($select -eq 4) {$edition = "Education"; $productkey = "NW6C2-QMPVW-D7KKK-3GKT6-VCFB2"}
 
-
     $bonben = {
         Write-Host "Processing............"
         $null = New-Item -Path $env:temp\kms -ItemType Directory -Force
@@ -59,5 +58,3 @@ $MainMenu = {
         }
     }
     While ($select -ne 5)
-
-    (Get-ComputerInfo).WindowsProductName
