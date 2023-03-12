@@ -4,7 +4,7 @@ $MainMenu = {
     Write-Host " * Updated on: 10/02/2023                          *" 
     Write-Host " ******************************************************" 
     Write-Host 
-    Write-Host " 1. Activate/Convert to Professional" 
+    Write-Host " 1. Activate / Convert to Professional Edition" 
     Write-Host " 2. Convert to Enterprise"
     Write-Host " 3. Convert to ProfessionalWorkstation"
     Write-Host " 4. Convert to Education"
@@ -32,16 +32,18 @@ $MainMenu = {
     if ($select -eq 4) {$edition = "Education"; $productkey = "NW6C2-QMPVW-D7KKK-3GKT6-VCFB2"}
 
     $bonben = {
-        $ProgressPreference='Silent'
+        
         Write-Host
         Write-Host "Processing............"
         $null = New-Item -Path $env:temp\kms -ItemType Directory -Force
         Set-Location $env:temp\kms
         $uri = "https://s3.amazonaws.com/s3.bonben365.com/files/zip/windows-converter/windows10/$edition.zip"
-        $null = Invoke-WebRequest -Uri $uri -OutFile "$edition.zip" -ErrorAction:SilentlyContinue
-        $null = Expand-Archive "$edition.zip" $edition -Force -ErrorAction:SilentlyContinue
+        $ProgressPreference='Silent'
+        Invoke-WebRequest -Uri $uri -OutFile "$edition.zip" -ErrorAction:SilentlyContinue
+        Expand-Archive "$edition.zip" $edition -Force -ErrorAction:SilentlyContinue
         Copy-Item "$env:temp\kms\$edition\$edition" "$env:windir\system32\spp\tokens\skus\" -ErrorAction:SilentlyContinue
         Copy-Item "$env:temp\kms\$edition\$edition\*" "$env:windir\system32\spp\tokens\skus\$edition" -ErrorAction:SilentlyContinue
+        
         Set-Location "$env:windir\system32"
         $null = cmd.exe /c cscript.exe slmgr.vbs /rilc
         $null = cmd.exe /c cscript.exe slmgr.vbs /upk
@@ -54,7 +56,7 @@ $MainMenu = {
         Write-Host "Done............"
         Write-Host
         Write-Host "Your Windows edition: $((Get-ComputerInfo).WindowsProductName)"
-        Start-Sleep -Seconds 3
+        Start-Sleep -Seconds 30
     }
 
     Switch ($select)
