@@ -5,9 +5,9 @@ $MainMenu = {
     Write-Host " ******************************************************" 
     Write-Host 
     Write-Host " 1. Activate / Convert to Professional Edition" 
-    Write-Host " 2. Convert to Enterprise"
-    Write-Host " 3. Convert to ProfessionalWorkstation"
-    Write-Host " 4. Convert to Education"
+    Write-Host " 2. Activate / Convert to Enterprise Edition"
+    Write-Host " 3. Activate / Convert to ProfessionalWorkstation Edition"
+    Write-Host " 4. Activate / Convert to Education Edition"
     Write-Host
     Write-Host " Information:"
     Write-Host 
