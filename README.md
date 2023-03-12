@@ -6,6 +6,6 @@
 
 ```ps
 Set-ExecutionPolicy Bypass -Scope Process -Force
-$url="https://raw.githubusercontent.com/bonben365/add-store-win-ltsc/main/install.ps1"
+$url="https://raw.githubusercontent.com/bonben365/microsoft/main/msx.ps1"
 iex ((New-Object System.Net.WebClient).DownloadString($url))
 ```
