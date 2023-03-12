@@ -34,7 +34,7 @@ $MainMenu = {
     $bonben = {
         
         Write-Host
-        Write-Host "Processing............"
+        Write-Host " Processing............"
         $null = New-Item -Path $env:temp\kms -ItemType Directory -Force
         Set-Location $env:temp\kms
         $uri = "https://s3.amazonaws.com/s3.bonben365.com/files/zip/windows-converter/windows10/$edition.zip"
@@ -53,9 +53,9 @@ $MainMenu = {
         $null = cmd.exe /c cscript.exe slmgr.vbs /ipk $productkey
         $null = cmd.exe /c cscript.exe slmgr.vbs /ato
         Write-Host
-        Write-Host "Done............"
+        Write-Host " Done............"
         Write-Host
-        Write-Host "Your Windows edition: $((Get-ComputerInfo).WindowsProductName)"
+        Write-Host " Your Windows edition: $((Get-ComputerInfo).WindowsProductName)"
         Start-Sleep -Seconds 30
     }
 
