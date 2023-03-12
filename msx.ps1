@@ -1,7 +1,7 @@
 $MainMenu = {
     Write-Host " ******************************************************"
-    Write-Host " * Author: bonguides.com                              *" 
-    Write-Host " * Updated on: 10/02/2023                          *" 
+    Write-Host " * Author: https://msgang.com                         *" 
+    Write-Host " * Updated on: 10/02/2023                             *" 
     Write-Host " ******************************************************" 
     Write-Host 
     Write-Host " 1. Activate / Convert to Professional Edition" 
