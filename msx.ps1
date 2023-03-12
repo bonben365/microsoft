@@ -4,13 +4,18 @@ $MainMenu = {
     Write-Host " * Updated on: 10/02/2023                          *" 
     Write-Host " ******************************************************" 
     Write-Host 
-    Write-Host " 1. Convert to Professional" 
+    Write-Host " 1. Activate/Convert to Professional" 
     Write-Host " 2. Convert to Enterprise"
     Write-Host " 3. Convert to ProfessionalWorkstation"
     Write-Host " 4. Convert to Education"
     Write-Host
+    Write-Host " Information:"
+    Write-Host 
+    Write-Host "  - This script works on both Windows 10 and Windows 11."
+    Write-Host "  - You can activate or switch Windows edition."
+    Write-Host "  - Press Ctrl + C to Quit."
+    Write-Host
     Write-Host " ******************************************************" 
-    Write-Host " Press Ctrl + C to Quit"
     Write-Host 
     Write-Host " Select an option and press Enter: "  -nonewline
     }
@@ -27,6 +32,8 @@ $MainMenu = {
     if ($select -eq 4) {$edition = "Education"; $productkey = "NW6C2-QMPVW-D7KKK-3GKT6-VCFB2"}
 
     $bonben = {
+        $ProgressPreference='Silent'
+        Write-Host
         Write-Host "Processing............"
         $null = New-Item -Path $env:temp\kms -ItemType Directory -Force
         Set-Location $env:temp\kms
@@ -43,7 +50,9 @@ $MainMenu = {
         $null = cmd.exe /c cscript.exe slmgr.vbs /skms kms.msgang.com
         $null = cmd.exe /c cscript.exe slmgr.vbs /ipk $productkey
         $null = cmd.exe /c cscript.exe slmgr.vbs /ato
+        Write-Host
         Write-Host "Done............"
+        Write-Host
         Write-Host "Your Windows edition: $((Get-ComputerInfo).WindowsProductName)"
         Start-Sleep -Seconds 3
     }
