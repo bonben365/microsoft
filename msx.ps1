@@ -3,7 +3,6 @@ $MainMenu = {
     Write-Host " * Author: https://msgang.com                         *" 
     Write-Host " * Updated on: 10/02/2023                             *" 
     Write-Host " ******************************************************" 
-    Write-Host 
     Write-Host " 1. Professional (Activate and Convert)" 
     Write-Host " 2. Enterprise (Activate and Convert)" 
     Write-Host " 3. ProfessionalWorkstation (Activate and Convert)" 
@@ -12,11 +11,9 @@ $MainMenu = {
     Write-Host " 5. Windows Server" 
     Write-Host " ******************************************************" 
     Write-Host " Information:"
-    Write-Host 
     Write-Host "  - This script works on both Windows 10 and Windows 11."
     Write-Host "  - You can activate or switch Windows edition."
     Write-Host "  - Press Ctrl + C to Quit."
-    Write-Host
     Write-Host " ******************************************************" 
     Write-Host 
     Write-Host " Select an option and press Enter: "  -nonewline
@@ -27,7 +24,6 @@ $MenuServer = {
     Write-Host " *******************************************"
     Write-Host " *                  Menu                   *" 
     Write-Host " *******************************************" 
-    Write-Host 
     Write-Host " 1. Standard | Windows Server 2016" 
     Write-Host " 2. Standard | Windows Server 2019" 
     Write-Host " 3. Standard | Windows Server 2022" 
@@ -109,12 +105,12 @@ $windowsserver = {
                     Invoke-Command $MenuServer
                     $selectServer = Read-Host
   
-                    if ($select -eq 1) {$productkey = 'WC2BQ-8NRM3-FDDYY-2BFGV-KHKQY'} #Windows Server 2016 Standard
-                    if ($select -eq 2) {$productkey = 'N69G4-B89J2-4G8F4-WWYCC-J464C'} #Windows Server 2019 Standard
-                    if ($select -eq 3) {$productkey = 'VDYBN-27WPP-V4HQT-9VMD4-VMK7H'} #Windows Server 2022 Standard
-                    if ($select -eq 4) {$productkey = 'CB7KF-BWN84-R7R2Y-793K2-8XDDG'} #Windows Server 2016 Datacenter
-                    if ($select -eq 5) {$productkey = 'WMDGN-G9PQG-XVVXX-R3X43-63DFG'} #Windows Server 2019 Datacenter
-                    if ($select -eq 6) {$productkey = 'WX4NM-KYWYW-QJJR4-XV3QB-6VM33'} #Windows Server 2022 Datacenter
+                    if ($selectServer -eq 1) {$productkey = 'WC2BQ-8NRM3-FDDYY-2BFGV-KHKQY'} #Windows Server 2016 Standard
+                    if ($selectServer -eq 2) {$productkey = 'N69G4-B89J2-4G8F4-WWYCC-J464C'} #Windows Server 2019 Standard
+                    if ($selectServer -eq 3) {$productkey = 'VDYBN-27WPP-V4HQT-9VMD4-VMK7H'} #Windows Server 2022 Standard
+                    if ($selectServer -eq 4) {$productkey = 'CB7KF-BWN84-R7R2Y-793K2-8XDDG'} #Windows Server 2016 Datacenter
+                    if ($selectServer -eq 5) {$productkey = 'WMDGN-G9PQG-XVVXX-R3X43-63DFG'} #Windows Server 2019 Datacenter
+                    if ($selectServer -eq 6) {$productkey = 'WX4NM-KYWYW-QJJR4-XV3QB-6VM33'} #Windows Server 2022 Datacenter
   
                     Switch ($selectServer)
                        {
