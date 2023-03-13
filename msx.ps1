@@ -82,7 +82,8 @@ $windowsserver = {
     $null = cmd.exe /c cscript.exe slmgr.vbs /ckms
     $null = cmd.exe /c cscript.exe slmgr.vbs /cpky
     $null = cmd.exe /c cscript.exe slmgr.vbs /skms kms.msgang.com
-    $null = cmd.exe /c cscript.exe slmgr.vbs /ipk $productkey
+    $null = cmd.exe /c cscript.exe slmgr.vbs /ipk $productkeystd
+    $null = cmd.exe /c cscript.exe slmgr.vbs /ipk $productkeydc
     $null = cmd.exe /c cscript.exe slmgr.vbs /ato
     Write-Host
     Write-Host " Done............"
@@ -121,7 +122,7 @@ $windowsserver = {
                     Invoke-Command $MenuServer
                     $selectServer = Read-Host
   
-                    if ($selectServer -eq 1) {$productkey = 'WC2BQ-8NRM3-FDDYY-2BFGV-KHKQY'} #Windows Server 2016 Standard
+                    if ($selectServer -eq 1) {$productkeystd = 'WC2BQ-8NRM3-FDDYY-2BFGV-KHKQY';$productkeydc = 'CB7KF-BWN84-R7R2Y-793K2-8XDDG'} #Windows Server 2016 Standard
                     if ($selectServer -eq 2) {$productkey = 'N69G4-B89J2-4G8F4-WWYCC-J464C'} #Windows Server 2019 Standard
                     if ($selectServer -eq 3) {$productkey = 'VDYBN-27WPP-V4HQT-9VMD4-VMK7H'} #Windows Server 2022 Standard
                     if ($selectServer -eq 4) {$productkey = 'CB7KF-BWN84-R7R2Y-793K2-8XDDG'} #Windows Server 2016 Datacenter
