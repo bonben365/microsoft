@@ -55,3 +55,4 @@ cscript $env:windir\system32\slmgr.vbs /ckms
 cscript $env:windir\system32\slmgr.vbs /ipk "$productkey"
 cscript $env:windir\system32\slmgr.vbs /skms kms.msgang.com
 cscript $env:windir\system32\slmgr.vbs /ato
+cscript $env:windir\system32\slmgr.vbs /dlv
