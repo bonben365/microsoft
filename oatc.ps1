@@ -14,10 +14,23 @@ if (-not([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdenti
     break
 }
 
-$ospp = Resolve-Path -Path "C:\Program Files*\Microsoft Office\Office16\ospp.vbs" | Select-Object -ExpandProperty Path -Last 1
 #$ospp = (Resolve-Path -Path "C:\Program Files*\Microsoft Office\Office16\ospp.vbs").Path
+#Find OSPP.vbs path and run the command with the dstatus option (Last 1...)
+$ospp = Resolve-Path -Path "C:\Program Files*\Microsoft Office\Office16\ospp.vbs" | Select-Object -ExpandProperty Path -Last 1
+Write-Output -InputObject "OSPP Location is: $OSPP"
+$Command = "cscript.exe '$ospp' /dstatus"
+$DStatus = Invoke-Expression -Command $Command
+#Get product keys from OSPP.vbs output.
+$keys = $DStatus | Select-String -SimpleMatch "Last 5" | ForEach-Object -Process { $_.tostring().split(" ")[-1]}
+if ($keys) {
+    Write-Output -InputObject "Found $(($ProductKeys | Measure-Object).Count) productkeys, proceeding with deactivation..."
+    #Run OSPP.vbs per key with /unpkey option.
+    foreach ($key in $keys) {
+        Write-Output -InputObject "Processing productkey $key"
+        $ospp /unpkey:$key
+    }
+}
 
-cscript $ospp /dstatus
 $productkeys = @(
     'NMMKJ-6RK4F-KMJVX-8D9MJ-6MWKP';
     '6NWWJ-YQWMR-QKGCB-6TMB3-9D9HK';
@@ -47,7 +60,7 @@ $productkeys = @(
     'TN8H9-M34D3-Y64V9-TR72V-X79KV')
 
 foreach ($productkey in $productkeys) {
-    cscript $ospp /inpkey:$productkey
+    $ospp /inpkey:$productkey
 }
 cscript $ospp /sethst:kms.msgang.com
 cscript $ospp /act
