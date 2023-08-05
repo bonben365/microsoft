@@ -15,10 +15,14 @@ Write-Host '---------------------------------------------------------------'
 
 If ($edition -eq 'Microsoft Windows 11 Home' -or $edition -eq 'Microsoft Windows 10 Home') {$productkey = 'TX9XD-98N7V-6WMQ6-BX7FG-H8Q99'}
 If ($edition -eq 'Microsoft Windows 11 Home Single Language' -or $edition -eq 'Microsoft Windows 10 Home Single Language') {$productkey = '7HNRX-D7KGG-3K4RQ-4WPJ4-YTDFH'}
+
 If ($edition -eq 'Microsoft Windows 11 Pro' -or $edition -eq 'Microsoft Windows 10 Pro') {$productkey = 'W269N-WFGWX-YVC9B-4J6C9-T83GX'}
-If ($edition -eq 'Microsoft Windows 11 Enterprise' -or $edition -eq 'Microsoft Windows 10 Enterprise') {$productkey = 'NPPR9-FWDCX-D2C8J-H872K-2YT43'}
-If ($edition -eq 'Microsoft Windows 11 Education' -or $edition -eq 'Microsoft Windows 10 Education') {$productkey = 'NW6C2-QMPVW-D7KKK-3GKT6-VCFB2'}
 If ($edition -eq 'Microsoft Windows 11 Pro for Workstations' -or $edition -eq 'Microsoft Windows 10 Pro for Workstations') {$productkey = 'NRG8B-VKK3Q-CXVCJ-9G2XF-6Q84J'}
+
+If ($edition -eq 'Microsoft Windows 11 Enterprise' -or $edition -eq 'Microsoft Windows 10 Enterprise') {$productkey = 'NPPR9-FWDCX-D2C8J-H872K-2YT43'}
+
+If ($edition -eq 'Microsoft Windows 11 Education' -or $edition -eq 'Microsoft Windows 10 Education') {$productkey = 'NW6C2-QMPVW-D7KKK-3GKT6-VCFB2'}
+If ($edition -eq 'Microsoft Windows 11 Pro Education' -or $edition -eq 'Microsoft Windows 10 Pro Education') {$productkey = '6TP4R-GNPTD-KYYHQ-7B7DP-J447Y'}
 
 
 
