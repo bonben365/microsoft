@@ -1,3 +1,13 @@
+Write-Host ==================================================================================================================
+Write-Host Name:           Windows Activator
+Write-Host Description:    Activate all Windows Edition for free.
+Write-Host Version:        1.0
+Write-Host Date :          26/7/2023
+Write-Host Website:        https://msgang.com
+Write-Host Script by:      Leo Nguyen
+Write-Host For detailed script execution: https://msgang.com/wato
+Write-Host =================================================================================================================
+
 $edition = (Get-CimInstance Win32_OperatingSystem).Caption
 Write-Host '-----------------------------------'
 Write-Host "You're using $edition"
