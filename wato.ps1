@@ -16,7 +16,7 @@ If ($edition -eq 'Microsoft Windows 11 Pro' -or $edition -eq 'Microsoft Windows 
   cscript $env:windir\system32\slmgr.vbs /ckms
   cscript $env:windir\system32\slmgr.vbs /ipk W269N-WFGWX-YVC9B-4J6C9-T83GX
   cscript $env:windir\system32\slmgr.vbs /skms kms.msgang.com
-  cscript $env:windir\system32\slmgr.vbs /ato
+  cscript $env:windir\system32\slmgr.vbs /ato -ForegroundColor Yellow
 }
 
 If ($edition -eq 'Microsoft Windows 11 Enterprise' -or $edition -eq 'Microsoft Windows 10 Enterprise') {
