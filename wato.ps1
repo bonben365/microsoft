@@ -50,7 +50,8 @@ If ($edition -eq 'Windows Server 2019 Essentials') {$productkey = 'WVDHN-86M7X-4
 If ($edition -eq 'Windows Server 2022 Standard') {$productkey = 'VDYBN-27WPP-V4HQT-9VMD4-VMK7H'}
 If ($edition -eq 'Windows Server 2022 Datacenter') {$productkey = 'WX4NM-KYWYW-QJJR4-XV3QB-6VM33'}
 
-
+If ($edition -eq 'Windows 7 Professional') {$productkey = 'FJ82H-XT6CR-J8D7P-XQJJ2-GPDD4'}
+If ($edition -eq 'Windows 7 Enterprise') {$productkey = '33PXH-7Y6KF-2VJC9-XBBR8-HVTHH'}
 
 cscript $env:windir\system32\slmgr.vbs /ckms
 cscript $env:windir\system32\slmgr.vbs /ipk "$productkey"
