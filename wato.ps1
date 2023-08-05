@@ -8,6 +8,11 @@ Write-Host Script by:      Leo Nguyen
 Write-Host For detailed script execution: https://msgang.com/windows
 Write-Host ===============================================================
 
+if (-not([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {
+    Write-Warning "You need to have Administrator rights to run this script!`nPlease re-run this script as an Administrator in an elevated powershell prompt!"
+    break
+}
+
 #$edition = (Get-CimInstance Win32_OperatingSystem).Caption
 $edition = (Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion").ProductName
 Write-Host '---------------------------------------------------------------'
