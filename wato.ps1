@@ -1,6 +1,6 @@
 Write-Host ===============================================================
 Write-Host Name:           Windows Activator
-Write-Host Description:    Activate all Windows Edition for free.
+Write-Host Description:    Activate all Windows Editions for free.
 Write-Host Version:        1.0
 Write-Host Date :          26/7/2023
 Write-Host Website:        https://msgang.com
@@ -17,7 +17,10 @@ If ($edition -eq 'Microsoft Windows 11 Home' -or $edition -eq 'Microsoft Windows
 If ($edition -eq 'Microsoft Windows 11 Home Single Language' -or $edition -eq 'Microsoft Windows 10 Home Single Language') {$productkey = '7HNRX-D7KGG-3K4RQ-4WPJ4-YTDFH'}
 
 If ($edition -eq 'Microsoft Windows 11 Pro' -or $edition -eq 'Microsoft Windows 10 Pro') {$productkey = 'W269N-WFGWX-YVC9B-4J6C9-T83GX'}
+If ($edition -eq 'Microsoft Windows 11 Pro N' -or $edition -eq 'Microsoft Windows 10 Pro N') {$productkey = 'MH37W-N47XK-V7XM9-C7227-GCQG9'}
 If ($edition -eq 'Microsoft Windows 11 Pro for Workstations' -or $edition -eq 'Microsoft Windows 10 Pro for Workstations') {$productkey = 'NRG8B-VKK3Q-CXVCJ-9G2XF-6Q84J'}
+If ($edition -eq 'Microsoft Windows 11 Pro for Workstations N' -or $edition -eq 'Microsoft Windows 10 Pro for Workstations N') {$productkey = '9FNHH-K3HBT-3W4TD-6383H-6XYWF'}
+
 
 If ($edition -eq 'Microsoft Windows 11 Enterprise' -or $edition -eq 'Microsoft Windows 10 Enterprise') {$productkey = 'NPPR9-FWDCX-D2C8J-H872K-2YT43'}
 
