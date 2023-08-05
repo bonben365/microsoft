@@ -9,9 +9,9 @@ Write-Host For detailed script execution: https://msgang.com/wato
 Write-Host ===============================================================
 
 $edition = (Get-CimInstance Win32_OperatingSystem).Caption
-Write-Host '--------------------------------------------------------------'
+Write-Host '---------------------------------------------------------------'
 Write-Host "You're using $edition"                 
-Write-Host '--------------------------------------------------------------'
+Write-Host '---------------------------------------------------------------'
 
 If ($edition -eq 'Microsoft Windows 11 Home' -or $edition -eq 'Microsoft Windows 10 Home') {$productkey = 'TX9XD-98N7V-6WMQ6-BX7FG-H8Q99'}
 If ($edition -eq 'Microsoft Windows 11 Pro' -or $edition -eq 'Microsoft Windows 10 Pro') {$productkey = 'W269N-WFGWX-YVC9B-4J6C9-T83GX'}
