@@ -20,7 +20,7 @@ If ($edition -eq 'Microsoft Windows 11 Home Single Language' -or $edition -eq 'M
 If ($edition -eq 'Microsoft Windows 11 Pro' -or $edition -eq 'Microsoft Windows 10 Pro') {$productkey = 'W269N-WFGWX-YVC9B-4J6C9-T83GX'}
 If ($edition -eq 'Microsoft Windows 11 Pro N' -or $edition -eq 'Microsoft Windows 10 Pro N') {$productkey = 'MH37W-N47XK-V7XM9-C7227-GCQG9'}
 If ($edition -eq 'Microsoft Windows 11 Pro for Workstations' -or $edition -eq 'Microsoft Windows 10 Pro for Workstations') {$productkey = 'NRG8B-VKK3Q-CXVCJ-9G2XF-6Q84J'}
-If ($edition -eq 'Microsoft Windows 11 Pro for Workstations N' -or $edition -eq 'Microsoft Windows 10 Pro for Workstations N') {$productkey = '9FNHH-K3HBT-3W4TD-6383H-6XYWF'}
+If ($edition -eq 'Microsoft Windows 11 Pro N for Workstations' -or $edition -eq 'Microsoft Windows 10 Pro N for Workstations') {$productkey = '9FNHH-K3HBT-3W4TD-6383H-6XYWF'}
 
 If ($edition -eq 'Microsoft Windows 11 Enterprise' -or $edition -eq 'Microsoft Windows 10 Enterprise') {$productkey = 'NPPR9-FWDCX-D2C8J-H872K-2YT43'}
 If ($edition -eq 'Microsoft Windows 11 Enterprise N' -or $edition -eq 'Microsoft Windows 10 Enterprise N') {$productkey = 'DPH2V-TTNVB-4X9Q3-TJR4H-KHJW4'}
@@ -29,7 +29,7 @@ If ($edition -eq 'Microsoft Windows 11 Education' -or $edition -eq 'Microsoft Wi
 If ($edition -eq 'Microsoft Windows 11 Education N' -or $edition -eq 'Microsoft Windows 10 Education N') {$productkey = '2WH4N-8QGBV-H22JP-CT43Q-MDWWJ'}
 
 If ($edition -eq 'Microsoft Windows 11 Pro Education' -or $edition -eq 'Microsoft Windows 10 Pro Education') {$productkey = '6TP4R-GNPTD-KYYHQ-7B7DP-J447Y'}
-If ($edition -eq 'Microsoft Windows 11 Pro Education N' -or $edition -eq 'Microsoft Windows 10 Pro Education N') {$productkey = 'YVWGF-BXNMC-HTQYQ-CPQ99-66QFC'}
+If ($edition -eq 'Microsoft Windows 11 Pro N Education' -or $edition -eq 'Microsoft Windows 10 Pro N Education') {$productkey = 'YVWGF-BXNMC-HTQYQ-CPQ99-66QFC'}
 
 If ($edition -eq 'Microsoft Windows Server 2012 Standard') {$productkey = 'BN3D2-R7TKB-3YPBD-8DRP2-27GG4'}
 If ($edition -eq 'Microsoft Windows Server 2012 Datacenter') {$productkey = '48HP8-DN98B-MYWDG-T2DCC-8W83P'}
