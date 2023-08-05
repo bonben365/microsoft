@@ -32,7 +32,16 @@ If ($edition -eq 'Microsoft Windows 11 Pro Education' -or $edition -eq 'Microsof
 If ($edition -eq 'Microsoft Windows 11 Pro Education N' -or $edition -eq 'Microsoft Windows 10 Pro Education N') {$productkey = 'YVWGF-BXNMC-HTQYQ-CPQ99-66QFC'}
 
 
+If ($edition -eq 'Microsoft Windows Server 2016 Standard') {$productkey = 'WC2BQ-8NRM3-FDDYY-2BFGV-KHKQY'}
+If ($edition -eq 'Microsoft Windows Server 2016 Datacenter') {$productkey = 'CB7KF-BWN84-R7R2Y-793K2-8XDDG'}
+If ($edition -eq 'Microsoft Windows Server 2016 Essentials') {$productkey = 'JCKRF-N37P4-C2D82-9YXRT-4M63B'}
 
+If ($edition -eq 'Microsoft Windows Server 2019 Standard') {$productkey = 'N69G4-B89J2-4G8F4-WWYCC-J464C'}
+If ($edition -eq 'Microsoft Windows Server 2019 Datacenter') {$productkey = 'WMDGN-G9PQG-XVVXX-R3X43-63DFG'}
+If ($edition -eq 'Microsoft Windows Server 2019 Essentials') {$productkey = 'WVDHN-86M7X-466P6-VHXV7-YY726'}
+
+If ($edition -eq 'Microsoft Windows Server 2022 Standard') {$productkey = 'VDYBN-27WPP-V4HQT-9VMD4-VMK7H'}
+If ($edition -eq 'Microsoft Windows Server 2022 Datacenter') {$productkey = 'WX4NM-KYWYW-QJJR4-XV3QB-6VM33'}
 
 
 
