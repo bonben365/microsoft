@@ -1,12 +1,12 @@
 
 Write-Host ===============================================================
-Write-Host Name:           Windows Activator
-Write-Host Description:    Activate all Windows Editions for free.
+Write-Host Name:           Microsoft Office Activator
+Write-Host Description:    Activate all Offices Editions for free.
 Write-Host Version:        1.0
 Write-Host Date :          26/7/2023
 Write-Host Website:        https://msgang.com
 Write-Host Script by:      Leo Nguyen
-Write-Host For detailed script execution: https://msgang.com/windows
+Write-Host For detailed script execution: https://msgang.com/office
 Write-Host ===============================================================
 
 if (-not([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {
@@ -31,8 +31,21 @@ $productkeys = @(
     'RRNCX-C64HY-W2MM7-MCH9G-TJHMQ';
     'G2KWX-3NW6P-PY93R-JXK2T-C9Y9V';
     'NCJ33-JHBBY-HTK98-MYCV8-HMKHJ';
-    'PBX3G-NWMT6-Q7XBW-PYJGG-WXD33')
-    
+    'PBX3G-NWMT6-Q7XBW-PYJGG-WXD33';
+    'FXYTK-NJJ8C-GB6DW-3DYQT-6F7TH';
+    'KDX7X-BNVR8-TXXGX-4Q7Y8-78VT3';
+    'FTNWT-C6WBT-8HMGF-K9PRX-QV9H8';
+    'J2JDC-NJCYY-9RGQ4-YXWMH-T3D4T';
+    'KNH8D-FGHT4-T8RK3-CTDYJ-K2HT4';
+    'MJVNY-BYWPY-CWV6J-2RKRT-4M8QG';
+    'WM8YG-YNGDD-4JHDC-PG3F4-FC4T4';
+    'NWG3X-87C9K-TC7YY-BC2G7-G6RVC';
+    'C9FM6-3N72F-HFJXB-TM3V9-T86R9';
+    'TY7XF-NFRBR-KJ44C-G83KF-GX27K';
+    '2MW9D-N4BXM-9VBPG-Q7W6M-KFBGQ';
+    'HWCXN-K3WBT-WJBKY-R8BD9-XK29P';
+    'TN8H9-M34D3-Y64V9-TR72V-X79KV')
+
 foreach ($productkey in $productkeys) {
     cscript $ospp /inpkey:$productkey
 }
