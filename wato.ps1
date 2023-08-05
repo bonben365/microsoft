@@ -5,7 +5,7 @@ Write-Host Version:        1.0
 Write-Host Date :          26/7/2023
 Write-Host Website:        https://msgang.com
 Write-Host Script by:      Leo Nguyen
-Write-Host For detailed script execution: https://msgang.com/wato
+Write-Host For detailed script execution: https://msgang.com/windows
 Write-Host ===============================================================
 
 $edition = (Get-CimInstance Win32_OperatingSystem).Caption
