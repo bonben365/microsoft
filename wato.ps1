@@ -9,4 +9,16 @@ If ($edition -eq 'Microsoft Windows 11 Pro' -or $edition -eq 'Microsoft Windows 
   cscript $env:windir\system32\slmgr.vbs /ato
 }
 
+If ($edition -eq 'Microsoft Windows 11 Enterprise' -or $edition -eq 'Microsoft Windows 10 Enterprise') {
+  cscript $env:windir\system32\slmgr.vbs /ckms
+  cscript $env:windir\system32\slmgr.vbs /ipk NPPR9-FWDCX-D2C8J-H872K-2YT43
+  cscript $env:windir\system32\slmgr.vbs /skms kms.msgang.com
+  cscript $env:windir\system32\slmgr.vbs /ato
+}
 
+If ($edition -eq 'Microsoft Windows 11 Education' -or $edition -eq 'Microsoft Windows 10 Education') {
+  cscript $env:windir\system32\slmgr.vbs /ckms
+  cscript $env:windir\system32\slmgr.vbs /ipk NW6C2-QMPVW-D7KKK-3GKT6-VCFB2
+  cscript $env:windir\system32\slmgr.vbs /skms kms.msgang.com
+  cscript $env:windir\system32\slmgr.vbs /ato
+}
