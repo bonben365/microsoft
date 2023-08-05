@@ -17,7 +17,7 @@ If ($edition -eq 'Microsoft Windows 11 Home' -or $edition -eq 'Microsoft Windows
 If ($edition -eq 'Microsoft Windows 11 Pro' -or $edition -eq 'Microsoft Windows 10 Pro') {$productkey = 'W269N-WFGWX-YVC9B-4J6C9-T83GX'}
 If ($edition -eq 'Microsoft Windows 11 Enterprise' -or $edition -eq 'Microsoft Windows 10 Enterprise') {$productkey = 'NPPR9-FWDCX-D2C8J-H872K-2YT43'}
 If ($edition -eq 'Microsoft Windows 11 Education' -or $edition -eq 'Microsoft Windows 10 Education') {$productkey = 'NW6C2-QMPVW-D7KKK-3GKT6-VCFB2'}
-If ($edition -eq 'Windows 11 Pro for Workstations' -or $edition -eq 'Windows 10 Pro for Workstations') {$productkey = 'NRG8B-VKK3Q-CXVCJ-9G2XF-6Q84J'}
+If ($edition -eq 'Microsoft Windows 11 Pro for Workstations' -or $edition -eq 'Microsoft Windows 10 Pro for Workstations') {$productkey = 'NRG8B-VKK3Q-CXVCJ-9G2XF-6Q84J'}
 
 
 
