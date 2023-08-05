@@ -16,6 +16,9 @@ if (-not([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdenti
 
 #$ospp = (Resolve-Path -Path "C:\Program Files*\Microsoft Office\Office16\ospp.vbs").Path
 #Find OSPP.vbs path and run the command with the dstatus option (Last 1...)
+Write-Host '---------------------------------------------------------------'
+Write-Host "Processing...It could take a while, please be patient."                 
+Write-Host
 $ospp = Resolve-Path -Path "C:\Program Files*\Microsoft Office\Office16\ospp.vbs" | Select-Object -ExpandProperty Path -Last 1
 $command = "cscript.exe '$ospp' /dstatus"
 $dstatus = Invoke-Expression -Command $command
@@ -56,8 +59,7 @@ $productkeys = @(
 foreach ($productkey in $productkeys) {
     cscript $ospp /inpkey:$productkey | Out-Null
 }
-cscript $ospp /sethst:kms.msgang.com
+cscript $ospp /sethst:kms.msgang.com | Out-Null
 cscript $ospp /act
-pause
 
 
