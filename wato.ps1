@@ -8,7 +8,8 @@ Write-Host Script by:      Leo Nguyen
 Write-Host For detailed script execution: https://msgang.com/windows
 Write-Host ===============================================================
 
-$edition = (Get-CimInstance Win32_OperatingSystem).Caption
+#$edition = (Get-CimInstance Win32_OperatingSystem).Caption
+$edition = (Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion").ProductName
 Write-Host '---------------------------------------------------------------'
 Write-Host "You're using $edition"                 
 Write-Host '---------------------------------------------------------------'
