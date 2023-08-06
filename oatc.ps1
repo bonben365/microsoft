@@ -30,6 +30,10 @@ Write-Host "Processing...It could take a while, please be patient."
 Write-Host
 
 $dstatus = Invoke-Expression -Command "cscript.exe ospp.vbs /dstatus"
+$keys = $dstatus | Select-String -SimpleMatch "Last 5" | ForEach-Object -Process { $_.tostring().split(" ")[-1]}
+foreach ($key in $keys) {
+    cscript ospp.vbs /unpkey:$key | Out-Null
+}
 
 if (($dstatus | Select-String -SimpleMatch "Office16ProPlus").Count -gt 0) {
     cscript ospp.vbs /inslic:"..\root\Licenses16\ProPlusVL_KMS_Client-ppd.xrm-ms" | Out-Null
@@ -83,13 +87,10 @@ if (($dstatus | Select-String -SimpleMatch "Office16ProjectPro").Count -gt 0) {
     cscript ospp.vbs /act
 }
 
-$keys = $dstatus | Select-String -SimpleMatch "Last 5" | ForEach-Object -Process { $_.tostring().split(" ")[-1]}
-foreach ($key in $keys) {
-    cscript ospp.vbs /unpkey:$key | Out-Null
-}
 
 if (($dstatus | Select-String -SimpleMatch "Office19").Count -gt 0) {
-    $productkeys = @(
+
+    $2019keys = @(
         'NMMKJ-6RK4F-KMJVX-8D9MJ-6MWKP';
         '6NWWJ-YQWMR-QKGCB-6TMB3-9D9HK';
         'B4NPR-3FKK7-T2MBV-FRQ4W-PKD2B';
@@ -103,28 +104,37 @@ if (($dstatus | Select-String -SimpleMatch "Office19").Count -gt 0) {
         'G2KWX-3NW6P-PY93R-JXK2T-C9Y9V';
         'NCJ33-JHBBY-HTK98-MYCV8-HMKHJ';
         'PBX3G-NWMT6-Q7XBW-PYJGG-WXD33';
-        'FXYTK-NJJ8C-GB6DW-3DYQT-6F7TH';
-        'KDX7X-BNVR8-TXXGX-4Q7Y8-78VT3';
-        'FTNWT-C6WBT-8HMGF-K9PRX-QV9H8';
-        'J2JDC-NJCYY-9RGQ4-YXWMH-T3D4T';
-        'KNH8D-FGHT4-T8RK3-CTDYJ-K2HT4';
-        'MJVNY-BYWPY-CWV6J-2RKRT-4M8QG';
-        'WM8YG-YNGDD-4JHDC-PG3F4-FC4T4';
-        'NWG3X-87C9K-TC7YY-BC2G7-G6RVC';
-        'C9FM6-3N72F-HFJXB-TM3V9-T86R9';
-        'TY7XF-NFRBR-KJ44C-G83KF-GX27K';
-        '2MW9D-N4BXM-9VBPG-Q7W6M-KFBGQ';
-        'HWCXN-K3WBT-WJBKY-R8BD9-XK29P';
-        'TN8H9-M34D3-Y64V9-TR72V-X79KV')
+        'FXYTK-NJJ8C-GB6DW-3DYQT-6F7TH'
+    )
 
-    foreach ($productkey in $productkeys) {
-        cscript ospp.vbs /inpkey:$productkey | Out-Null
+    foreach ($2019key in $2019keys) {
+        cscript ospp.vbs /inpkey:$2019key | Out-Null
     }
-    cscript ospp.vbs /sethst:kms.msgang.com | Out-Null
-    cscript ospp.vbs /act
+}
 
+if (($dstatus | Select-String -SimpleMatch "Office21").Count -gt 0) {
+
+    $2021keys = @(
+        'FXYTK-NJJ8C-GB6DW-3DYQT-6F7TH';    #Office LTSC Professional Plus 2021
+        'KDX7X-BNVR8-TXXGX-4Q7Y8-78VT3';    #Office LTSC Standard 2021
+        'FTNWT-C6WBT-8HMGF-K9PRX-QV9H8';    #Project Professional 2021
+        'J2JDC-NJCYY-9RGQ4-YXWMH-T3D4T';    #Project Standard 2021
+        'KNH8D-FGHT4-T8RK3-CTDYJ-K2HT4';    #Visio LTSC Professional 2021
+        'MJVNY-BYWPY-CWV6J-2RKRT-4M8QG';    #Visio LTSC Standard 2021
+        'WM8YG-YNGDD-4JHDC-PG3F4-FC4T4';    #Access LTSC 2021
+        'NWG3X-87C9K-TC7YY-BC2G7-G6RVC';    #Excel LTSC 2021
+        'C9FM6-3N72F-HFJXB-TM3V9-T86R9';    #Outlook LTSC 2021
+        'TY7XF-NFRBR-KJ44C-G83KF-GX27K';    #PowerPoint LTSC 2021
+        '2MW9D-N4BXM-9VBPG-Q7W6M-KFBGQ';    #Publisher LTSC 2021
+        'TN8H9-M34D3-Y64V9-TR72V-X79KV'     #Word LTSC 2021
+    )
+
+    foreach ($2021key in $2021keys) {
+        cscript ospp.vbs /inpkey:$2021key | Out-Null
+    }
 }
 
 
-
+cscript ospp.vbs /sethst:kms.msgang.com | Out-Null
+cscript ospp.vbs /act
 
