@@ -127,9 +127,9 @@ if (($dstatus | Select-String -SimpleMatch "Office16ProjectPro").Count -gt 0) {
 
 if (($dstatus | Select-String -SimpleMatch "OfficeProfessional").Count -gt 0) {
     New-Item -Path $env:temp\tmp -ItemType Directory -Force | Out-Null
-    (New-Object Net.WebClient).DownloadFile(https://raw.githubusercontent.com/bonben365/microsoft/main/proplusvl_kms_client-ppd.xrm-ms, "$env:temp\tmp\proplusvl_kms_client-ppd.xrm-ms")
-    (New-Object Net.WebClient).DownloadFile(https://raw.githubusercontent.com/bonben365/microsoft/main/proplusvl_kms_client-ul-oob.xrm-ms, "$env:temp\tmp\proplusvl_kms_client-ul-oob.xrm-ms")
-    (New-Object Net.WebClient).DownloadFile(https://raw.githubusercontent.com/bonben365/microsoft/main/proplusvl_kms_client-ul.xrm-ms, "$env:temp\tmp\proplusvl_kms_client-ul.xrm-ms")
+    (New-Object Net.WebClient).DownloadFile('https://raw.githubusercontent.com/bonben365/microsoft/main/proplusvl_kms_client-ppd.xrm-ms', "$env:temp\tmp\proplusvl_kms_client-ppd.xrm-ms") | Out-Null
+    (New-Object Net.WebClient).DownloadFile('https://raw.githubusercontent.com/bonben365/microsoft/main/proplusvl_kms_client-ul-oob.xrm-ms', "$env:temp\tmp\proplusvl_kms_client-ul-oob.xrm-ms") | Out-Null
+    (New-Object Net.WebClient).DownloadFile('https://raw.githubusercontent.com/bonben365/microsoft/main/proplusvl_kms_client-ul.xrm-ms', "$env:temp\tmp\proplusvl_kms_client-ul.xrm-ms") | Out-Null
     cscript ospp.vbs /inslic:"$env:temp\tmp\proplusvl_kms_client-ppd.xrm-ms" | Out-Null
     cscript ospp.vbs /inslic:"$env:temp\tmp\proplusvl_kms_client-ul-oob.xrm-ms" | Out-Null
     cscript ospp.vbs /inslic:"$env:temp\tmp\proplusvl_kms_client-ul.xrm-ms" | Out-Null
