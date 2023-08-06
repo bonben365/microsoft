@@ -62,17 +62,17 @@ cscript $env:windir\system32\slmgr.vbs /ckms
 cscript $env:windir\system32\slmgr.vbs /ipk "$productkey"
 cscript $env:windir\system32\slmgr.vbs /skms kms.msgang.com
 cscript $env:windir\system32\slmgr.vbs /ato
-cscript $env:windir\system32\slmgr.vbs /dlv
 
 Write-Host
-Write-Host " Done............"
+Write-Host "Done............"
 Write-Host
-Write-Host " Your Windows edition: $edition"
+Write-Host "Your Windows edition: $edition"
 $command = "cscript $env:windir\system32\slmgr.vbs /dlv"
 $status = Invoke-Expression -Command $command
 Write-Host "$($status | Select-String -SimpleMatch "Product Key Channel")"
 Write-Host "$($status | Select-String -SimpleMatch "License Status")"
 Write-Host "$($status | Select-String -SimpleMatch "Volume activation expiration:")"
+Write-Host
 Write-Host "$($status | Select-String -SimpleMatch "Key Management Service client information")"
 Write-Host "$($status | Select-String -SimpleMatch "Registered KMS machine name:")"
 Write-Host "$($status | Select-String -SimpleMatch "KMS machine IP address:")"
