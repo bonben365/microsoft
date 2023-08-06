@@ -103,17 +103,6 @@ if (($dstatus | Select-String -SimpleMatch "Office19ProjectPro").Count -gt 0 -an
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 #For Office 2021 VL.
 if (($dstatus | Select-String -SimpleMatch "Office21").Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "Office 21, VOLUME").Count -gt 0 ) {
 
@@ -136,6 +125,56 @@ if (($dstatus | Select-String -SimpleMatch "Office21").Count -gt 0 -and ($dstatu
         cscript ospp.vbs /inpkey:$2021key | Out-Null
     }
 }
+
+
+
+#For Office 2021 Retail.
+if (($dstatus | Select-String -SimpleMatch "Office21Professional").Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "Office 21, RETAIL").Count -gt 0 ) {
+    cscript ospp.vbs /inslic:"..\root\Licenses16\ProPlusVL_KMS_Client-ppd.xrm-ms" | Out-Null
+    cscript ospp.vbs /inslic:"..\root\Licenses16\ProPlusVL_KMS_Client-ul.xrm-ms" | Out-Null
+    cscript ospp.vbs /inslic:"..\root\Licenses16\ProPlusVL_KMS_Client-ul-oob.xrm-ms" | Out-Null
+    cscript ospp.vbs /inslic:"..\root\Licenses16\ProPlusVL_MAK-pl.xrm-ms" | Out-Null
+    cscript ospp.vbs /inslic:"..\root\Licenses16\ProPlusVL_MAK-ppd.xrm-ms" | Out-Null
+    cscript ospp.vbs /inslic:"..\root\Licenses16\ProPlusVL_MAK-ul-oob.xrm-ms" | Out-Null
+    cscript ospp.vbs /inslic:"..\root\Licenses16\ProPlusVL_MAK-ul-phn.xrm-ms" | Out-Null
+    cscript ospp.vbs /inpkey:FXYTK-NJJ8C-GB6DW-3DYQT-6F7TH | Out-Null
+}
+
+if (($dstatus | Select-String -SimpleMatch "Office21Standard").Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "Office 21, RETAIL").Count -gt 0 ) {
+    cscript ospp.vbs /inslic:"..\root\Licenses16\StandardVL_KMS_Client-ppd.xrm-ms" | Out-Null
+    cscript ospp.vbs /inslic:"..\root\Licenses16\StandardVL_KMS_Client-ul.xrm-ms" | Out-Null
+    cscript ospp.vbs /inslic:"..\root\Licenses16\StandardVL_KMS_Client-ul-oob.xrm-ms" | Out-Null
+    cscript ospp.vbs /inslic:"..\root\Licenses16\StandardVL_MAK-pl.xrm-ms" | Out-Null
+    cscript ospp.vbs /inslic:"..\root\Licenses16\StandardVL_MAK-ppd.xrm-ms" | Out-Null
+    cscript ospp.vbs /inslic:"..\root\Licenses16\StandardVL_MAK-ul-oob.xrm-ms" | Out-Null
+    cscript ospp.vbs /inslic:"..\root\Licenses16\StandardVL_MAK-ul-phn.xrm-ms" | Out-Null
+    cscript ospp.vbs /inpkey:KDX7X-BNVR8-TXXGX-4Q7Y8-78VT3 | Out-Null
+}
+
+if (($dstatus | Select-String -SimpleMatch "Office21VisioPro").Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "Office 21, RETAIL").Count -gt 0 ) {
+    cscript ospp.vbs /inslic:"..\root\Licenses16\VisioProVL_KMS_Client-ppd.xrm-ms" | Out-Null
+    cscript ospp.vbs /inslic:"..\root\Licenses16\VisioProVL_KMS_Client-ul.xrm-ms" | Out-Null
+    cscript ospp.vbs /inslic:"..\root\Licenses16\VisioProVL_KMS_Client-ul-oob.xrm-ms" | Out-Null
+    cscript ospp.vbs /inslic:"..\root\Licenses16\VisioProVL_MAK-pl.xrm-ms" | Out-Null
+    cscript ospp.vbs /inslic:"..\root\Licenses16\VisioProVL_MAK-ppd.xrm-ms" | Out-Null
+    cscript ospp.vbs /inslic:"..\root\Licenses16\VisioProVL_MAK-ul-oob.xrm-ms" | Out-Null
+    cscript ospp.vbs /inslic:"..\root\Licenses16\VisioProVL_MAK-ul-phn.xrm-ms" | Out-Null
+    cscript ospp.vbs /inpkey:KNH8D-FGHT4-T8RK3-CTDYJ-K2HT4 | Out-Null
+}
+
+if (($dstatus | Select-String -SimpleMatch "Office21ProjectPro").Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "Office 21, RETAIL").Count -gt 0 ) {
+    cscript ospp.vbs /inslic:"..\root\Licenses16\ProjectProVL_KMS_Client-ppd.xrm-ms" | Out-Null
+    cscript ospp.vbs /inslic:"..\root\Licenses16\ProjectProVL_KMS_Client-ul.xrm-ms" | Out-Null
+    cscript ospp.vbs /inslic:"..\root\Licenses16\ProjectProVL_KMS_Client-ul-oob.xrm-ms" | Out-Null
+    cscript ospp.vbs /inslic:"..\root\Licenses16\ProjectProVL_MAK-pl.xrm-ms" | Out-Null
+    cscript ospp.vbs /inslic:"..\root\Licenses16\ProjectProVL_MAK-ppd.xrm-ms" | Out-Null
+    cscript ospp.vbs /inslic:"..\root\Licenses16\ProjectProVL_MAK-ul-oob.xrm-ms" | Out-Null
+    cscript ospp.vbs /inslic:"..\root\Licenses16\ProjectProVL_MAK-ul-phn.xrm-ms" | Out-Null
+    cscript ospp.vbs /inpkey:FTNWT-C6WBT-8HMGF-K9PRX-QV9H8 | Out-Null
+}
+
+
+
 
 #For Office 2016 VL.
 if (($dstatus | Select-String -SimpleMatch "Office16ProPlus").Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "Office 16, VOLUME").Count -gt 0 ) {
