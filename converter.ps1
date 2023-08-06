@@ -42,7 +42,7 @@ $convert = {
    $uri = 'https://raw.githubusercontent.com/bonben365/microsoft/main/Files/skus.zip'
    (New-Object Net.WebClient).DownloadFile($uri, "$env:temp\temp\skus.zip")
     
-   Expand-Archive .\skus.zip -DestinationPath . | Out-Null
+   Expand-Archive .\skus.zip -DestinationPath . -Force | Out-Null
     
    Copy-Item -Path $sku $env:windir\system32\spp\tokens\skus\ -Recurse -Force -ErrorAction SilentlyContinue
    cscript.exe $env:windir\system32\slmgr.vbs /rilc | Out-Null
