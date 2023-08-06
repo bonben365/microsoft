@@ -90,8 +90,6 @@ if (($dstatus | Select-String -SimpleMatch "Office16ProPlus").Count -gt 0) {
     cscript ospp.vbs /inslic:"..\root\Licenses16\ProPlusVL_MAK-ul-oob.xrm-ms" | Out-Null
     cscript ospp.vbs /inslic:"..\root\Licenses16\ProPlusVL_MAK-ul-phn.xrm-ms" | Out-Null
     cscript ospp.vbs /inpkey:XQNVK-8JYDB-WJ9W3-YJ8YR-WFG99 | Out-Null
-    cscript ospp.vbs /sethst:kms.msgang.com | Out-Null
-    cscript ospp.vbs /act
 }
 
 if (($dstatus | Select-String -SimpleMatch "Office16Standard").Count -gt 0) {
@@ -103,8 +101,6 @@ if (($dstatus | Select-String -SimpleMatch "Office16Standard").Count -gt 0) {
     cscript ospp.vbs /inslic:"..\root\Licenses16\StandardVL_MAK-ul-oob.xrm-ms" | Out-Null
     cscript ospp.vbs /inslic:"..\root\Licenses16\StandardVL_MAK-ul-phn.xrm-ms" | Out-Null
     cscript ospp.vbs /inpkey:JNRGM-WHDWX-FJJG3-K47QV-DRTFM | Out-Null
-    cscript ospp.vbs /sethst:kms.msgang.com | Out-Null
-    cscript ospp.vbs /act
 }
 
 if (($dstatus | Select-String -SimpleMatch "Office16VisioPro").Count -gt 0) {
@@ -116,8 +112,6 @@ if (($dstatus | Select-String -SimpleMatch "Office16VisioPro").Count -gt 0) {
     cscript ospp.vbs /inslic:"..\root\Licenses16\VisioProVL_MAK-ul-oob.xrm-ms" | Out-Null
     cscript ospp.vbs /inslic:"..\root\Licenses16\VisioProVL_MAK-ul-phn.xrm-ms" | Out-Null
     cscript ospp.vbs /inpkey:PD3PC-RHNGV-FXJ29-8JK7D-RJRJK | Out-Null
-    cscript ospp.vbs /sethst:kms.msgang.com | Out-Null
-    cscript ospp.vbs /act
 }
 
 if (($dstatus | Select-String -SimpleMatch "Office16ProjectPro").Count -gt 0) {
@@ -129,8 +123,6 @@ if (($dstatus | Select-String -SimpleMatch "Office16ProjectPro").Count -gt 0) {
     cscript ospp.vbs /inslic:"..\root\Licenses16\ProjectProVL_MAK-ul-oob.xrm-ms" | Out-Null
     cscript ospp.vbs /inslic:"..\root\Licenses16\ProjectProVL_MAK-ul-phn.xrm-ms" | Out-Null
     cscript ospp.vbs /inpkey:YG9NW-3K39V-2T3HJ-93F3Q-G83KT | Out-Null
-    cscript ospp.vbs /sethst:kms.msgang.com | Out-Null
-    cscript ospp.vbs /act
 }
 
 cscript ospp.vbs /sethst:kms.msgang.com | Out-Null
