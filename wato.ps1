@@ -59,7 +59,7 @@ If ($edition -eq 'Windows 7 Professional') {$productkey = 'FJ82H-XT6CR-J8D7P-XQJ
 If ($edition -eq 'Windows 7 Enterprise') {$productkey = '33PXH-7Y6KF-2VJC9-XBBR8-HVTHH'}
 
 cscript $env:windir\system32\slmgr.vbs /ckms | Out-Null
-cscript $env:windir\system32\slmgr.vbs /ipk "$productkey"
+cscript $env:windir\system32\slmgr.vbs /ipk "$productkey" | Out-Null
 cscript $env:windir\system32\slmgr.vbs /skms kms.msgang.com | Out-Null
 cscript $env:windir\system32\slmgr.vbs /ato
 
