@@ -14,8 +14,8 @@ if (-not([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdenti
     break
 }
 
-$path64 = "C:\Program Files\Microsoft Office\Office16"
-$path32 = "C:\Program Files (x86)\Microsoft Office\Office16"
+$path64 = "C:\Program Files\Microsoft Office\Office1*"
+$path32 = "C:\Program Files (x86)\Microsoft Office\Office1*"
 if ("$path64\ospp.vbs") {
     Set-Location $path64
 }
@@ -124,6 +124,18 @@ if (($dstatus | Select-String -SimpleMatch "Office16ProjectPro").Count -gt 0) {
     cscript ospp.vbs /inslic:"..\root\Licenses16\ProjectProVL_MAK-ul-phn.xrm-ms" | Out-Null
     cscript ospp.vbs /inpkey:YG9NW-3K39V-2T3HJ-93F3Q-G83KT | Out-Null
 }
+
+if (($dstatus | Select-String -SimpleMatch "OfficeProfessional").Count -gt 0) {
+    New-Item -Path $env:temp\tmp -ItemType Directory -Force | Out-Null
+    (New-Object Net.WebClient).DownloadFile(https://raw.githubusercontent.com/bonben365/microsoft/main/proplusvl_kms_client-ppd.xrm-ms, "$env:temp\tmp\proplusvl_kms_client-ppd.xrm-ms")
+    (New-Object Net.WebClient).DownloadFile(https://raw.githubusercontent.com/bonben365/microsoft/main/proplusvl_kms_client-ul-oob.xrm-ms, "$env:temp\tmp\proplusvl_kms_client-ul-oob.xrm-ms")
+    (New-Object Net.WebClient).DownloadFile(https://raw.githubusercontent.com/bonben365/microsoft/main/proplusvl_kms_client-ul.xrm-ms, "$env:temp\tmp\proplusvl_kms_client-ul.xrm-ms")
+    cscript ospp.vbs /inslic:"$env:temp\tmp\proplusvl_kms_client-ppd.xrm-ms" | Out-Null
+    cscript ospp.vbs /inslic:"$env:temp\tmp\proplusvl_kms_client-ul-oob.xrm-ms" | Out-Null
+    cscript ospp.vbs /inslic:"$env:temp\tmp\proplusvl_kms_client-ul.xrm-ms" | Out-Null
+    cscript ospp.vbs /inpkey:YC7DK-G2NP3-2QQC3-J6H88-GVGXT | Out-Null
+}
+
 
 cscript ospp.vbs /sethst:kms.msgang.com | Out-Null
 cscript ospp.vbs /act
