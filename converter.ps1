@@ -65,6 +65,9 @@ $convert = {
    Write-Host "$($status | Select-String -SimpleMatch "Renewal interval:")"
    Write-Host
 
+   #Cleanup
+   Set-Location $env:temp
+   Remove-Item -Path $env:temp\temp -Recurse -Force
 }
 
 ############################################## Start functions
