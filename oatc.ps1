@@ -19,8 +19,8 @@ $path32 = "C:\Program Files (x86)\Microsoft Office\Office1*"
 if ("$path64\ospp.vbs") {
     Set-Location $path64
 }
-else {
-Set-Location $path32
+if ("$path32\ospp.vbs") {
+    Set-Location $path32
 }
 
 #$ospp = (Resolve-Path -Path "C:\Program Files*\Microsoft Office\Office16\ospp.vbs").Path
