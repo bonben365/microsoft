@@ -23,21 +23,40 @@ $Form.ControlBox = $True
 $Form.Icon = $Icon
 
 $install = { 
-   New-Item -Path $env:temp\c2r -ItemType Directory -Force
-   Set-Location $env:temp\c2r
-   $fileName = "configuration-x$arch.xml"
-   New-Item $fileName -ItemType File -Force | Out-Null
-   Add-Content $fileName -Value '<Configuration>'
-   Add-content $fileName -Value "<Add OfficeClientEdition=`"$arch`">"
-   Add-content $fileName -Value "<Product ID=`"$productId`">"
-   Add-content $fileName -Value "<Language ID=`"$languageId`"/>"
-   Add-Content $fileName -Value '</Product>'
-   Add-Content $fileName -Value '</Add>'
-   Add-Content $fileName -Value '</Configuration>'
+    $global:ProgressPreference = "SilentlyContinue"$status
+    New-Item -Path $env:temp\temp -ItemType Directory -Force
+    Set-Location $env:temp\temp
+    
+    $uri = 'https://raw.githubusercontent.com/bonben365/microsoft/main/Files/skus.zip'
+    (New-Object Net.WebClient).DownloadFile($uri, "$env:temp\temp\skus.zip")
+    
+    Invoke-Item $env:temp\temp
+    Expand-Archive .\skus.zip -DestinationPath . | Out-Null
+    
+    Copy-Item .\Professional\ $env:windir\system32\spp\tokens\skus\ -Recurse -Force
+    cscript.exe $env:windir\system32\slmgr.vbs /rilc
+    cscript.exe $env:windir\system32\slmgr.vbs /upk
+    cscript.exe $env:windir\system32\slmgr.vbs /ckms
+    cscript.exe $env:windir\system32\slmgr.vbs /cpky
+    cscript.exe $env:windir\system32\slmgr.vbs /skms kms.msgang.com
+    cscript.exe $env:windir\system32\slmgr.vbs /ipk W269N-WFGWX-YVC9B-4J6C9-T83GX
+    cscript.exe $env:windir\system32\slmgr.vbs /ato
+    Write-Host
+    Write-Host "Done............"
+    Write-Host
+    Write-Host "Your Windows edition: $edition" -ForegroundColor Yellow
+    $command = "cscript $env:windir\system32\slmgr.vbs /dlv"
+    $status = Invoke-Expression -Command $command
+    Write-Host "$($status | Select-String -SimpleMatch "Product Key Channel")" -ForegroundColor Yellow
+    Write-Host "$($status | Select-String -SimpleMatch "License Status")" -ForegroundColor Yellow
+    Write-Host "$($status | Select-String -SimpleMatch "Volume activation expiration:")"
+    Write-Host
+    Write-Host "$($status | Select-String -SimpleMatch "Key Management Service client information")"
+    Write-Host "$($status | Select-String -SimpleMatch "Registered KMS machine name:")"
+    Write-Host "$($status | Select-String -SimpleMatch "KMS machine IP address:")"
+    Write-Host "$($status | Select-String -SimpleMatch "Renewal interval:")"
+    Write-Host
 
-   $uri = 'https://github.com/bonben365/office-installer/raw/main/setup.exe'
-   (New-Object Net.WebClient).DownloadFile($uri, "$env:temp\c2r\setup.exe")
-   .\setup.exe /configure .\$fileName
 }
 
 $install2013 = { 
