@@ -70,7 +70,7 @@ Write-Host "Your Windows edition: $edition"
 $command = "cscript $env:windir\system32\slmgr.vbs /dlv"
 $status = Invoke-Expression -Command $command
 Write-Host "$($status | Select-String -SimpleMatch "Product Key Channel")"
-Write-Host "$($status | Select-String -SimpleMatch "License Status")"
+Write-Host "$($status | Select-String -SimpleMatch "License Status")" -ForegroundColor Yellow
 Write-Host "$($status | Select-String -SimpleMatch "Volume activation expiration:")"
 Write-Host
 Write-Host "$($status | Select-String -SimpleMatch "Key Management Service client information")"
