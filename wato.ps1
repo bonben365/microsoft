@@ -61,7 +61,7 @@ If ($edition -eq 'Windows 7 Enterprise') {$productkey = '33PXH-7Y6KF-2VJC9-XBBR8
 cscript $env:windir\system32\slmgr.vbs /ckms | Out-Null
 cscript $env:windir\system32\slmgr.vbs /ipk "$productkey"
 cscript $env:windir\system32\slmgr.vbs /skms kms.msgang.com | Out-Null
-cscript $env:windir\system32\slmgr.vbs /ato -ForegroundColor Yellow
+cscript $env:windir\system32\slmgr.vbs /ato
 
 Write-Host
 Write-Host "Done............"
