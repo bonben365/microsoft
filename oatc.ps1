@@ -16,12 +16,8 @@ if (-not([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdenti
 
 $path64 = "C:\Program Files\Microsoft Office\Office1*"
 $path32 = "C:\Program Files (x86)\Microsoft Office\Office1*"
-if ("$path64\ospp.vbs") {
-    Set-Location $path64
-}
-if ("$path32\ospp.vbs") {
-    Set-Location $path32
-}
+if ("$path64\ospp.vbs") { Set-Location $path64 -ErrorAction SilentlyContinue }
+if ("$path32\ospp.vbs") { Set-Location $path32 -ErrorAction SilentlyContinue }
 
 #$ospp = (Resolve-Path -Path "C:\Program Files*\Microsoft Office\Office16\ospp.vbs").Path
 #Find OSPP.vbs path and run the command with the dstatus option (Last 1...)
