@@ -85,7 +85,7 @@ if (($dstatus | Select-String -SimpleMatch "Office16ProjectPro").Count -gt 0) {
 
 $keys = $dstatus | Select-String -SimpleMatch "Last 5" | ForEach-Object -Process { $_.tostring().split(" ")[-1]}
 foreach ($key in $keys) {
-    cscript $ospp /unpkey:$key | Out-Null
+    cscript ospp.vbs /unpkey:$key | Out-Null
 }
 
 $productkeys = @(
@@ -117,9 +117,9 @@ $productkeys = @(
     'TN8H9-M34D3-Y64V9-TR72V-X79KV')
 
 foreach ($productkey in $productkeys) {
-    cscript $ospp /inpkey:$productkey | Out-Null
+    cscript ospp.vbs /inpkey:$productkey | Out-Null
 }
-cscript $ospp /sethst:kms.msgang.com | Out-Null
-cscript $ospp /act
+cscript ospp.vbs /sethst:kms.msgang.com | Out-Null
+cscript ospp.vbs /act
 
 
