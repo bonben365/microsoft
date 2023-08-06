@@ -61,12 +61,6 @@ $convert = {
    $status = Invoke-Expression -Command $command
    Write-Host "$($status | Select-String -SimpleMatch "Product Key Channel")" -ForegroundColor Yellow
    Write-Host "$($status | Select-String -SimpleMatch "License Status")" -ForegroundColor Yellow
-   Write-Host "$($status | Select-String -SimpleMatch "Volume activation expiration:")"
-   Write-Host
-   Write-Host "$($status | Select-String -SimpleMatch "Key Management Service client information")"
-   Write-Host "$($status | Select-String -SimpleMatch "Registered KMS machine name:")"
-   Write-Host "$($status | Select-String -SimpleMatch "KMS machine IP address:")"
-   Write-Host "$($status | Select-String -SimpleMatch "Renewal interval:")"
    Write-Host
 
    #Cleanup
