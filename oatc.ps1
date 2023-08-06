@@ -16,8 +16,8 @@ if (-not([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdenti
 
 $path64 = "C:\Program Files\Microsoft Office\Office1*"
 $path32 = "C:\Program Files (x86)\Microsoft Office\Office1*"
-if ("$path64\ospp.vbs") { Set-Location $path64 -ErrorAction SilentlyContinue }
-if ("$path32\ospp.vbs") { Set-Location $path32 -ErrorAction SilentlyContinue }
+if ((Test-Path -Path "$path32\ospp.vbs")) { Set-Location $path32 -ErrorAction SilentlyContinue }
+if ((Test-Path -Path "$path64\ospp.vbs")) { Set-Location $path64 -ErrorAction SilentlyContinue }
 
 #$ospp = (Resolve-Path -Path "C:\Program Files*\Microsoft Office\Office1*\ospp.vbs").Path
 #Find OSPP.vbs path and run the command with the dstatus option (Last 1...)
@@ -77,9 +77,9 @@ if (($dstatus | Select-String -SimpleMatch "Office21").Count -gt 0) {
     }
 }
 
-#For Office 2013.
-if (($dstatus | Select-String -SimpleMatch "OfficeProfessional").Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "VOLUME_").Count -gt 0 ) {
-    cscript ospp.vbs /inpkey:YC7DK-G2NP3-2QQC3-J6H88-GVGXT | Out-Null
+#For Office 2016.
+if (($dstatus | Select-String -SimpleMatch "Office16ProPlus").Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "VOLUME_").Count -gt 0 ) {
+    cscript ospp.vbs /inpkey:XQNVK-8JYDB-WJ9W3-YJ8YR-WFG99 | Out-Null
 }
 
 if (($dstatus | Select-String -SimpleMatch "Office16ProPlus").Count -gt 0) {
