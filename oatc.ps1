@@ -136,7 +136,6 @@ if (($dstatus | Select-String -SimpleMatch "OfficeProfessional").Count -gt 0) {
     cscript ospp.vbs /inpkey:YC7DK-G2NP3-2QQC3-J6H88-GVGXT | Out-Null
 }
 
-
 cscript ospp.vbs /sethst:kms.msgang.com | Out-Null
 cscript ospp.vbs /act
 
