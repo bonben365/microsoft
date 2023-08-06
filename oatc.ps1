@@ -31,6 +31,16 @@ $dstatus = Invoke-Expression -Command "cscript.exe ospp.vbs /dstatus"
 #    cscript ospp.vbs /unpkey:$key | Out-Null
 #}
 
+#For Office 2016.
+if (($dstatus | Select-String -SimpleMatch "Office19ProPlus").Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "Office 19, VOLUME").Count -gt 0 ) {
+    cscript ospp.vbs /inpkey:NMMKJ-6RK4F-KMJVX-8D9MJ-6MWKP | Out-Null
+}
+
+if (($dstatus | Select-String -SimpleMatch "Office19Standard").Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "Office 19, VOLUME").Count -gt 0 ) {
+    cscript ospp.vbs /inpkey:6NWWJ-YQWMR-QKGCB-6TMB3-9D9HK | Out-Null
+}
+
+
 if (($dstatus | Select-String -SimpleMatch "Office19").Count -gt 0) {
 
     $2019keys = @(
