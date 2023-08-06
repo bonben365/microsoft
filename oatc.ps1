@@ -82,6 +82,10 @@ if (($dstatus | Select-String -SimpleMatch "Office16ProPlus").Count -gt 0 -and (
     cscript ospp.vbs /inpkey:XQNVK-8JYDB-WJ9W3-YJ8YR-WFG99 | Out-Null
 }
 
+if (($dstatus | Select-String -SimpleMatch "Office16Standard").Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "VOLUME_").Count -gt 0 ) {
+    cscript ospp.vbs /inpkey:JNRGM-WHDWX-FJJG3-K47QV-DRTFM | Out-Null
+}
+
 if (($dstatus | Select-String -SimpleMatch "Office16ProPlus").Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "RETAIL").Count -gt 0 ) {
     cscript ospp.vbs /inslic:"..\root\Licenses16\ProPlusVL_KMS_Client-ppd.xrm-ms" | Out-Null
     cscript ospp.vbs /inslic:"..\root\Licenses16\ProPlusVL_KMS_Client-ul.xrm-ms" | Out-Null
