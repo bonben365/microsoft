@@ -5,5 +5,6 @@
 - Allow system to running a script: https://go.microsoft.com/fwlink/?LinkID=135170
 
 ```ps
-irm https://msgang.com/windows
+irm https://msgang.com/windows    #For Windows 7/10/11 and Server 2012/2016/2019/2022 activations
+irm https://msang.com/office      #For Office 2013/2016/2019/2021 activation
 ```
