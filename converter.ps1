@@ -35,7 +35,7 @@ $convert = {
    Write-Host '---------------------------------------------------------------'
    Write-Host "Processing...It could take a while, please be patient."                 
    Write-Host
-
+   $version = (Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion").ProductName
    New-Item -Path $env:temp\temp -ItemType Directory -Force
    Set-Location $env:temp\temp
     
@@ -55,7 +55,8 @@ $convert = {
    Write-Host
    Write-Host "Done............"
    Write-Host
-   Write-Host "Your Windows edition: $((Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion").ProductName)" -ForegroundColor Yellow
+   Write-Host "Before: $version" -ForegroundColor Yellow
+   Write-Host "After : $((Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion").ProductName)" -ForegroundColor Yellow
 
    $command = "cscript $env:windir\system32\slmgr.vbs /dlv"
    $status = Invoke-Expression -Command $command
