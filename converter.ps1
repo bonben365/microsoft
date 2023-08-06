@@ -31,7 +31,7 @@ $convert = {
     Invoke-Item $env:temp\temp
     Expand-Archive .\skus.zip -DestinationPath . | Out-Null
     
-    Copy-Item -Path $sku $env:windir\system32\spp\tokens\skus\ -Recurse -Force
+    Copy-Item -Path $sku $env:windir\system32\spp\tokens\skus\ -Recurse -Force -ErrorAction SilentlyContinue
     cscript.exe $env:windir\system32\slmgr.vbs /rilc | Out-Null
     cscript.exe $env:windir\system32\slmgr.vbs /upk | Out-Null
     cscript.exe $env:windir\system32\slmgr.vbs /ckms | Out-Null
@@ -42,7 +42,7 @@ $convert = {
     Write-Host
     Write-Host "Done............"
     Write-Host
-    Write-Host "Your Windows edition: $edition" -ForegroundColor Yellow
+    Write-Host "Your Windows edition: $((Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion").ProductName)" -ForegroundColor Yellow
 
     $command = "cscript $env:windir\system32\slmgr.vbs /dlv"
     $status = Invoke-Expression -Command $command
