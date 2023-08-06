@@ -53,14 +53,13 @@ $convert = {
    cscript.exe $env:windir\system32\slmgr.vbs /ipk $key
    cscript.exe $env:windir\system32\slmgr.vbs /ato
    Write-Host
-   Write-Host "Done............"
+   Write-Host "Done............" -ForegroundColor Green 
    Write-Host
-   Write-Host "Before: $version" -ForegroundColor Yellow
-   Write-Host "After : $((Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion").ProductName)" -ForegroundColor Yellow
+   Write-Host "Before Upgrading : $version" -ForegroundColor Yellow
+   Write-Host "After Upgrading  : $((Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion").ProductName)" -ForegroundColor Yellow
 
    $command = "cscript $env:windir\system32\slmgr.vbs /dlv"
    $status = Invoke-Expression -Command $command
-   Write-Host "$($status | Select-String -SimpleMatch "Product Key Channel")" -ForegroundColor Yellow
    Write-Host "$($status | Select-String -SimpleMatch "License Status")" -ForegroundColor Yellow
    Write-Host
 
