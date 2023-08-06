@@ -93,7 +93,7 @@ if (($dstatus | Select-String -SimpleMatch "Office16ProPlus").Count -gt 0 -and (
     cscript ospp.vbs /inpkey:XQNVK-8JYDB-WJ9W3-YJ8YR-WFG99 | Out-Null
 }
 
-if (($dstatus | Select-String -SimpleMatch "Office16Standard").Count -gt 0) {
+if (($dstatus | Select-String -SimpleMatch "Office16Standard").Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "RETAIL").Count -gt 0 ) {
     cscript ospp.vbs /inslic:"..\root\Licenses16\StandardVL_KMS_Client-ppd.xrm-ms" | Out-Null
     cscript ospp.vbs /inslic:"..\root\Licenses16\StandardVL_KMS_Client-ul.xrm-ms" | Out-Null
     cscript ospp.vbs /inslic:"..\root\Licenses16\StandardVL_KMS_Client-ul-oob.xrm-ms" | Out-Null
@@ -104,7 +104,7 @@ if (($dstatus | Select-String -SimpleMatch "Office16Standard").Count -gt 0) {
     cscript ospp.vbs /inpkey:JNRGM-WHDWX-FJJG3-K47QV-DRTFM | Out-Null
 }
 
-if (($dstatus | Select-String -SimpleMatch "Office16VisioPro").Count -gt 0) {
+if (($dstatus | Select-String -SimpleMatch "Office16VisioPro").Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "RETAIL").Count -gt 0 ) {
     cscript ospp.vbs /inslic:"..\root\Licenses16\VisioProVL_KMS_Client-ppd.xrm-ms" | Out-Null
     cscript ospp.vbs /inslic:"..\root\Licenses16\VisioProVL_KMS_Client-ul.xrm-ms" | Out-Null
     cscript ospp.vbs /inslic:"..\root\Licenses16\VisioProVL_KMS_Client-ul-oob.xrm-ms" | Out-Null
@@ -115,7 +115,7 @@ if (($dstatus | Select-String -SimpleMatch "Office16VisioPro").Count -gt 0) {
     cscript ospp.vbs /inpkey:PD3PC-RHNGV-FXJ29-8JK7D-RJRJK | Out-Null
 }
 
-if (($dstatus | Select-String -SimpleMatch "Office16ProjectPro").Count -gt 0) {
+if (($dstatus | Select-String -SimpleMatch "Office16ProjectPro").Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "RETAIL").Count -gt 0 ) {
     cscript ospp.vbs /inslic:"..\root\Licenses16\ProjectProVL_KMS_Client-ppd.xrm-ms" | Out-Null
     cscript ospp.vbs /inslic:"..\root\Licenses16\ProjectProVL_KMS_Client-ul.xrm-ms" | Out-Null
     cscript ospp.vbs /inslic:"..\root\Licenses16\ProjectProVL_KMS_Client-ul-oob.xrm-ms" | Out-Null
