@@ -31,24 +31,22 @@ $dstatus = Invoke-Expression -Command "cscript.exe ospp.vbs /dstatus"
 #    cscript ospp.vbs /unpkey:$key | Out-Null
 #}
 
-
+#For Office 2019 VL.
 if (($dstatus | Select-String -SimpleMatch "Office19").Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "Office 19, VOLUME").Count -gt 0 ) {
 
     $2019keys = @(
-        'NMMKJ-6RK4F-KMJVX-8D9MJ-6MWKP';
-        '6NWWJ-YQWMR-QKGCB-6TMB3-9D9HK';
-        'B4NPR-3FKK7-T2MBV-FRQ4W-PKD2B';
-        'C4F7P-NCP8C-6CQPT-MQHV9-JXD2M';
-        '9BGNQ-K37YR-RQHF2-38RQ3-7VCBB';
-        '7TQNQ-K3YQQ-3PFH7-CCPPM-X4VQ2';
-        '9N9PT-27V4Y-VJ2PD-YXFMF-YTFQT';
-        'TMJWT-YYNMB-3BKTF-644FC-RVXBD';
-        '7HD7K-N4PVK-BHBCQ-YWQRW-XW4VK';
-        'RRNCX-C64HY-W2MM7-MCH9G-TJHMQ';
-        'G2KWX-3NW6P-PY93R-JXK2T-C9Y9V';
-        'NCJ33-JHBBY-HTK98-MYCV8-HMKHJ';
-        'PBX3G-NWMT6-Q7XBW-PYJGG-WXD33';
-        'FXYTK-NJJ8C-GB6DW-3DYQT-6F7TH'
+        'NMMKJ-6RK4F-KMJVX-8D9MJ-6MWKP';    #Office Professional Plus 2019
+        '6NWWJ-YQWMR-QKGCB-6TMB3-9D9HK';    #Office Standard 2019
+        'B4NPR-3FKK7-T2MBV-FRQ4W-PKD2B';    #Project Professional 2019
+        'C4F7P-NCP8C-6CQPT-MQHV9-JXD2M';    #Project Standard 2019
+        '9BGNQ-K37YR-RQHF2-38RQ3-7VCBB';    #Visio Professional 2019
+        '7TQNQ-K3YQQ-3PFH7-CCPPM-X4VQ2';    #Visio Standard 2019
+        '9N9PT-27V4Y-VJ2PD-YXFMF-YTFQT';    #Access 2019
+        'TMJWT-YYNMB-3BKTF-644FC-RVXBD';    #Excel 2019
+        '7HD7K-N4PVK-BHBCQ-YWQRW-XW4VK';    #Outlook 2019
+        'RRNCX-C64HY-W2MM7-MCH9G-TJHMQ';    #PowerPoint 2019
+        'G2KWX-3NW6P-PY93R-JXK2T-C9Y9V';    #Publisher 2019
+        'PBX3G-NWMT6-Q7XBW-PYJGG-WXD33'     #Word 2019
     )
 
     foreach ($2019key in $2019keys) {
@@ -56,6 +54,67 @@ if (($dstatus | Select-String -SimpleMatch "Office19").Count -gt 0 -and ($dstatu
     }
 }
 
+#For Office 2019 Retail.
+if (($dstatus | Select-String -SimpleMatch "Office19Professional").Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "Office 19, RETAIL").Count -gt 0 ) {
+    cscript ospp.vbs /inslic:"..\root\Licenses16\ProPlusVL_KMS_Client-ppd.xrm-ms" | Out-Null
+    cscript ospp.vbs /inslic:"..\root\Licenses16\ProPlusVL_KMS_Client-ul.xrm-ms" | Out-Null
+    cscript ospp.vbs /inslic:"..\root\Licenses16\ProPlusVL_KMS_Client-ul-oob.xrm-ms" | Out-Null
+    cscript ospp.vbs /inslic:"..\root\Licenses16\ProPlusVL_MAK-pl.xrm-ms" | Out-Null
+    cscript ospp.vbs /inslic:"..\root\Licenses16\ProPlusVL_MAK-ppd.xrm-ms" | Out-Null
+    cscript ospp.vbs /inslic:"..\root\Licenses16\ProPlusVL_MAK-ul-oob.xrm-ms" | Out-Null
+    cscript ospp.vbs /inslic:"..\root\Licenses16\ProPlusVL_MAK-ul-phn.xrm-ms" | Out-Null
+    cscript ospp.vbs /inpkey:NMMKJ-6RK4F-KMJVX-8D9MJ-6MWKP | Out-Null
+}
+
+if (($dstatus | Select-String -SimpleMatch "Office19Standard").Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "Office 19, RETAIL").Count -gt 0 ) {
+    cscript ospp.vbs /inslic:"..\root\Licenses16\StandardVL_KMS_Client-ppd.xrm-ms" | Out-Null
+    cscript ospp.vbs /inslic:"..\root\Licenses16\StandardVL_KMS_Client-ul.xrm-ms" | Out-Null
+    cscript ospp.vbs /inslic:"..\root\Licenses16\StandardVL_KMS_Client-ul-oob.xrm-ms" | Out-Null
+    cscript ospp.vbs /inslic:"..\root\Licenses16\StandardVL_MAK-pl.xrm-ms" | Out-Null
+    cscript ospp.vbs /inslic:"..\root\Licenses16\StandardVL_MAK-ppd.xrm-ms" | Out-Null
+    cscript ospp.vbs /inslic:"..\root\Licenses16\StandardVL_MAK-ul-oob.xrm-ms" | Out-Null
+    cscript ospp.vbs /inslic:"..\root\Licenses16\StandardVL_MAK-ul-phn.xrm-ms" | Out-Null
+    cscript ospp.vbs /inpkey:6NWWJ-YQWMR-QKGCB-6TMB3-9D9HK | Out-Null
+}
+
+if (($dstatus | Select-String -SimpleMatch "Office19VisioPro").Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "Office 19, RETAIL").Count -gt 0 ) {
+    cscript ospp.vbs /inslic:"..\root\Licenses16\VisioProVL_KMS_Client-ppd.xrm-ms" | Out-Null
+    cscript ospp.vbs /inslic:"..\root\Licenses16\VisioProVL_KMS_Client-ul.xrm-ms" | Out-Null
+    cscript ospp.vbs /inslic:"..\root\Licenses16\VisioProVL_KMS_Client-ul-oob.xrm-ms" | Out-Null
+    cscript ospp.vbs /inslic:"..\root\Licenses16\VisioProVL_MAK-pl.xrm-ms" | Out-Null
+    cscript ospp.vbs /inslic:"..\root\Licenses16\VisioProVL_MAK-ppd.xrm-ms" | Out-Null
+    cscript ospp.vbs /inslic:"..\root\Licenses16\VisioProVL_MAK-ul-oob.xrm-ms" | Out-Null
+    cscript ospp.vbs /inslic:"..\root\Licenses16\VisioProVL_MAK-ul-phn.xrm-ms" | Out-Null
+    cscript ospp.vbs /inpkey:9BGNQ-K37YR-RQHF2-38RQ3-7VCBB | Out-Null
+}
+
+if (($dstatus | Select-String -SimpleMatch "Office19ProjectPro").Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "Office 19, RETAIL").Count -gt 0 ) {
+    cscript ospp.vbs /inslic:"..\root\Licenses16\ProjectProVL_KMS_Client-ppd.xrm-ms" | Out-Null
+    cscript ospp.vbs /inslic:"..\root\Licenses16\ProjectProVL_KMS_Client-ul.xrm-ms" | Out-Null
+    cscript ospp.vbs /inslic:"..\root\Licenses16\ProjectProVL_KMS_Client-ul-oob.xrm-ms" | Out-Null
+    cscript ospp.vbs /inslic:"..\root\Licenses16\ProjectProVL_MAK-pl.xrm-ms" | Out-Null
+    cscript ospp.vbs /inslic:"..\root\Licenses16\ProjectProVL_MAK-ppd.xrm-ms" | Out-Null
+    cscript ospp.vbs /inslic:"..\root\Licenses16\ProjectProVL_MAK-ul-oob.xrm-ms" | Out-Null
+    cscript ospp.vbs /inslic:"..\root\Licenses16\ProjectProVL_MAK-ul-phn.xrm-ms" | Out-Null
+    cscript ospp.vbs /inpkey:B4NPR-3FKK7-T2MBV-FRQ4W-PKD2B | Out-Null
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#For Office 2021 VL.
 if (($dstatus | Select-String -SimpleMatch "Office21").Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "Office 21, VOLUME").Count -gt 0 ) {
 
     $2021keys = @(
@@ -78,7 +137,7 @@ if (($dstatus | Select-String -SimpleMatch "Office21").Count -gt 0 -and ($dstatu
     }
 }
 
-#For Office 2016.
+#For Office 2016 VL.
 if (($dstatus | Select-String -SimpleMatch "Office16ProPlus").Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "Office 16, VOLUME").Count -gt 0 ) {
     cscript ospp.vbs /inpkey:XQNVK-8JYDB-WJ9W3-YJ8YR-WFG99 | Out-Null
 }
@@ -87,6 +146,7 @@ if (($dstatus | Select-String -SimpleMatch "Office16Standard").Count -gt 0 -and 
     cscript ospp.vbs /inpkey:JNRGM-WHDWX-FJJG3-K47QV-DRTFM | Out-Null
 }
 
+#For Office 2016 Retail.
 if (($dstatus | Select-String -SimpleMatch "Office16Professional").Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "Office 16, RETAIL").Count -gt 0 ) {
     cscript ospp.vbs /inslic:"..\root\Licenses16\ProPlusVL_KMS_Client-ppd.xrm-ms" | Out-Null
     cscript ospp.vbs /inslic:"..\root\Licenses16\ProPlusVL_KMS_Client-ul.xrm-ms" | Out-Null
@@ -131,7 +191,7 @@ if (($dstatus | Select-String -SimpleMatch "Office16ProjectPro").Count -gt 0 -an
     cscript ospp.vbs /inpkey:YG9NW-3K39V-2T3HJ-93F3Q-G83KT | Out-Null
 }
 
-#For Office 2013.
+#For Office 2013 VL.
 if (($dstatus | Select-String -SimpleMatch "OfficeProfessional").Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "VOLUME_").Count -gt 0 ) {
     cscript ospp.vbs /inpkey:YC7DK-G2NP3-2QQC3-J6H88-GVGXT | Out-Null
 }
@@ -140,6 +200,7 @@ if (($dstatus | Select-String -SimpleMatch "OfficeStandard").Count -gt 0 -and ($
     cscript ospp.vbs /inpkey:KBKQT-2NMXY-JJWGP-M62JB-92CD4 | Out-Null
 }
 
+#For Office 2013 Retail.
 if (($dstatus | Select-String -SimpleMatch "OfficeProfessional").Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "RETAIL").Count -gt 0 ) {
     New-Item -Path $env:temp\tmp -ItemType Directory -Force | Out-Null
     (New-Object Net.WebClient).DownloadFile('https://raw.githubusercontent.com/bonben365/microsoft/main/Office2013_Library/proplusvl_kms_client-ppd.xrm-ms', "$env:temp\tmp\proplusvl_kms_client-ppd.xrm-ms") | Out-Null
