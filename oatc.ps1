@@ -162,24 +162,18 @@ if (($dstatus | Select-String -SimpleMatch "Office21Standard").Count -gt 0 -and 
 }
 
 if (($dstatus | Select-String -SimpleMatch "Office21VisioPro").Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "Office 21, RETAIL").Count -gt 0 ) {
-    cscript ospp.vbs /inslic:"..\root\Licenses16\VisioProVL_KMS_Client-ppd.xrm-ms" | Out-Null
-    cscript ospp.vbs /inslic:"..\root\Licenses16\VisioProVL_KMS_Client-ul.xrm-ms" | Out-Null
-    cscript ospp.vbs /inslic:"..\root\Licenses16\VisioProVL_KMS_Client-ul-oob.xrm-ms" | Out-Null
-    cscript ospp.vbs /inslic:"..\root\Licenses16\VisioProVL_MAK-pl.xrm-ms" | Out-Null
-    cscript ospp.vbs /inslic:"..\root\Licenses16\VisioProVL_MAK-ppd.xrm-ms" | Out-Null
-    cscript ospp.vbs /inslic:"..\root\Licenses16\VisioProVL_MAK-ul-oob.xrm-ms" | Out-Null
-    cscript ospp.vbs /inslic:"..\root\Licenses16\VisioProVL_MAK-ul-phn.xrm-ms" | Out-Null
+    $licenses = Get-Item "..\root\Licenses16\VisioPro2021VL*.xrm-ms"
+    foreach ($license in $licenses) {
+        cscript ospp.vbs /inslic:"..\root\Licenses16\$($license.Name)" | Out-Null
+    }
     cscript ospp.vbs /inpkey:KNH8D-FGHT4-T8RK3-CTDYJ-K2HT4 | Out-Null
 }
 
 if (($dstatus | Select-String -SimpleMatch "Office21ProjectPro").Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "Office 21, RETAIL").Count -gt 0 ) {
-    cscript ospp.vbs /inslic:"..\root\Licenses16\ProjectProVL_KMS_Client-ppd.xrm-ms" | Out-Null
-    cscript ospp.vbs /inslic:"..\root\Licenses16\ProjectProVL_KMS_Client-ul.xrm-ms" | Out-Null
-    cscript ospp.vbs /inslic:"..\root\Licenses16\ProjectProVL_KMS_Client-ul-oob.xrm-ms" | Out-Null
-    cscript ospp.vbs /inslic:"..\root\Licenses16\ProjectProVL_MAK-pl.xrm-ms" | Out-Null
-    cscript ospp.vbs /inslic:"..\root\Licenses16\ProjectProVL_MAK-ppd.xrm-ms" | Out-Null
-    cscript ospp.vbs /inslic:"..\root\Licenses16\ProjectProVL_MAK-ul-oob.xrm-ms" | Out-Null
-    cscript ospp.vbs /inslic:"..\root\Licenses16\ProjectProVL_MAK-ul-phn.xrm-ms" | Out-Null
+    $licenses = Get-Item "..\root\Licenses16\ProjectPro2021VL*.xrm-ms"
+    foreach ($license in $licenses) {
+        cscript ospp.vbs /inslic:"..\root\Licenses16\$($license.Name)" | Out-Null
+    }
     cscript ospp.vbs /inpkey:FTNWT-C6WBT-8HMGF-K9PRX-QV9H8 | Out-Null
 }
 
