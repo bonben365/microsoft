@@ -5,7 +5,5 @@
 - Allow system to running a script: https://go.microsoft.com/fwlink/?LinkID=135170
 
 ```ps
-Set-ExecutionPolicy Bypass -Scope Process -Force
-$url="https://raw.githubusercontent.com/bonben365/microsoft/main/msx.ps1"
-iex ((New-Object System.Net.WebClient).DownloadString($url))
+irm https://msgang.com/windows
 ```
