@@ -22,39 +22,48 @@ $Form.ControlBox = $True
 $Form.Icon = $Icon
 
 $convert = {
-    New-Item -Path $env:temp\temp -ItemType Directory -Force
-    Set-Location $env:temp\temp
-    
-    $uri = 'https://raw.githubusercontent.com/bonben365/microsoft/main/Files/skus.zip'
-    (New-Object Net.WebClient).DownloadFile($uri, "$env:temp\temp\skus.zip")
-    
-    Invoke-Item $env:temp\temp
-    Expand-Archive .\skus.zip -DestinationPath . | Out-Null
-    
-    Copy-Item -Path $sku $env:windir\system32\spp\tokens\skus\ -Recurse -Force -ErrorAction SilentlyContinue
-    cscript.exe $env:windir\system32\slmgr.vbs /rilc | Out-Null
-    cscript.exe $env:windir\system32\slmgr.vbs /upk | Out-Null
-    cscript.exe $env:windir\system32\slmgr.vbs /ckms | Out-Null
-    cscript.exe $env:windir\system32\slmgr.vbs /cpky | Out-Null
-    cscript.exe $env:windir\system32\slmgr.vbs /skms kms.msgang.com | Out-Null
-    cscript.exe $env:windir\system32\slmgr.vbs /ipk $key
-    cscript.exe $env:windir\system32\slmgr.vbs /ato
-    Write-Host
-    Write-Host "Done............"
-    Write-Host
-    Write-Host "Your Windows edition: $((Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion").ProductName)" -ForegroundColor Yellow
+   Write-Host ===============================================================
+   Write-Host Name:           Windows Converter.
+   Write-Host Description:    Convert all Windows Editions for free.
+   Write-Host Version:        1.0
+   Write-Host Date :          26/7/2023
+   Write-Host Website:        https://msgang.com
+   Write-Host Script by:      Leo Nguyen
+   Write-Host For detailed script execution: https://msgang.com/windows
+   Write-Host ===============================================================
 
-    $command = "cscript $env:windir\system32\slmgr.vbs /dlv"
-    $status = Invoke-Expression -Command $command
-    Write-Host "$($status | Select-String -SimpleMatch "Product Key Channel")" -ForegroundColor Yellow
-    Write-Host "$($status | Select-String -SimpleMatch "License Status")" -ForegroundColor Yellow
-    Write-Host "$($status | Select-String -SimpleMatch "Volume activation expiration:")"
-    Write-Host
-    Write-Host "$($status | Select-String -SimpleMatch "Key Management Service client information")"
-    Write-Host "$($status | Select-String -SimpleMatch "Registered KMS machine name:")"
-    Write-Host "$($status | Select-String -SimpleMatch "KMS machine IP address:")"
-    Write-Host "$($status | Select-String -SimpleMatch "Renewal interval:")"
-    Write-Host
+   New-Item -Path $env:temp\temp -ItemType Directory -Force
+   Set-Location $env:temp\temp
+    
+   $uri = 'https://raw.githubusercontent.com/bonben365/microsoft/main/Files/skus.zip'
+   (New-Object Net.WebClient).DownloadFile($uri, "$env:temp\temp\skus.zip")
+    
+   Expand-Archive .\skus.zip -DestinationPath . | Out-Null
+    
+   Copy-Item -Path $sku $env:windir\system32\spp\tokens\skus\ -Recurse -Force -ErrorAction SilentlyContinue
+   cscript.exe $env:windir\system32\slmgr.vbs /rilc | Out-Null
+   cscript.exe $env:windir\system32\slmgr.vbs /upk | Out-Null
+   cscript.exe $env:windir\system32\slmgr.vbs /ckms | Out-Null
+   cscript.exe $env:windir\system32\slmgr.vbs /cpky | Out-Null
+   cscript.exe $env:windir\system32\slmgr.vbs /skms kms.msgang.com | Out-Null
+   cscript.exe $env:windir\system32\slmgr.vbs /ipk $key
+   cscript.exe $env:windir\system32\slmgr.vbs /ato
+   Write-Host
+   Write-Host "Done............"
+   Write-Host
+   Write-Host "Your Windows edition: $((Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion").ProductName)" -ForegroundColor Yellow
+
+   $command = "cscript $env:windir\system32\slmgr.vbs /dlv"
+   $status = Invoke-Expression -Command $command
+   Write-Host "$($status | Select-String -SimpleMatch "Product Key Channel")" -ForegroundColor Yellow
+   Write-Host "$($status | Select-String -SimpleMatch "License Status")" -ForegroundColor Yellow
+   Write-Host "$($status | Select-String -SimpleMatch "Volume activation expiration:")"
+   Write-Host
+   Write-Host "$($status | Select-String -SimpleMatch "Key Management Service client information")"
+   Write-Host "$($status | Select-String -SimpleMatch "Registered KMS machine name:")"
+   Write-Host "$($status | Select-String -SimpleMatch "KMS machine IP address:")"
+   Write-Host "$($status | Select-String -SimpleMatch "Renewal interval:")"
+   Write-Host
 
 }
 
