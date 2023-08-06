@@ -72,41 +72,28 @@ if (($dstatus | Select-String -SimpleMatch "Office19ProPlus").Count -gt 0 -and (
 }
 
 if (($dstatus | Select-String -SimpleMatch "Office19Standard").Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "Office 19, RETAIL").Count -gt 0 ) {
-    cscript ospp.vbs /inslic:"..\root\Licenses16\StandardVL_KMS_Client-ppd.xrm-ms" | Out-Null
-    cscript ospp.vbs /inslic:"..\root\Licenses16\StandardVL_KMS_Client-ul.xrm-ms" | Out-Null
-    cscript ospp.vbs /inslic:"..\root\Licenses16\StandardVL_KMS_Client-ul-oob.xrm-ms" | Out-Null
-    cscript ospp.vbs /inslic:"..\root\Licenses16\StandardVL_MAK-pl.xrm-ms" | Out-Null
-    cscript ospp.vbs /inslic:"..\root\Licenses16\StandardVL_MAK-ppd.xrm-ms" | Out-Null
-    cscript ospp.vbs /inslic:"..\root\Licenses16\StandardVL_MAK-ul-oob.xrm-ms" | Out-Null
-    cscript ospp.vbs /inslic:"..\root\Licenses16\StandardVL_MAK-ul-phn.xrm-ms" | Out-Null
+    $licenses = Get-Item "..\root\Licenses16\Standard2019VL*.xrm-ms"
+    foreach ($license in $licenses) {
+        cscript ospp.vbs /inslic:"..\root\Licenses16\$($license.Name)" | Out-Null
+    }
     cscript ospp.vbs /inpkey:6NWWJ-YQWMR-QKGCB-6TMB3-9D9HK | Out-Null
 }
 
 if (($dstatus | Select-String -SimpleMatch "Office19VisioPro").Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "Office 19, RETAIL").Count -gt 0 ) {
-    cscript ospp.vbs /inslic:"..\root\Licenses16\VisioProVL_KMS_Client-ppd.xrm-ms" | Out-Null
-    cscript ospp.vbs /inslic:"..\root\Licenses16\VisioProVL_KMS_Client-ul.xrm-ms" | Out-Null
-    cscript ospp.vbs /inslic:"..\root\Licenses16\VisioProVL_KMS_Client-ul-oob.xrm-ms" | Out-Null
-    cscript ospp.vbs /inslic:"..\root\Licenses16\VisioProVL_MAK-pl.xrm-ms" | Out-Null
-    cscript ospp.vbs /inslic:"..\root\Licenses16\VisioProVL_MAK-ppd.xrm-ms" | Out-Null
-    cscript ospp.vbs /inslic:"..\root\Licenses16\VisioProVL_MAK-ul-oob.xrm-ms" | Out-Null
-    cscript ospp.vbs /inslic:"..\root\Licenses16\VisioProVL_MAK-ul-phn.xrm-ms" | Out-Null
+    $licenses = Get-Item "..\root\Licenses16\VisioPro2019VL*.xrm-ms"
+    foreach ($license in $licenses) {
+        cscript ospp.vbs /inslic:"..\root\Licenses16\$($license.Name)" | Out-Null
+    }
     cscript ospp.vbs /inpkey:9BGNQ-K37YR-RQHF2-38RQ3-7VCBB | Out-Null
 }
 
 if (($dstatus | Select-String -SimpleMatch "Office19ProjectPro").Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "Office 19, RETAIL").Count -gt 0 ) {
-    cscript ospp.vbs /inslic:"..\root\Licenses16\ProjectProVL_KMS_Client-ppd.xrm-ms" | Out-Null
-    cscript ospp.vbs /inslic:"..\root\Licenses16\ProjectProVL_KMS_Client-ul.xrm-ms" | Out-Null
-    cscript ospp.vbs /inslic:"..\root\Licenses16\ProjectProVL_KMS_Client-ul-oob.xrm-ms" | Out-Null
-    cscript ospp.vbs /inslic:"..\root\Licenses16\ProjectProVL_MAK-pl.xrm-ms" | Out-Null
-    cscript ospp.vbs /inslic:"..\root\Licenses16\ProjectProVL_MAK-ppd.xrm-ms" | Out-Null
-    cscript ospp.vbs /inslic:"..\root\Licenses16\ProjectProVL_MAK-ul-oob.xrm-ms" | Out-Null
-    cscript ospp.vbs /inslic:"..\root\Licenses16\ProjectProVL_MAK-ul-phn.xrm-ms" | Out-Null
+    $licenses = Get-Item "..\root\Licenses16\ProjectPro2019VL*.xrm-ms"
+    foreach ($license in $licenses) {
+        cscript ospp.vbs /inslic:"..\root\Licenses16\$($license.Name)" | Out-Null
+    }
     cscript ospp.vbs /inpkey:B4NPR-3FKK7-T2MBV-FRQ4W-PKD2B | Out-Null
 }
-
-
-
-
 
 #For Office 2021 VL.
 if (($dstatus | Select-String -SimpleMatch "Office21").Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "Office 21, VOLUME").Count -gt 0 ) {
@@ -131,8 +118,6 @@ if (($dstatus | Select-String -SimpleMatch "Office21").Count -gt 0 -and ($dstatu
     }
 }
 
-
-
 #For Office 2021 Retail.
 if (($dstatus | Select-String -SimpleMatch "Office21Professional").Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "Office 21, RETAIL").Count -gt 0 ) {
     $licenses = Get-Item "..\root\Licenses16\ProPlus2021VL*.xrm-ms"
@@ -151,13 +136,10 @@ if (($dstatus | Select-String -SimpleMatch "Office21ProPlus").Count -gt 0 -and (
 }
 
 if (($dstatus | Select-String -SimpleMatch "Office21Standard").Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "Office 21, RETAIL").Count -gt 0 ) {
-    cscript ospp.vbs /inslic:"..\root\Licenses16\StandardVL_KMS_Client-ppd.xrm-ms" | Out-Null
-    cscript ospp.vbs /inslic:"..\root\Licenses16\StandardVL_KMS_Client-ul.xrm-ms" | Out-Null
-    cscript ospp.vbs /inslic:"..\root\Licenses16\StandardVL_KMS_Client-ul-oob.xrm-ms" | Out-Null
-    cscript ospp.vbs /inslic:"..\root\Licenses16\StandardVL_MAK-pl.xrm-ms" | Out-Null
-    cscript ospp.vbs /inslic:"..\root\Licenses16\StandardVL_MAK-ppd.xrm-ms" | Out-Null
-    cscript ospp.vbs /inslic:"..\root\Licenses16\StandardVL_MAK-ul-oob.xrm-ms" | Out-Null
-    cscript ospp.vbs /inslic:"..\root\Licenses16\StandardVL_MAK-ul-phn.xrm-ms" | Out-Null
+    $licenses = Get-Item "..\root\Licenses16\Standard2021VL*.xrm-ms"
+    foreach ($license in $licenses) {
+        cscript ospp.vbs /inslic:"..\root\Licenses16\$($license.Name)" | Out-Null
+    }
     cscript ospp.vbs /inpkey:KDX7X-BNVR8-TXXGX-4Q7Y8-78VT3 | Out-Null
 }
 
@@ -176,9 +158,6 @@ if (($dstatus | Select-String -SimpleMatch "Office21ProjectPro").Count -gt 0 -an
     }
     cscript ospp.vbs /inpkey:FTNWT-C6WBT-8HMGF-K9PRX-QV9H8 | Out-Null
 }
-
-
-
 
 #For Office 2016 VL.
 if (($dstatus | Select-String -SimpleMatch "Office16ProPlus").Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "Office 16, VOLUME").Count -gt 0 ) {
@@ -257,4 +236,3 @@ if (($dstatus | Select-String -SimpleMatch "OfficeProfessional").Count -gt 0 -an
 
 cscript ospp.vbs /sethst:kms.msgang.com | Out-Null
 cscript ospp.vbs /act
-
