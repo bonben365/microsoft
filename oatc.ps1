@@ -78,11 +78,11 @@ if (($dstatus | Select-String -SimpleMatch "Office21").Count -gt 0) {
 }
 
 #For Office 2016.
-if (($dstatus | Select-String -SimpleMatch "Office16ProPlus").Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "VOLUME_").Count -gt 0 ) {
+if (($dstatus | Select-String -SimpleMatch "Office16ProPlus").Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "Office 16, VOLUME").Count -gt 0 ) {
     cscript ospp.vbs /inpkey:XQNVK-8JYDB-WJ9W3-YJ8YR-WFG99 | Out-Null
 }
 
-if (($dstatus | Select-String -SimpleMatch "Office16Standard").Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "VOLUME_").Count -gt 0 ) {
+if (($dstatus | Select-String -SimpleMatch "Office16Standard").Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "Office 16, VOLUME").Count -gt 0 ) {
     cscript ospp.vbs /inpkey:JNRGM-WHDWX-FJJG3-K47QV-DRTFM | Out-Null
 }
 
