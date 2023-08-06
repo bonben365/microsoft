@@ -32,6 +32,10 @@ $convert = {
    Write-Host For detailed script execution: https://msgang.com/windows
    Write-Host ===============================================================
 
+   Write-Host '---------------------------------------------------------------'
+   Write-Host "Processing...It could take a while, please be patient."                 
+   Write-Host
+
    New-Item -Path $env:temp\temp -ItemType Directory -Force
    Set-Location $env:temp\temp
     
@@ -78,10 +82,10 @@ $convert = {
    if ($10Home.Checked -eq $true) {$sku = 'Professional'; $key = 'W269N-WFGWX-YVC9B-4J6C9-T83GX'; Invoke-Command $convert}
    if ($10HomeSL.Checked -eq $true) {$productId = 'Standard2021Volume';Invoke-Command $convert}
    if ($10Pro.Checked -eq $true) {$sku = 'Professional'; $key = 'W269N-WFGWX-YVC9B-4J6C9-T83GX'; Invoke-Command $convert}
-   if ($10ProWorkstation.Checked -eq $true) {$productId = 'ProjectStd2021Volume'; Invoke-Command $convert}
-   if ($10Enterprise.Checked -eq $true) {$productId = 'VisioPro2021Volume'; Invoke-Command $convert}
-   if ($10Education.Checked -eq $true) {$productId = 'VisioStd2021Volume'; Invoke-Command $convert}
-   if ($10ProEducation.Checked -eq $true) {$productId = 'Word2021Volume';Invoke-Command $convert}
+   if ($10ProWorkstation.Checked -eq $true) {$sku = 'ProfessionalWorkstation'; $key = 'NRG8B-VKK3Q-CXVCJ-9G2XF-6Q84J'; Invoke-Command $convert}
+   if ($10Enterprise.Checked -eq $true) {$sku = 'Enterprise'; $key = 'NPPR9-FWDCX-D2C8J-H872K-2YT43'; Invoke-Command $convert}
+   if ($10Education.Checked -eq $true) {$sku = 'Education'; $key = 'NW6C2-QMPVW-D7KKK-3GKT6-VCFB2'; Invoke-Command $convert}
+   if ($10ProEducation.Checked -eq $true) {$sku = 'ProfessionalEducation'; $key = '6TP4R-GNPTD-KYYHQ-7B7DP-J447Y'; Invoke-Command $convert}
 
 
    if ($2019Pro.Checked -eq $true) {$productId = 'ProPlus2019Volume';Invoke-Command $convert}
