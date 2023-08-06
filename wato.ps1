@@ -43,7 +43,6 @@ If ($edition -eq 'Windows Server 2012 R2 Standard') {$productkey = 'D2N9P-3P6X9-
 If ($edition -eq 'Windows Server 2012 R2 Datacenter') {$productkey = 'W3GGN-FT8W3-Y4M27-J84CP-Q3VJ9'}
 If ($edition -eq 'Windows Server 2012 R2 Essentials') {$productkey = 'KNC87-3J2TX-XB4WP-VCPJV-M4FWM'}
 
-
 If ($edition -eq 'Windows Server 2016 Standard') {$productkey = 'WC2BQ-8NRM3-FDDYY-2BFGV-KHKQY'}
 If ($edition -eq 'Windows Server 2016 Datacenter') {$productkey = 'CB7KF-BWN84-R7R2Y-793K2-8XDDG'}
 If ($edition -eq 'Windows Server 2016 Essentials') {$productkey = 'JCKRF-N37P4-C2D82-9YXRT-4M63B'}
