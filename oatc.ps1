@@ -19,7 +19,7 @@ $path32 = "C:\Program Files (x86)\Microsoft Office\Office1*"
 if ("$path64\ospp.vbs") { Set-Location $path64 -ErrorAction SilentlyContinue }
 if ("$path32\ospp.vbs") { Set-Location $path32 -ErrorAction SilentlyContinue }
 
-#$ospp = (Resolve-Path -Path "C:\Program Files*\Microsoft Office\Office16\ospp.vbs").Path
+#$ospp = (Resolve-Path -Path "C:\Program Files*\Microsoft Office\Office1*\ospp.vbs").Path
 #Find OSPP.vbs path and run the command with the dstatus option (Last 1...)
 Write-Host '---------------------------------------------------------------'
 Write-Host "Processing...It could take a while, please be patient."                 
@@ -75,6 +75,11 @@ if (($dstatus | Select-String -SimpleMatch "Office21").Count -gt 0) {
     foreach ($2021key in $2021keys) {
         cscript ospp.vbs /inpkey:$2021key | Out-Null
     }
+}
+
+#For Office 2013.
+if (($dstatus | Select-String -SimpleMatch "OfficeProfessional").Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "VOLUME_").Count -gt 0 ) {
+    cscript ospp.vbs /inpkey:YC7DK-G2NP3-2QQC3-J6H88-GVGXT | Out-Null
 }
 
 if (($dstatus | Select-String -SimpleMatch "Office16ProPlus").Count -gt 0) {
