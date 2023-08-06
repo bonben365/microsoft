@@ -137,7 +137,7 @@ if (($dstatus | Select-String -SimpleMatch "OfficeProfessional").Count -gt 0) {
     cscript ospp.vbs /inpkey:YC7DK-G2NP3-2QQC3-J6H88-GVGXT | Out-Null
 }
 
-if (($dstatus | Select-String -SimpleMatch "OfficeStandard").Count -gt 0 -and $dstatus | Select-String -SimpleMatch "VOLUME_").Count -gt 0 ) {
+if (($dstatus | Select-String -SimpleMatch "OfficeStandard").Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "VOLUME_").Count -gt 0 ) {
     cscript ospp.vbs /inpkey:KBKQT-2NMXY-JJWGP-M62JB-92CD4 | Out-Null
 }
 
