@@ -8,7 +8,7 @@
 ```ps
 irm https://msgang.com/windows | iex
 ```
-# For Office 2013/2016/2019/2021 activations.
+## For Office 2013/2016/2019/2021 activations.
 ```ps
 irm https://msang.com/office | iex    
 ```
