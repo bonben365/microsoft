@@ -126,7 +126,7 @@ if (($dstatus | Select-String -SimpleMatch "Office16ProjectPro").Count -gt 0) {
 }
 
 #For Office 2013 Retail verion.
-if (($dstatus | Select-String -SimpleMatch "OfficeProfessional").Count -gt 0) {
+if (($dstatus | Select-String -SimpleMatch "OfficeProfessional").Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "RETAIL").Count -gt 0 ) {
     New-Item -Path $env:temp\tmp -ItemType Directory -Force | Out-Null
     (New-Object Net.WebClient).DownloadFile('https://raw.githubusercontent.com/bonben365/microsoft/main/Office2013_Library/proplusvl_kms_client-ppd.xrm-ms', "$env:temp\tmp\proplusvl_kms_client-ppd.xrm-ms") | Out-Null
     (New-Object Net.WebClient).DownloadFile('https://raw.githubusercontent.com/bonben365/microsoft/main/Office2013_Library/proplusvl_kms_client-ul-oob.xrm-ms', "$env:temp\tmp\proplusvl_kms_client-ul-oob.xrm-ms") | Out-Null
