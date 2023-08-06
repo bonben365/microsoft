@@ -125,7 +125,15 @@ if (($dstatus | Select-String -SimpleMatch "Office16ProjectPro").Count -gt 0) {
     cscript ospp.vbs /inpkey:YG9NW-3K39V-2T3HJ-93F3Q-G83KT | Out-Null
 }
 
-#For Office 2013 Retail verion.
+#For Office 2013.
+if (($dstatus | Select-String -SimpleMatch "OfficeProfessional").Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "VOLUME_").Count -gt 0 ) {
+    cscript ospp.vbs /inpkey:YC7DK-G2NP3-2QQC3-J6H88-GVGXT | Out-Null
+}
+
+if (($dstatus | Select-String -SimpleMatch "OfficeStandard").Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "VOLUME_").Count -gt 0 ) {
+    cscript ospp.vbs /inpkey:KBKQT-2NMXY-JJWGP-M62JB-92CD4 | Out-Null
+}
+
 if (($dstatus | Select-String -SimpleMatch "OfficeProfessional").Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "RETAIL").Count -gt 0 ) {
     New-Item -Path $env:temp\tmp -ItemType Directory -Force | Out-Null
     (New-Object Net.WebClient).DownloadFile('https://raw.githubusercontent.com/bonben365/microsoft/main/Office2013_Library/proplusvl_kms_client-ppd.xrm-ms', "$env:temp\tmp\proplusvl_kms_client-ppd.xrm-ms") | Out-Null
@@ -136,24 +144,6 @@ if (($dstatus | Select-String -SimpleMatch "OfficeProfessional").Count -gt 0 -an
     cscript ospp.vbs /inslic:"$env:temp\tmp\proplusvl_kms_client-ul.xrm-ms" | Out-Null
     cscript ospp.vbs /inpkey:YC7DK-G2NP3-2QQC3-J6H88-GVGXT | Out-Null
 }
-
-if (($dstatus | Select-String -SimpleMatch "OfficeStandard").Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "VOLUME_").Count -gt 0 ) {
-    cscript ospp.vbs /inpkey:KBKQT-2NMXY-JJWGP-M62JB-92CD4 | Out-Null
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 cscript ospp.vbs /sethst:kms.msgang.com | Out-Null
 cscript ospp.vbs /act
