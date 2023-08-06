@@ -63,3 +63,16 @@ cscript $env:windir\system32\slmgr.vbs /ipk "$productkey"
 cscript $env:windir\system32\slmgr.vbs /skms kms.msgang.com
 cscript $env:windir\system32\slmgr.vbs /ato
 cscript $env:windir\system32\slmgr.vbs /dlv
+
+Write-Host
+Write-Host " Done............"
+Write-Host
+Write-Host " Your Windows edition: $((Get-ComputerInfo).WindowsProductName)"
+$licStatus = cmd.exe /c cscript.exe slmgr.vbs /dlv | find "License Status"
+$actid = cmd.exe /c cscript.exe slmgr.vbs /dlv | find "Activation ID"
+$pkc = cmd.exe /c cscript.exe slmgr.vbs /dlv | find "Product Key Channel"
+$iid = cmd.exe /c cscript.exe slmgr.vbs /dlv | find "Installation ID"
+Write-Host " $actid"
+Write-Host " $pkc"
+Write-Host " $licStatus"
+Write-Host " $iid"
