@@ -14,14 +14,74 @@ if (-not([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdenti
     break
 }
 
+$path64 = "C:\Program Files\Microsoft Office\Office16"
+$path32 = "C:\Program Files (x86)\Microsoft Office\Office16"
+if ("$path64\ospp.vbs") {
+    Set-Location $path64
+}
+else {
+Set-Location $path32
+}
+
 #$ospp = (Resolve-Path -Path "C:\Program Files*\Microsoft Office\Office16\ospp.vbs").Path
 #Find OSPP.vbs path and run the command with the dstatus option (Last 1...)
 Write-Host '---------------------------------------------------------------'
 Write-Host "Processing...It could take a while, please be patient."                 
 Write-Host
-$ospp = Resolve-Path -Path "C:\Program Files*\Microsoft Office\Office16\ospp.vbs" | Select-Object -ExpandProperty Path -Last 1
-$command = "cscript.exe '$ospp' /dstatus"
-$dstatus = Invoke-Expression -Command $command
+
+$dstatus = Invoke-Expression -Command "cscript.exe ospp.vbs /dstatus"
+
+if (($dstatus | Select-String -SimpleMatch "Office16ProPlus").Count -gt 0) {
+    cscript ospp.vbs /inslic:"..\root\Licenses16\ProPlusVL_KMS_Client-ppd.xrm-ms" | Out-Null
+    cscript ospp.vbs /inslic:"..\root\Licenses16\ProPlusVL_KMS_Client-ul.xrm-ms" | Out-Null
+    cscript ospp.vbs /inslic:"..\root\Licenses16\ProPlusVL_KMS_Client-ul-oob.xrm-ms" | Out-Null
+    cscript ospp.vbs /inslic:"..\root\Licenses16\ProPlusVL_MAK-pl.xrm-ms" | Out-Null
+    cscript ospp.vbs /inslic:"..\root\Licenses16\ProPlusVL_MAK-ppd.xrm-ms" | Out-Null
+    cscript ospp.vbs /inslic:"..\root\Licenses16\ProPlusVL_MAK-ul-oob.xrm-ms" | Out-Null
+    cscript ospp.vbs /inslic:"..\root\Licenses16\ProPlusVL_MAK-ul-phn.xrm-ms" | Out-Null
+    cscript ospp.vbs /inpkey:XQNVK-8JYDB-WJ9W3-YJ8YR-WFG99 | Out-Null
+    cscript ospp.vbs /sethst:kms.msgang.com | Out-Null
+    cscript ospp.vbs /act
+}
+
+if (($dstatus | Select-String -SimpleMatch "Office16Standard").Count -gt 0) {
+    cscript ospp.vbs /inslic:"..\root\Licenses16\StandardVL_KMS_Client-ppd.xrm-ms" | Out-Null
+    cscript ospp.vbs /inslic:"..\root\Licenses16\StandardVL_KMS_Client-ul.xrm-ms" | Out-Null
+    cscript ospp.vbs /inslic:"..\root\Licenses16\StandardVL_KMS_Client-ul-oob.xrm-ms" | Out-Null
+    cscript ospp.vbs /inslic:"..\root\Licenses16\StandardVL_MAK-pl.xrm-ms" | Out-Null
+    cscript ospp.vbs /inslic:"..\root\Licenses16\StandardVL_MAK-ppd.xrm-ms" | Out-Null
+    cscript ospp.vbs /inslic:"..\root\Licenses16\StandardVL_MAK-ul-oob.xrm-ms" | Out-Null
+    cscript ospp.vbs /inslic:"..\root\Licenses16\StandardVL_MAK-ul-phn.xrm-ms" | Out-Null
+    cscript ospp.vbs /inpkey:JNRGM-WHDWX-FJJG3-K47QV-DRTFM | Out-Null
+    cscript ospp.vbs /sethst:kms.msgang.com | Out-Null
+    cscript ospp.vbs /act
+}
+
+if (($dstatus | Select-String -SimpleMatch "Office16VisioPro").Count -gt 0) {
+    cscript ospp.vbs /inslic:"..\root\Licenses16\VisioProVL_KMS_Client-ppd.xrm-ms" | Out-Null
+    cscript ospp.vbs /inslic:"..\root\Licenses16\VisioProVL_KMS_Client-ul.xrm-ms" | Out-Null
+    cscript ospp.vbs /inslic:"..\root\Licenses16\VisioProVL_KMS_Client-ul-oob.xrm-ms" | Out-Null
+    cscript ospp.vbs /inslic:"..\root\Licenses16\VisioProVL_MAK-pl.xrm-ms" | Out-Null
+    cscript ospp.vbs /inslic:"..\root\Licenses16\VisioProVL_MAK-ppd.xrm-ms" | Out-Null
+    cscript ospp.vbs /inslic:"..\root\Licenses16\VisioProVL_MAK-ul-oob.xrm-ms" | Out-Null
+    cscript ospp.vbs /inslic:"..\root\Licenses16\VisioProVL_MAK-ul-phn.xrm-ms" | Out-Null
+    cscript ospp.vbs /inpkey:PD3PC-RHNGV-FXJ29-8JK7D-RJRJK | Out-Null
+    cscript ospp.vbs /sethst:kms.msgang.com | Out-Null
+    cscript ospp.vbs /act
+}
+
+if (($dstatus | Select-String -SimpleMatch "Office16ProjectPro").Count -gt 0) {
+    cscript ospp.vbs /inslic:"..\root\Licenses16\ProjectProVL_KMS_Client-ppd.xrm-ms" | Out-Null
+    cscript ospp.vbs /inslic:"..\root\Licenses16\ProjectProVL_KMS_Client-ul.xrm-ms" | Out-Null
+    cscript ospp.vbs /inslic:"..\root\Licenses16\ProjectProVL_KMS_Client-ul-oob.xrm-ms" | Out-Null
+    cscript ospp.vbs /inslic:"..\root\Licenses16\ProjectProVL_MAK-pl.xrm-ms" | Out-Null
+    cscript ospp.vbs /inslic:"..\root\Licenses16\ProjectProVL_MAK-ppd.xrm-ms" | Out-Null
+    cscript ospp.vbs /inslic:"..\root\Licenses16\ProjectProVL_MAK-ul-oob.xrm-ms" | Out-Null
+    cscript ospp.vbs /inslic:"..\root\Licenses16\ProjectProVL_MAK-ul-phn.xrm-ms" | Out-Null
+    cscript ospp.vbs /inpkey:YG9NW-3K39V-2T3HJ-93F3Q-G83KT | Out-Null
+    cscript ospp.vbs /sethst:kms.msgang.com | Out-Null
+    cscript ospp.vbs /act
+}
 
 $keys = $dstatus | Select-String -SimpleMatch "Last 5" | ForEach-Object -Process { $_.tostring().split(" ")[-1]}
 foreach ($key in $keys) {
