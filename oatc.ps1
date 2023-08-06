@@ -26,10 +26,10 @@ Write-Host "Processing...It could take a while, please be patient."
 Write-Host
 
 $dstatus = Invoke-Expression -Command "cscript.exe ospp.vbs /dstatus"
-$keys = $dstatus | Select-String -SimpleMatch "Last 5" | ForEach-Object -Process { $_.tostring().split(" ")[-1]}
-foreach ($key in $keys) {
-    cscript ospp.vbs /unpkey:$key | Out-Null
-}
+#$keys = $dstatus | Select-String -SimpleMatch "Last 5" | ForEach-Object -Process { $_.tostring().split(" ")[-1]}
+#foreach ($key in $keys) {
+#    cscript ospp.vbs /unpkey:$key | Out-Null
+#}
 
 if (($dstatus | Select-String -SimpleMatch "Office19").Count -gt 0) {
 
