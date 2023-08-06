@@ -31,17 +31,6 @@ $dstatus = Invoke-Expression -Command "cscript.exe ospp.vbs /dstatus"
 #    cscript ospp.vbs /unpkey:$key | Out-Null
 #}
 
-#For Office 2021 VL.
-if (($dstatus | Select-String -SimpleMatch "Office21ProPlus").Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "Office 21, VOLUME").Count -gt 0 ) {
-    cscript ospp.vbs /inpkey:FXYTK-NJJ8C-GB6DW-3DYQT-6F7TH | Out-Null
-}
-
-if (($dstatus | Select-String -SimpleMatch "Office21Standard").Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "Office 21, VOLUME").Count -gt 0 ) {
-    cscript ospp.vbs /inpkey:KDX7X-BNVR8-TXXGX-4Q7Y8-78VT3 | Out-Null
-}
-
-
-
 
 if (($dstatus | Select-String -SimpleMatch "Office19").Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "Office 19, VOLUME").Count -gt 0 ) {
 
@@ -67,7 +56,7 @@ if (($dstatus | Select-String -SimpleMatch "Office19").Count -gt 0 -and ($dstatu
     }
 }
 
-if (($dstatus | Select-String -SimpleMatch "Office21").Count -gt 0) {
+if (($dstatus | Select-String -SimpleMatch "Office21").Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "Office 21, VOLUME").Count -gt 0 ) {
 
     $2021keys = @(
         'FXYTK-NJJ8C-GB6DW-3DYQT-6F7TH';    #Office LTSC Professional Plus 2021
