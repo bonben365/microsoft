@@ -63,6 +63,9 @@ If ($edition -eq 'Windows 10 Enterprise LTSB 2016') {$productkey = 'DCPHK-NFMTC-
 
 If ($edition -eq 'Windows 10 Enterprise 2015 LTSB') {$productkey = 'WNMTR-4C88C-JK8YV-HQ7T2-76DF9'}
 
+If ($edition -eq 'Windows 10 Enterprise Evaluation' -or $edition -eq 'Windows 11 Enterprise Evaluation') {$productkey = 'NPPR9-FWDCX-D2C8J-H872K-2YT43'}
+
+
 
 
 cscript $env:windir\system32\slmgr.vbs /ckms | Out-Null
