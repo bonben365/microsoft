@@ -79,6 +79,52 @@ $convert = {
    Remove-Item -Path $env:temp\temp -Recurse -Force
 }
 
+$convert11 = {
+   Write-Host ===============================================================
+   Write-Host Name:           Windows Converter.
+   Write-Host Description:    Convert all Windows Editions for free.
+   Write-Host Version:        1.0
+   Write-Host Date :          26/7/2023
+   Write-Host Website:        https://msgang.com
+   Write-Host Script by:      Leo Nguyen
+   Write-Host For detailed script execution: https://msgang.com/windows
+   Write-Host ===============================================================
+
+   Write-Host '---------------------------------------------------------------'
+   Write-Host "Processing...It could take a while, please be patient."                 
+   Write-Host
+   $version = (Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion").ProductName
+   New-Item -Path $env:temp\temp -ItemType Directory -Force
+   Set-Location $env:temp\temp
+    
+   $uri = 'https://raw.githubusercontent.com/bonben365/microsoft/main/Files/sku11.zip'
+   (New-Object Net.WebClient).DownloadFile($uri, "$env:temp\temp\skus11.zip")
+    
+   Expand-Archive .\skus11.zip -DestinationPath . -Force | Out-Null
+    
+   Copy-Item -Path $sku $env:windir\system32\spp\tokens\skus\ -Recurse -Force -ErrorAction SilentlyContinue
+   cscript.exe $env:windir\system32\slmgr.vbs /rilc | Out-Null
+   cscript.exe $env:windir\system32\slmgr.vbs /upk | Out-Null
+   cscript.exe $env:windir\system32\slmgr.vbs /ckms | Out-Null
+   cscript.exe $env:windir\system32\slmgr.vbs /cpky | Out-Null
+   cscript.exe $env:windir\system32\slmgr.vbs /skms kms.msgang.com | Out-Null
+   cscript.exe $env:windir\system32\slmgr.vbs /ipk $key
+   cscript.exe $env:windir\system32\slmgr.vbs /ato
+   Write-Host
+   Write-Host "Done............" -ForegroundColor Green 
+   Write-Host
+   Write-Host "Before Upgrading : $version" -ForegroundColor Yellow
+   Write-Host "After Upgrading  : $((Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion").ProductName)" -ForegroundColor Yellow
+
+   $command = "cscript $env:windir\system32\slmgr.vbs /dlv"
+   $status = Invoke-Expression -Command $command
+   Write-Host "$($status | Select-String -SimpleMatch "License Status")" -ForegroundColor Yellow
+   Write-Host
+
+   #Cleanup
+   Set-Location $env:temp
+   Remove-Item -Path $env:temp\temp -Recurse -Force
+}
 ############################################## Start functions
 
    function microsoftInstaller {
@@ -93,13 +139,13 @@ $convert = {
    if ($10ProEducation.Checked -eq $true) {$sku = 'ProfessionalEducation'; $key = '6TP4R-GNPTD-KYYHQ-7B7DP-J447Y'; Invoke-Command $convert}
 
 
-   if ($11Home.Checked -eq $true) {$productId = 'ProPlus2019Volume';Invoke-Command $convert}
-   if ($11HomeSL.Checked -eq $true) {$productId = 'Standard2019Volume';Invoke-Command $convert}
-   if ($11Pro.Checked -eq $true) {$productId = 'ProjectPro2019Volume';Invoke-Command $convert}
-   if ($11ProWorskstation.Checked -eq $true) {$productId = 'ProjectStd2019Volume';Invoke-Command $convert}
-   if ($11Enterprise.Checked -eq $true) {$productId = 'VisioPro2019Volume';Invoke-Command $convert}
-   if ($11Education.Checked -eq $true) {$productId = 'VisioStd2019Volume';Invoke-Command $convert}
-   if ($11ProEducation.Checked -eq $true) {$productId = 'Word2019Volume';Invoke-Command $convert}
+   if ($11Home.Checked -eq $true) {$sku = 'Professional'; $key = 'W269N-WFGWX-YVC9B-4J6C9-T83GX'; Invoke-Command $convert11}
+   if ($11HomeSL.Checked -eq $true) {$productId = 'Standard2021Volume';Invoke-Command $convert11}
+   if ($11Pro.Checked -eq $true) {$sku = 'Professional'; $key = 'W269N-WFGWX-YVC9B-4J6C9-T83GX'; Invoke-Command $convert11}
+   if ($11ProWorkstation.Checked -eq $true) {$sku = 'ProfessionalWorkstation'; $key = 'NRG8B-VKK3Q-CXVCJ-9G2XF-6Q84J'; Invoke-Command $convert11}
+   if ($11Enterprise.Checked -eq $true) {$sku = 'Enterprise'; $key = 'NPPR9-FWDCX-D2C8J-H872K-2YT43'; Invoke-Command $convert11}
+   if ($11Education.Checked -eq $true) {$sku = 'Education'; $key = 'NW6C2-QMPVW-D7KKK-3GKT6-VCFB2'; Invoke-Command $convert11}
+   if ($11ProEducation.Checked -eq $true) {$sku = 'ProfessionalEducation'; $key = '6TP4R-GNPTD-KYYHQ-7B7DP-J447Y'; Invoke-Command $convert11}
 
 
    if ($2016Pro.Checked -eq $true) {$productId = 'ProfessionalRetail';Invoke-Command $convert}
