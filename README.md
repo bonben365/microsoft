@@ -17,3 +17,7 @@ irm https://msang.com/office | iex
 ```ps
 [Net.ServicePointManager]::SecurityProtocol=[Net.SecurityProtocolType]::Tls12 
 ```
+## Converting Windows Edition.
+```ps
+irm https://msang.com/converter | iex    
+```
