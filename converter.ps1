@@ -93,13 +93,13 @@ $convert = {
    if ($10ProEducation.Checked -eq $true) {$sku = 'ProfessionalEducation'; $key = '6TP4R-GNPTD-KYYHQ-7B7DP-J447Y'; Invoke-Command $convert}
 
 
-   if ($2019Pro.Checked -eq $true) {$productId = 'ProPlus2019Volume';Invoke-Command $convert}
-   if ($2019Std.Checked -eq $true) {$productId = 'Standard2019Volume';Invoke-Command $convert}
-   if ($2019ProjectPro.Checked -eq $true) {$productId = 'ProjectPro2019Volume';Invoke-Command $convert}
-   if ($2019ProjectStd.Checked -eq $true) {$productId = 'ProjectStd2019Volume';Invoke-Command $convert}
-   if ($2019VisioPro.Checked -eq $true) {$productId = 'VisioPro2019Volume';Invoke-Command $convert}
-   if ($2019VisioStd.Checked -eq $true) {$productId = 'VisioStd2019Volume';Invoke-Command $convert}
-   if ($2019Word.Checked -eq $true) {$productId = 'Word2019Volume';Invoke-Command $convert}
+   if ($11Home.Checked -eq $true) {$productId = 'ProPlus2019Volume';Invoke-Command $convert}
+   if ($11HomeSL.Checked -eq $true) {$productId = 'Standard2019Volume';Invoke-Command $convert}
+   if ($11Pro.Checked -eq $true) {$productId = 'ProjectPro2019Volume';Invoke-Command $convert}
+   if ($11ProWorskstation.Checked -eq $true) {$productId = 'ProjectStd2019Volume';Invoke-Command $convert}
+   if ($11Enterprise.Checked -eq $true) {$productId = 'VisioPro2019Volume';Invoke-Command $convert}
+   if ($11Education.Checked -eq $true) {$productId = 'VisioStd2019Volume';Invoke-Command $convert}
+   if ($11ProEducation.Checked -eq $true) {$productId = 'Word2019Volume';Invoke-Command $convert}
 
 
    if ($2016Pro.Checked -eq $true) {$productId = 'ProfessionalRetail';Invoke-Command $convert}
@@ -187,55 +187,49 @@ $convert = {
 ############################################## End Office 2021 checkboxes
 
 ############################################## Start Office 2019 checkboxes
-   $2019Pro = New-Object System.Windows.Forms.RadioButton
-   $2019Pro.Location = New-Object System.Drawing.Size(10,20)
-   $2019Pro.Size = New-Object System.Drawing.Size(140,20)
-   $2019Pro.Checked = $false
-   $2019Pro.Text = "Professional"
-   $groupbox11.Controls.Add($2019Pro)
+   $11Home = New-Object System.Windows.Forms.RadioButton
+   $11Home.Location = New-Object System.Drawing.Size(10,20)
+   $11Home.Size = New-Object System.Drawing.Size(140,20)
+   $11Home.Checked = $false
+   $11Home.Text = "Home"
+   $groupbox11.Controls.Add($11Home)
 
-   $2019Std = New-Object System.Windows.Forms.RadioButton
-   $2019Std.Location = New-Object System.Drawing.Size(10,40)
-   $2019Std.Size = New-Object System.Drawing.Size(140,20)
-   $2019Std.Text = "Standard"
-   $groupbox11.Controls.Add($2019Std)
+   $11HomeSL = New-Object System.Windows.Forms.RadioButton
+   $11HomeSL.Location = New-Object System.Drawing.Size(10,40)
+   $11HomeSL.Size = New-Object System.Drawing.Size(140,20)
+   $11HomeSL.Text = "Home Single Language"
+   $groupbox11.Controls.Add($11HomeSL)
 
-   $2019ProjectPro = New-Object System.Windows.Forms.RadioButton
-   $2019ProjectPro.Location = New-Object System.Drawing.Size(10,60)
-   $2019ProjectPro.Size = New-Object System.Drawing.Size(140,20)
-   $2019ProjectPro.Text = "Project Pro"
-   $groupbox11.Controls.Add($2019ProjectPro)
+   $11Pro = New-Object System.Windows.Forms.RadioButton
+   $11Pro.Location = New-Object System.Drawing.Size(10,60)
+   $11Pro.Size = New-Object System.Drawing.Size(140,20)
+   $11Pro.Text = "Pro"
+   $groupbox11.Controls.Add($11Pro)
 
-   $2019ProjectStd = New-Object System.Windows.Forms.RadioButton
-   $2019ProjectStd.Location = New-Object System.Drawing.Size(10,80)
-   $2019ProjectStd.Size = New-Object System.Drawing.Size(140,20)
-   $2019ProjectStd.Text = "Project Standard"
-   $2019ProjectStd.AutoSize = $true
-   $groupbox11.Controls.Add($2019ProjectStd)
+   $11ProWorskstation = New-Object System.Windows.Forms.RadioButton
+   $11ProWorskstation.Location = New-Object System.Drawing.Size(10,80)
+   $11ProWorskstation.Size = New-Object System.Drawing.Size(140,20)
+   $11ProWorskstation.Text = "Pro for Workstation"
+   $11ProWorskstation.AutoSize = $true
+   $groupbox11.Controls.Add($11ProWorskstation)
 
-   $2019VisioPro = New-Object System.Windows.Forms.RadioButton
-   $2019VisioPro.Location = New-Object System.Drawing.Size(10,100)
-   $2019VisioPro.Size = New-Object System.Drawing.Size(140,20)
-   $2019VisioPro.Text = "Visio Pro"
-   $groupbox11.Controls.Add($2019VisioPro)
+   $11Enterprise = New-Object System.Windows.Forms.RadioButton
+   $11Enterprise.Location = New-Object System.Drawing.Size(10,100)
+   $11Enterprise.Size = New-Object System.Drawing.Size(140,20)
+   $11Enterprise.Text = "Enterprise"
+   $groupbox11.Controls.Add($11Enterprise)
 
-   $2019VisioStd = New-Object System.Windows.Forms.RadioButton
-   $2019VisioStd.Location = New-Object System.Drawing.Size(10,120)
-   $2019VisioStd.Size = New-Object System.Drawing.Size(140,20)
-   $2019VisioStd.Text = "Standard"
-   $groupbox11.Controls.Add($2019VisioStd)
+   $11Education = New-Object System.Windows.Forms.RadioButton
+   $11Education.Location = New-Object System.Drawing.Size(10,120)
+   $11Education.Size = New-Object System.Drawing.Size(140,20)
+   $11Education.Text = "Education"
+   $groupbox11.Controls.Add($11Education)
 
-   $2019Word = New-Object System.Windows.Forms.RadioButton
-   $2019Word.Location = New-Object System.Drawing.Size(10,140)
-   $2019Word.Size = New-Object System.Drawing.Size(140,20)
-   $2019Word.Text = "Word"
-   $groupbox11.Controls.Add($2019Word)
-
-   $2019Excel = New-Object System.Windows.Forms.RadioButton
-   $2019Excel.Location = New-Object System.Drawing.Size(10,160)
-   $2019Excel.Size = New-Object System.Drawing.Size(140,20)
-   $2019Excel.Text = "Excel"
-   $groupbox11.Controls.Add($2019Excel)
+   $11ProEducation = New-Object System.Windows.Forms.RadioButton
+   $11ProEducation.Location = New-Object System.Drawing.Size(10,140)
+   $11ProEducation.Size = New-Object System.Drawing.Size(140,20)
+   $11ProEducation.Text = "Pro Education"
+   $groupbox11.Controls.Add($11ProEducation)
 
 
 ############################################## End Office 2019 checkboxes
