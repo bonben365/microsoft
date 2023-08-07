@@ -59,6 +59,11 @@ If ($edition -eq 'Windows 7 Enterprise') {$productkey = '33PXH-7Y6KF-2VJC9-XBBR8
 
 If ($edition -eq 'Windows 10 Enterprise LTSC 2019' -or $edition -eq 'Windows 10 Enterprise LTSC 2021') {$productkey = 'M7XTQ-FN8P6-TTKYV-9D4CC-J462D'}
 
+If ($edition -eq 'Windows 10 Enterprise LTSB 2016') {$productkey = 'DCPHK-NFMTC-H88MJ-PFHPY-QJ4BJ'}
+
+If ($edition -eq 'Windows 10 Enterprise 2015 LTSB') {$productkey = 'WNMTR-4C88C-JK8YV-HQ7T2-76DF9'}
+
+
 
 cscript $env:windir\system32\slmgr.vbs /ckms | Out-Null
 cscript $env:windir\system32\slmgr.vbs /ipk "$productkey" | Out-Null
