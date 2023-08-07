@@ -18,6 +18,8 @@ irm https://msang.com/office | iex
 [Net.ServicePointManager]::SecurityProtocol=[Net.SecurityProtocolType]::Tls12 
 ```
 ## Converting Windows Edition.
+- Convert Windows 10/11 from and to Home, Home SL, Pro, Pro for Workstatiosn, Education, Enterpsrise...
+- Conver Windows Server from editions Eval, Standard, Datacenter...
 ```ps
 irm https://msang.com/converter | iex    
 ```
