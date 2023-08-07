@@ -12,7 +12,7 @@ irm https://msgang.com/windows | iex
 ```ps
 irm https://msang.com/office | iex    
 ```
-- If you are having TLS 1.2 Issues or You cannot find or resolve christitus.com/win then run with the following command:
+- If you are having TLS 1.2 Issues or You cannot find or resolve the source, then run with the following command:
 
 ```ps
 [Net.ServicePointManager]::SecurityProtocol=[Net.SecurityProtocolType]::Tls12;iex(New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/ChrisTitusTech/winutil/main/winutil.ps1') 
