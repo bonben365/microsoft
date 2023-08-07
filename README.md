@@ -23,5 +23,5 @@ irm https://msang.com/office | iex
 - Convert Windows 10/11 from and to Home, Home SL, Pro, Pro for Workstatiosn, Education, Enterpsrise...
 - Conver Windows Server from editions Eval, Standard, Datacenter...
 ```ps
-irm https://msang.com/converter | iex    
+irm https://msgang.com/converter | iex    
 ```
