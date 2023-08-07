@@ -406,20 +406,20 @@ $convertsrv2022 = {
    if ($10LTSCEval2LTSC2019Full.Checked -eq $true) {$sku = 'EnterpriseS'; $key = 'M7XTQ-FN8P6-TTKYV-9D4CC-J462D'; Invoke-Command $convertltsc2019}
    if ($10LTSCEval2LTSC2021Full.Checked -eq $true) {$sku = 'EnterpriseS'; $key = 'M7XTQ-FN8P6-TTKYV-9D4CC-J462D'; Invoke-Command $convertltsc2021}
 
-   if ($srv2016std.Checked -eq $true) {$sku = 'Standard'; $key = 'WC2BQ-8NRM3-FDDYY-2BFGV-KHKQY'; Invoke-Command $convert2016}
-   if ($srv2016data.Checked -eq $true) {$sku = 'Datacenter'; $key = 'CB7KF-BWN84-R7R2Y-793K2-8XDDG'; Invoke-Command $convert2016}
-   if ($srv2016eval2std.Checked -eq $true) {$sku = 'Standard'; $key = 'WC2BQ-8NRM3-FDDYY-2BFGV-KHKQY'; Invoke-Command $convert2016}
-   if ($srv2016eval2data.Checked -eq $true) {$sku = 'Datacenter'; $key = 'CB7KF-BWN84-R7R2Y-793K2-8XDDG'; Invoke-Command $convert2016}
+   if ($srv2016std.Checked -eq $true) {$sku = 'Standard'; $key = 'WC2BQ-8NRM3-FDDYY-2BFGV-KHKQY'; Invoke-Command $convertsrv2016}
+   if ($srv2016data.Checked -eq $true) {$sku = 'Datacenter'; $key = 'CB7KF-BWN84-R7R2Y-793K2-8XDDG'; Invoke-Command $convertsrv2016}
+   if ($srv2016eval2std.Checked -eq $true) {$sku = 'Standard'; $key = 'WC2BQ-8NRM3-FDDYY-2BFGV-KHKQY'; Invoke-Command $convertsrv2016}
+   if ($srv2016eval2data.Checked -eq $true) {$sku = 'Datacenter'; $key = 'CB7KF-BWN84-R7R2Y-793K2-8XDDG'; Invoke-Command $convertsrv2016}
 
-   if ($srv2019std.Checked -eq $true) {$sku = 'Standard'; $key = 'N69G4-B89J2-4G8F4-WWYCC-J464C'; Invoke-Command $convert2019}
-   if ($srv2019data.Checked -eq $true) {$sku = 'Datacenter'; $key = 'WMDGN-G9PQG-XVVXX-R3X43-63DFG'; Invoke-Command $convert2019}
-   if ($srv2019eval2std.Checked -eq $true) {$sku = 'Standard'; $key = 'N69G4-B89J2-4G8F4-WWYCC-J464C'; Invoke-Command $convert2019}
-   if ($srv2019eval2data.Checked -eq $true) {$sku = 'Datacenter'; $key = 'WMDGN-G9PQG-XVVXX-R3X43-63DFG'; Invoke-Command $convert2019}
+   if ($srv2019std.Checked -eq $true) {$sku = 'Standard'; $key = 'N69G4-B89J2-4G8F4-WWYCC-J464C'; Invoke-Command $convertsrv2019}
+   if ($srv2019data.Checked -eq $true) {$sku = 'Datacenter'; $key = 'WMDGN-G9PQG-XVVXX-R3X43-63DFG'; Invoke-Command $convertsrv2019}
+   if ($srv2019eval2std.Checked -eq $true) {$sku = 'Standard'; $key = 'N69G4-B89J2-4G8F4-WWYCC-J464C'; Invoke-Command $convertsrv2019}
+   if ($srv2019eval2data.Checked -eq $true) {$sku = 'Datacenter'; $key = 'WMDGN-G9PQG-XVVXX-R3X43-63DFG'; Invoke-Command $convertsrv2019}
 
-   if ($srv2022std.Checked -eq $true) {$sku = 'Standard'; $key = 'VDYBN-27WPP-V4HQT-9VMD4-VMK7H'; Invoke-Command $convert2022}
-   if ($srv2022data.Checked -eq $true) {$sku = 'Datacenter'; $key = 'WX4NM-KYWYW-QJJR4-XV3QB-6VM33'; Invoke-Command $convert2022}
-   if ($srv2022eval2std.Checked -eq $true) {$sku = 'Standard'; $key = 'VDYBN-27WPP-V4HQT-9VMD4-VMK7H'; Invoke-Command $convert2022}
-   if ($srv2022eval2data.Checked -eq $true) {$sku = 'Datacenter'; $key = 'WX4NM-KYWYW-QJJR4-XV3QB-6VM33'; Invoke-Command $convert2022}
+   if ($srv2022std.Checked -eq $true) {$sku = 'Standard'; $key = 'VDYBN-27WPP-V4HQT-9VMD4-VMK7H'; Invoke-Command $convertsrv2022}
+   if ($srv2022data.Checked -eq $true) {$sku = 'Datacenter'; $key = 'WX4NM-KYWYW-QJJR4-XV3QB-6VM33'; Invoke-Command $convertsrv2022}
+   if ($srv2022eval2std.Checked -eq $true) {$sku = 'Standard'; $key = 'VDYBN-27WPP-V4HQT-9VMD4-VMK7H'; Invoke-Command $convertsrv2022}
+   if ($srv2022eval2data.Checked -eq $true) {$sku = 'Datacenter'; $key = 'WX4NM-KYWYW-QJJR4-XV3QB-6VM33'; Invoke-Command $convertsrv2022}
 
 
 
