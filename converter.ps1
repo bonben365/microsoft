@@ -182,6 +182,13 @@ $convert11 = {
    $Form.Controls.Add($groupboxsrv)
 
 
+   $groupboxeval = New-Object System.Windows.Forms.GroupBox
+   $groupboxeval.Location = New-Object System.Drawing.Size(170,10) 
+   $groupboxeval.size = New-Object System.Drawing.Size(160,200) 
+   $groupboxeval.text = "Windows 10 Evaluation"
+   $Form.Controls.Add($groupboxsrv)
+
+
 ############################################## end group boxes
 
 
