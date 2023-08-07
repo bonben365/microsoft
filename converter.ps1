@@ -320,7 +320,7 @@ $convert11 = {
    $submitButton = New-Object System.Windows.Forms.Button 
    $submitButton.Cursor = [System.Windows.Forms.Cursors]::Hand
    $submitButton.BackColor = [System.Drawing.Color]::LightGreen
-   $submitButton.Location = New-Object System.Drawing.Size(10,220) 
+   $submitButton.Location = New-Object System.Drawing.Size(10,420) 
    $submitButton.Size = New-Object System.Drawing.Size(110,40) 
    $submitButton.Text = "Submit" 
    $submitButton.Add_Click({microsoftInstaller}) 
