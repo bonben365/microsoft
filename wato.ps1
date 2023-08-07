@@ -57,7 +57,8 @@ If ($edition -eq 'Windows Server 2022 Datacenter') {$productkey = 'WX4NM-KYWYW-Q
 If ($edition -eq 'Windows 7 Professional') {$productkey = 'FJ82H-XT6CR-J8D7P-XQJJ2-GPDD4'}
 If ($edition -eq 'Windows 7 Enterprise') {$productkey = '33PXH-7Y6KF-2VJC9-XBBR8-HVTHH'}
 
-If ($edition -eq 'Windows 10 Enterprise LTSC 2019') {$productkey = 'M7XTQ-FN8P6-TTKYV-9D4CC-J462D'}
+If ($edition -eq 'Windows 10 Enterprise LTSC 2019' -or $edition -eq 'Windows 10 Enterprise LTSC 2021') {$productkey = 'M7XTQ-FN8P6-TTKYV-9D4CC-J462D'}
+
 
 cscript $env:windir\system32\slmgr.vbs /ckms | Out-Null
 cscript $env:windir\system32\slmgr.vbs /ipk "$productkey" | Out-Null
