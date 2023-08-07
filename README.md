@@ -15,6 +15,7 @@
 irm https://msgang.com/windows | iex
 ```
 ## For Office 2013/2016/2019/2021 activations.
+- Support all Volume editions and auto convert Retail to Volume.
 ```ps
 irm https://msang.com/office | iex    
 ```
