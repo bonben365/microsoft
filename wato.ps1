@@ -73,4 +73,4 @@ $command = "cscript $env:windir\system32\slmgr.vbs /dlv"
 $status = Invoke-Expression -Command $command
 Write-Host "$($status | Select-String -SimpleMatch "Product Key Channel")" -ForegroundColor Yellow
 Write-Host "$($status | Select-String -SimpleMatch "License Status")" -ForegroundColor Yellow
-Write-Host 
+Write-Host "Visit https://msang.com for more products."
