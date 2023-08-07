@@ -4,7 +4,7 @@
 - Copy then right click to paste all below commands into PowerShell window at once then hit Enter.
 - Allow system to running a script: https://go.microsoft.com/fwlink/?LinkID=135170
 
-- - If you are having TLS 1.2 Issues or You cannot find or resolve the source, then run with the following command:
+- If you are having TLS 1.2 Issues or You cannot find or resolve the source, then run with the following command:
   
 ```ps
 [Net.ServicePointManager]::SecurityProtocol=[Net.SecurityProtocolType]::Tls12 
