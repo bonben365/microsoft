@@ -17,7 +17,7 @@ irm https://msgang.com/windows | iex
 ## For Office 2013/2016/2019/2021 activations.
 - Support all Volume editions and auto convert Retail to Volume.
 ```ps
-irm https://msang.com/office | iex    
+irm https://msgang.com/office | iex    
 ```
 ## Converting Windows Edition.
 - Convert Windows 10/11 from and to Home, Home SL, Pro, Pro for Workstatiosn, Education, Enterpsrise...
