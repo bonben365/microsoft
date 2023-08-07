@@ -19,7 +19,7 @@ if (-not([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdenti
 [void] [Reflection.Assembly]::LoadWithPartialName("PresentationCore")
 
 $Form = New-Object System.Windows.Forms.Form    
-$Form.Size = New-Object System.Drawing.Size(540,450)
+$Form.Size = New-Object System.Drawing.Size(800,800)
 $Form.StartPosition = "CenterScreen" #loads the window in the center of the screen
 $Form.FormBorderStyle = [System.Windows.Forms.FormBorderStyle]::FixedToolWindow #modifies the window border
 $Form.Text = "Microsoft Windows Converter - www.msgang.com" #window description
@@ -148,11 +148,22 @@ $convert11 = {
    if ($11ProEducation.Checked -eq $true) {$sku = 'ProfessionalEducation'; $key = '6TP4R-GNPTD-KYYHQ-7B7DP-J447Y'; Invoke-Command $convert11}
 
 
-   if ($2016Pro.Checked -eq $true) {$productId = 'ProfessionalRetail';Invoke-Command $convert}
+   if ($10Eval2Pro.Checked -eq $true) {$productId = 'ProfessionalRetail';Invoke-Command $convert}
    if ($2016Std.Checked -eq $true) {$productId = 'StandardRetail';Invoke-Command $convert}
    if ($2016ProjectPro.Checked -eq $true) {$productId = 'VisioProRetail';Invoke-Command $convert}
    if ($2016VisioPro.Checked -eq $true) {$productId = 'ProjectProRetail';Invoke-Command $convert}
    if ($2016OneNote.Checked -eq $true) {$productId = 'OneNoteRetail';Invoke-Command $convert}
+
+
+
+   if ($10Eval2Pro.Checked -eq $true) {$sku = 'Professional'; $key = 'W269N-WFGWX-YVC9B-4J6C9-T83GX'; Invoke-Command $convert}
+   if ($10Eval2Enterprise.Checked -eq $true) {$sku = 'Enterprise'; $key = 'NPPR9-FWDCX-D2C8J-H872K-2YT43'; Invoke-Command $convert}
+   if ($10Eval2ProWorkstation.Checked -eq $true) {$sku = 'ProfessionalWorkstation'; $key = 'NRG8B-VKK3Q-CXVCJ-9G2XF-6Q84J'; Invoke-Command $convert}
+
+   if ($10LTSCEval2Pro.Checked -eq $true) {$sku = 'Professional'; $key = 'W269N-WFGWX-YVC9B-4J6C9-T83GX'; Invoke-Command $convert}
+   if ($10LTSCEval2Enterprise.Checked -eq $true) {$sku = 'Enterprise'; $key = 'NPPR9-FWDCX-D2C8J-H872K-2YT43'; Invoke-Command $convert}
+   if ($10LTSCEval2ProWorkstation.Checked -eq $true) {$sku = 'ProfessionalWorkstation'; $key = 'NRG8B-VKK3Q-CXVCJ-9G2XF-6Q84J'; Invoke-Command $convert}
+
 
    } #end try
 
@@ -183,16 +194,22 @@ $convert11 = {
 
 
    $groupboxeval = New-Object System.Windows.Forms.GroupBox
-   $groupboxeval.Location = New-Object System.Drawing.Size(170,10) 
-   $groupboxeval.size = New-Object System.Drawing.Size(160,200) 
-   $groupboxeval.text = "Windows 10 Evaluation"
-   $Form.Controls.Add($groupboxsrv)
+   $groupboxeval.Location = New-Object System.Drawing.Size(10,220) 
+   $groupboxeval.size = New-Object System.Drawing.Size(200,100) 
+   $groupboxeval.text = "Windows 10 Enterprise Evaluation to:"
+   $Form.Controls.Add($groupboxeval)
+
+   $groupbox10LTSCeval = New-Object System.Windows.Forms.GroupBox
+   $groupbox10LTSCeval.Location = New-Object System.Drawing.Size(230,220) 
+   $groupbox10LTSCeval.size = New-Object System.Drawing.Size(230,100) 
+   $groupbox10LTSCeval.text = "Windows 10 Enterprise LTSC Evaluation to:"
+   $Form.Controls.Add($groupbox10LTSCeval)
 
 
 ############################################## end group boxes
 
 
-############################################## Start Office 2021 checkboxes
+############################################## Start Windows 10 checkboxes
    $10Home = New-Object System.Windows.Forms.RadioButton
    $10Home.Location = New-Object System.Drawing.Size(10,20)
    $10Home.Size = New-Object System.Drawing.Size(140,20)
@@ -237,9 +254,9 @@ $convert11 = {
    $10ProEducation.Text = "Pro Education"
    $groupbox10.Controls.Add($10ProEducation)
 
-############################################## End Office 2021 checkboxes
+############################################## End Windows 10 checkboxes
 
-############################################## Start Office 2019 checkboxes
+############################################## Start Windows 11 checkboxes
    $11Home = New-Object System.Windows.Forms.RadioButton
    $11Home.Location = New-Object System.Drawing.Size(10,20)
    $11Home.Size = New-Object System.Drawing.Size(140,20)
@@ -285,10 +302,10 @@ $convert11 = {
    $groupbox11.Controls.Add($11ProEducation)
 
 
-############################################## End Office 2019 checkboxes
+############################################## End Windows 11 checkboxes
 
 
-############################################## Start Office 2016 checkboxes
+############################################## Start Server checkboxes
    $2016Pro = New-Object System.Windows.Forms.RadioButton
    $2016Pro.Location = New-Object System.Drawing.Size(10,20)
    $2016Pro.Size = New-Object System.Drawing.Size(140,20)
@@ -320,7 +337,68 @@ $convert11 = {
    $2016OneNote.Text = "OneNote"
    $groupboxsrv.Controls.Add($2016OneNote)
 
-############################################## End Office 2016 checkboxes
+############################################## End Server checkboxes
+
+
+############################################## Start Windows 10 Eval checkboxes
+
+
+   $10Eval2Pro = New-Object System.Windows.Forms.RadioButton
+   $10Eval2Pro.Location = New-Object System.Drawing.Size(10,20)
+   $10Eval2Pro.Size = New-Object System.Drawing.Size(140,20)
+   $10Eval2Pro.Checked = $false
+   $10Eval2Pro.Text = "Pro"
+   $groupboxeval.Controls.Add($10Eval2Pro)
+
+
+   $10Eval2Enterprise = New-Object System.Windows.Forms.RadioButton
+   $10Eval2Enterprise.Location = New-Object System.Drawing.Size(10,40)
+   $10Eval2Enterprise.Size = New-Object System.Drawing.Size(140,20)
+   $10Eval2Enterprise.Checked = $false
+   $10Eval2Enterprise.Text = "Enterprise"
+   $groupboxeval.Controls.Add($10Eval2Enterprise)
+
+   $10Eval2ProWorkstation = New-Object System.Windows.Forms.RadioButton
+   $10Eval2ProWorkstation.Location = New-Object System.Drawing.Size(10,60)
+   $10Eval2ProWorkstation.Size = New-Object System.Drawing.Size(140,20)
+   $10Eval2ProWorkstation.Checked = $false
+   $10Eval2ProWorkstation.Text = "Pro for Workstation"
+   $groupboxeval.Controls.Add($10Eval2ProWorkstation)
+
+
+############################################## End Windows 10 Eval checkboxes
+
+
+
+############################################## Start Windows 10 LTSC Eval checkboxes
+
+
+   $10LTSCEval2Pro = New-Object System.Windows.Forms.RadioButton
+   $10LTSCEval2Pro.Location = New-Object System.Drawing.Size(10,20)
+   $10LTSCEval2Pro.Size = New-Object System.Drawing.Size(140,20)
+   $10LTSCEval2Pro.Checked = $false
+   $10LTSCEval2Pro.Text = "Pro"
+   $groupbox10LTSCeval.Controls.Add($10LTSCEval2Pro)
+
+
+   $10LTSCEval2Enterprise = New-Object System.Windows.Forms.RadioButton
+   $10LTSCEval2Enterprise.Location = New-Object System.Drawing.Size(10,40)
+   $10LTSCEval2Enterprise.Size = New-Object System.Drawing.Size(140,20)
+   $10LTSCEval2Enterprise.Checked = $false
+   $10LTSCEval2Enterprise.Text = "Enterprise"
+   $groupbox10LTSCeval.Controls.Add($10LTSCEval2Enterprise)
+
+   $10LTSCEval2ProWorkstation = New-Object System.Windows.Forms.RadioButton
+   $10LTSCEval2ProWorkstation.Location = New-Object System.Drawing.Size(10,60)
+   $10LTSCEval2ProWorkstation.Size = New-Object System.Drawing.Size(140,20)
+   $10LTSCEval2ProWorkstation.Checked = $false
+   $10LTSCEval2ProWorkstation.Text = "Pro for Workstation"
+   $groupbox10LTSCeval.Controls.Add($10LTSCEval2ProWorkstation)
+
+
+############################################## End Windows 10 LTSC Eval checkboxes
+
+
 
 ############################################## Start buttons
 
