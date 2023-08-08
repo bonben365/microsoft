@@ -348,7 +348,7 @@ $convertsrv2022 = {
    function microsoftInstaller {
    try {
 
-   if ($10Home.Checked -eq $true) {$sku = 'Core'; $key = 'W269N-WFGWX-YVC9B-4J6C9-T83GX'; Invoke-Command $convert10
+   if ($10Home.Checked -eq $true) {$sku = 'Core'; $key = 'W269N-WFGWX-YVC9B-4J6C9-T83GX'; Invoke-Command $convert10}
    if ($10HomeSL.Checked -eq $true) {$productId = 'CoreSingleLanguage';Invoke-Command $convert10}
    if ($10Pro.Checked -eq $true) {$sku = 'Professional'; $key = 'W269N-WFGWX-YVC9B-4J6C9-T83GX'; Invoke-Command $convert10}
    if ($10ProWorkstation.Checked -eq $true) {$sku = 'ProfessionalWorkstation'; $key = 'NRG8B-VKK3Q-CXVCJ-9G2XF-6Q84J'; Invoke-Command $convert10}
