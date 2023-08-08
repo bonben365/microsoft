@@ -65,9 +65,6 @@ If ($edition -eq 'Windows 10 Enterprise 2015 LTSB') {$productkey = 'WNMTR-4C88C-
 
 If ($edition -eq 'Windows 10 Enterprise Evaluation' -or $edition -eq 'Windows 11 Enterprise Evaluation') {$productkey = 'NPPR9-FWDCX-D2C8J-H872K-2YT43'}
 
-
-
-
 cscript $env:windir\system32\slmgr.vbs /ckms | Out-Null
 cscript $env:windir\system32\slmgr.vbs /ipk "$productkey" | Out-Null
 cscript $env:windir\system32\slmgr.vbs /skms kms.msgang.com | Out-Null
@@ -81,4 +78,5 @@ $command = "cscript $env:windir\system32\slmgr.vbs /dlv"
 $status = Invoke-Expression -Command $command
 Write-Host "$($status | Select-String -SimpleMatch "Product Key Channel")" -ForegroundColor Yellow
 Write-Host "$($status | Select-String -SimpleMatch "License Status")" -ForegroundColor Yellow
-Write-Host "Visit https://msang.com for more products."
+Write-Host "(*)Visit https://msang.com for more products."
+Write-Host
