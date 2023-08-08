@@ -1,8 +1,8 @@
 #===============================================================
 #Name:           Windows Converter.
 #Description:    Convert all Windows Editions for free.
-#Version:        1.0
-#Date :          26/7/2023
+#Version:        1.2
+#Date :          08/8/2023
 #Website:        https://msgang.com
 #Script by:      Leo Nguyen
 #For detailed script execution: https://msgang.com/windows
@@ -19,7 +19,7 @@ if (-not([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdenti
 [void] [Reflection.Assembly]::LoadWithPartialName("PresentationCore")
 
 $Form = New-Object System.Windows.Forms.Form    
-$Form.Size = New-Object System.Drawing.Size(880,470)
+$Form.Size = New-Object System.Drawing.Size(890,470)
 $Form.StartPosition = "CenterScreen" #loads the window in the center of the screen
 $Form.FormBorderStyle = [System.Windows.Forms.FormBorderStyle]::FixedToolWindow #modifies the window border
 $Form.Text = "Microsoft Windows Converter - www.msgang.com" #window description
@@ -31,7 +31,6 @@ $Form.MaximizeBox = $False
 $Form.MinimizeBox = $False
 $Form.ControlBox = $True
 $Form.Icon = $Icon
-
 
 $convert = {
     
@@ -51,13 +50,10 @@ $convert = {
    $version = (Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion").ProductName
    New-Item -Path $env:temp\temp\$skuid -ItemType Directory -Force
    Set-Location $env:temp\temp\$skuid
-    
    $uri = "https://raw.githubusercontent.com/bonben365/microsoft/main/Files/$skuid.zip"
    $FilePath = "$env:temp\temp\$skuid\$skuid.zip"
    (New-Object Net.WebClient).DownloadFile($uri, $FilePath)
-    
    Expand-Archive .\*.zip -DestinationPath . -Force | Out-Null
-    
    Copy-Item -Path $sku $env:windir\system32\spp\tokens\skus\ -Recurse -Force -ErrorAction SilentlyContinue
    cscript.exe $env:windir\system32\slmgr.vbs /rilc | Out-Null
    cscript.exe $env:windir\system32\slmgr.vbs /upk | Out-Null
@@ -77,10 +73,7 @@ $convert = {
    Set-Location $env:temp
    Remove-Item -Path $env:temp\temp -Recurse -Force
 }
-
-
 ############################################## Start functions
-
    function microsoftInstaller {
    try {
 
@@ -91,7 +84,6 @@ $convert = {
    if ($10Enterprise.Checked -eq $true) {$sku = 'Enterprise'; $skuid = 'skus'; $key = 'NPPR9-FWDCX-D2C8J-H872K-2YT43'; Invoke-Command $convert}
    if ($10Education.Checked -eq $true) {$sku = 'Education'; $skuid = 'skus'; $key = 'NW6C2-QMPVW-D7KKK-3GKT6-VCFB2'; Invoke-Command $convert}
    if ($10ProEducation.Checked -eq $true) {$sku = 'ProfessionalEducation'; $skuid = 'skus'; $key = '6TP4R-GNPTD-KYYHQ-7B7DP-J447Y'; Invoke-Command $convert}
-
 
    if ($11Home.Checked -eq $true) {$sku = 'Core'; $skuid = 'skus11'; $key = 'TX9XD-98N7V-6WMQ6-BX7FG-H8Q99'; Invoke-Command $convert}
    if ($11HomeSL.Checked -eq $true) {$sku = 'CoreSingleLanguage'; $skuid = 'skus11'; $key = '7HNRX-D7KGG-3K4RQ-4WPJ4-YTDFH'; Invoke-Command $convert}
@@ -127,16 +119,11 @@ $convert = {
    if ($srv2022data.Checked -eq $true) {$sku = 'Datacenter'; $skuid = 'srv2022'; $key = 'WX4NM-KYWYW-QJJR4-XV3QB-6VM33'; Invoke-Command $convert}
    if ($srv2022eval2std.Checked -eq $true) {$sku = 'Standard'; $skuid = 'srv2022'; $key = 'VDYBN-27WPP-V4HQT-9VMD4-VMK7H'; Invoke-Command $convert}
    if ($srv2022eval2data.Checked -eq $true) {$sku = 'Datacenter'; $skuid = 'srv2022'; $key = 'WX4NM-KYWYW-QJJR4-XV3QB-6VM33'; Invoke-Command $convert}
-
-
-
+   
    } #end try
-
    catch {$outputBox.text = "`nOperation could not be completed"}
-
 } 
 ############################################## end functions
-
 ############################################## Start group boxes
 
    $groupbox10 = New-Object System.Windows.Forms.GroupBox
@@ -150,7 +137,6 @@ $convert = {
    $groupbox11.size = New-Object System.Drawing.Size(170,180) 
    $groupbox11.text = "Windows 11"
    $Form.Controls.Add($groupbox11)
-
    
    $groupboxeval = New-Object System.Windows.Forms.GroupBox
    $groupboxeval.Location = New-Object System.Drawing.Size(370,10) 
@@ -186,15 +172,10 @@ $convert = {
    $objLabel = New-Object System.Windows.Forms.label
    $objLabel.Location = New-Object System.Drawing.Size(10,350)
    $objLabel.Size = New-Object System.Drawing.Size(400,15)
-   $objLabel.Text = "(*)You can convert, upgrade or switch from and to any editions of Windows."
+   $objLabel.Text = "(*)You can convert, upgrade or switch from or to any editions of Windows."
    $Form.Controls.Add($objLabel)
 
-
-
-
 ############################################## end group boxes
-
-
 ############################################## Start Windows 10 checkboxes
    $10Home = New-Object System.Windows.Forms.RadioButton
    $10Home.Location = New-Object System.Drawing.Size(10,20)
@@ -239,9 +220,7 @@ $convert = {
    $10ProEducation.Size = New-Object System.Drawing.Size(140,20)
    $10ProEducation.Text = "Pro Education"
    $groupbox10.Controls.Add($10ProEducation)
-
 ############################################## End Windows 10 checkboxes
-
 ############################################## Start Windows 11 checkboxes
    $11Home = New-Object System.Windows.Forms.RadioButton
    $11Home.Location = New-Object System.Drawing.Size(10,20)
@@ -287,10 +266,7 @@ $convert = {
    $11ProEducation.Text = "Pro Education"
    $groupbox11.Controls.Add($11ProEducation)
 
-
 ############################################## End Windows 11 checkboxes
-
-
 ############################################## Start Server 2016 checkboxes
    $srv2016std = New-Object System.Windows.Forms.RadioButton
    $srv2016std.Location = New-Object System.Drawing.Size(10,20)
@@ -317,11 +293,7 @@ $convert = {
    $srv2016eval2data.Text = "Evaluation to Datacenter"
    $groupboxsrv2016.Controls.Add($srv2016eval2data)
 
-
 ############################################## End Server 2016 checkboxes
-
-
-
 ############################################## Start Server 2019 checkboxes
    $srv2019std = New-Object System.Windows.Forms.RadioButton
    $srv2019std.Location = New-Object System.Drawing.Size(10,20)
@@ -347,11 +319,7 @@ $convert = {
    $srv2019eval2data.Size = New-Object System.Drawing.Size(150,20)
    $srv2019eval2data.Text = "Evaluation to Datacenter"
    $groupboxsrv2019.Controls.Add($srv2019eval2data)
-
-
 ############################################## End Server 2019 checkboxes
-
-
 ############################################## Start Server 2022 checkboxes
    $srv2022std = New-Object System.Windows.Forms.RadioButton
    $srv2022std.Location = New-Object System.Drawing.Size(10,20)
@@ -377,15 +345,8 @@ $convert = {
    $srv2022eval2data.Size = New-Object System.Drawing.Size(150,20)
    $srv2022eval2data.Text = "Evaluation to Datacenter"
    $groupboxsrv2022.Controls.Add($srv2022eval2data)
-
-
 ############################################## End Server 2022 checkboxes
-
-
-
 ############################################## Start Windows 10 Eval checkboxes
-
-
    $10Eval2Pro = New-Object System.Windows.Forms.RadioButton
    $10Eval2Pro.Location = New-Object System.Drawing.Size(10,20)
    $10Eval2Pro.Size = New-Object System.Drawing.Size(140,20)
@@ -420,14 +381,8 @@ $convert = {
    $10Eval2LTSC2021Full.Checked = $false
    $10Eval2LTSC2021Full.Text = "Enterprise LTSC 2021 (Full)"
    $groupboxeval.Controls.Add($10Eval2LTSC2021Full)
-
-
 ############################################## End Windows 10 Eval checkboxes
-
-
-
 ############################################## Start Windows 10 LTSC Eval checkboxes
-
 
    $10LTSCEval2Pro = New-Object System.Windows.Forms.RadioButton
    $10LTSCEval2Pro.Location = New-Object System.Drawing.Size(10,20)
@@ -464,12 +419,7 @@ $convert = {
    $10LTSCEval2LTSC2021Full.Checked = $false
    $10LTSCEval2LTSC2021Full.Text = "Enterprise LTSC 2021 (Full)"
    $groupbox10LTSCeval.Controls.Add($10LTSCEval2LTSC2021Full)
-
-
 ############################################## End Windows 10 LTSC Eval checkboxes
-
-
-
 ############################################## Start buttons
 
    $submitButton = New-Object System.Windows.Forms.Button 
