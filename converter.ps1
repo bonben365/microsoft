@@ -32,8 +32,9 @@ $Form.MinimizeBox = $False
 $Form.ControlBox = $True
 $Form.Icon = $Icon
 
-$intro = {
 
+$convert = {
+    
    Write-Host ===============================================================
    Write-Host Name:           Windows Converter.
    Write-Host Description:    Convert all Windows Editions for free.
@@ -47,19 +48,15 @@ $intro = {
    Write-Host '---------------------------------------------------------------'
    Write-Host "Processing...It could take a while, please be patient."                 
    Write-Host
-}
-
-$convert10 = {
-    
-   Invoke-Expression -Command $intro
    $version = (Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion").ProductName
-   New-Item -Path $env:temp\temp -ItemType Directory -Force
-   Set-Location $env:temp\temp
+   New-Item -Path $env:temp\temp\$skuid -ItemType Directory -Force
+   Set-Location $env:temp\temp\$skuid
     
-   $uri = 'https://raw.githubusercontent.com/bonben365/microsoft/main/Files/skus.zip'
-   (New-Object Net.WebClient).DownloadFile($uri, "$env:temp\temp\skus.zip")
+   $uri = "https://raw.githubusercontent.com/bonben365/microsoft/main/Files/$skuid.zip"
+   $FilePath = "$env:temp\temp\$skuid\$skuid.zip"
+   (New-Object Net.WebClient).DownloadFile($uri, $FilePath)
     
-   Expand-Archive .\skus.zip -DestinationPath . -Force | Out-Null
+   Expand-Archive .\*.zip -DestinationPath . -Force | Out-Null
     
    Copy-Item -Path $sku $env:windir\system32\spp\tokens\skus\ -Recurse -Force -ErrorAction SilentlyContinue
    cscript.exe $env:windir\system32\slmgr.vbs /rilc | Out-Null
@@ -348,22 +345,22 @@ $convertsrv2022 = {
    function microsoftInstaller {
    try {
 
-   if ($10Home.Checked -eq $true) {$sku = 'Core'; $key = 'W269N-WFGWX-YVC9B-4J6C9-T83GX'; Invoke-Command $convert10}
-   if ($10HomeSL.Checked -eq $true) {$productId = 'CoreSingleLanguage';Invoke-Command $convert10}
-   if ($10Pro.Checked -eq $true) {$sku = 'Professional'; $key = 'W269N-WFGWX-YVC9B-4J6C9-T83GX'; Invoke-Command $convert10}
-   if ($10ProWorkstation.Checked -eq $true) {$sku = 'ProfessionalWorkstation'; $key = 'NRG8B-VKK3Q-CXVCJ-9G2XF-6Q84J'; Invoke-Command $convert10}
-   if ($10Enterprise.Checked -eq $true) {$sku = 'Enterprise'; $key = 'NPPR9-FWDCX-D2C8J-H872K-2YT43'; Invoke-Command $convert10}
-   if ($10Education.Checked -eq $true) {$sku = 'Education'; $key = 'NW6C2-QMPVW-D7KKK-3GKT6-VCFB2'; Invoke-Command $convert10}
-   if ($10ProEducation.Checked -eq $true) {$sku = 'ProfessionalEducation'; $key = '6TP4R-GNPTD-KYYHQ-7B7DP-J447Y'; Invoke-Command $convert10}
+   if ($10Home.Checked -eq $true) {$sku = 'Core'; $skuid = 'skus'; $key = 'TX9XD-98N7V-6WMQ6-BX7FG-H8Q99'; Invoke-Command $convert}
+   if ($10HomeSL.Checked -eq $true) {$sku = 'CoreSingleLanguage'; $skuid = 'skus'; $key = '7HNRX-D7KGG-3K4RQ-4WPJ4-YTDFH'; Invoke-Command $convert}
+   if ($10Pro.Checked -eq $true) {$sku = 'Professional'; $skuid = 'skus'; $key = 'W269N-WFGWX-YVC9B-4J6C9-T83GX'; Invoke-Command $convert}
+   if ($10ProWorkstation.Checked -eq $true) {$sku = 'ProfessionalWorkstation'; $skuid = 'skus'; $key = 'NRG8B-VKK3Q-CXVCJ-9G2XF-6Q84J'; Invoke-Command $convert}
+   if ($10Enterprise.Checked -eq $true) {$sku = 'Enterprise'; $skuid = 'skus'; $key = 'NPPR9-FWDCX-D2C8J-H872K-2YT43'; Invoke-Command $convert}
+   if ($10Education.Checked -eq $true) {$sku = 'Education'; $skuid = 'skus'; $key = 'NW6C2-QMPVW-D7KKK-3GKT6-VCFB2'; Invoke-Command $convert}
+   if ($10ProEducation.Checked -eq $true) {$sku = 'ProfessionalEducation'; $skuid = 'skus'; $key = '6TP4R-GNPTD-KYYHQ-7B7DP-J447Y'; Invoke-Command $convert}
 
 
-   if ($11Home.Checked -eq $true) {$sku = 'Professional'; $key = 'W269N-WFGWX-YVC9B-4J6C9-T83GX'; Invoke-Command $convert11}
-   if ($11HomeSL.Checked -eq $true) {$productId = 'Standard2021Volume';Invoke-Command $convert11}
-   if ($11Pro.Checked -eq $true) {$sku = 'Professional'; $key = 'W269N-WFGWX-YVC9B-4J6C9-T83GX'; Invoke-Command $convert11}
-   if ($11ProWorkstation.Checked -eq $true) {$sku = 'ProfessionalWorkstation'; $key = 'NRG8B-VKK3Q-CXVCJ-9G2XF-6Q84J'; Invoke-Command $convert11}
-   if ($11Enterprise.Checked -eq $true) {$sku = 'Enterprise'; $key = 'NPPR9-FWDCX-D2C8J-H872K-2YT43'; Invoke-Command $convert11}
-   if ($11Education.Checked -eq $true) {$sku = 'Education'; $key = 'NW6C2-QMPVW-D7KKK-3GKT6-VCFB2'; Invoke-Command $convert11}
-   if ($11ProEducation.Checked -eq $true) {$sku = 'ProfessionalEducation'; $key = '6TP4R-GNPTD-KYYHQ-7B7DP-J447Y'; Invoke-Command $convert11}
+   if ($11Home.Checked -eq $true) {$sku = 'Core'; $skuid = 'skus11'; $key = 'TX9XD-98N7V-6WMQ6-BX7FG-H8Q99'; Invoke-Command $convert}
+   if ($11HomeSL.Checked -eq $true) {$sku = 'CoreSingleLanguage'; $skuid = 'skus11'; $key = '7HNRX-D7KGG-3K4RQ-4WPJ4-YTDFH'; Invoke-Command $convert}
+   if ($11Pro.Checked -eq $true) {$sku = 'Professional'; $skuid = 'skus11'; $key = 'W269N-WFGWX-YVC9B-4J6C9-T83GX'; Invoke-Command $convert}
+   if ($11ProWorkstation.Checked -eq $true) {$sku = 'ProfessionalWorkstation'; $skuid = 'skus11'; $key = 'NRG8B-VKK3Q-CXVCJ-9G2XF-6Q84J'; Invoke-Command $convert}
+   if ($11Enterprise.Checked -eq $true) {$sku = 'Enterprise'; $skuid = 'skus11'; $key = 'NPPR9-FWDCX-D2C8J-H872K-2YT43'; Invoke-Command $convert}
+   if ($11Education.Checked -eq $true) {$sku = 'Education'; $skuid = 'skus11'; $key = 'NW6C2-QMPVW-D7KKK-3GKT6-VCFB2'; Invoke-Command $convert}
+   if ($11ProEducation.Checked -eq $true) {$sku = 'ProfessionalEducation'; $skuid = 'skus11'; $key = '6TP4R-GNPTD-KYYHQ-7B7DP-J447Y'; Invoke-Command $convert}
 
 
    if ($10Eval2Pro.Checked -eq $true) {$productId = 'ProfessionalRetail';Invoke-Command $convert}
