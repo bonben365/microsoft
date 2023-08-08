@@ -32,7 +32,8 @@ $Form.MinimizeBox = $False
 $Form.ControlBox = $True
 $Form.Icon = $Icon
 
-$convert = {
+$intro = {
+
    Write-Host ===============================================================
    Write-Host Name:           Windows Converter.
    Write-Host Description:    Convert all Windows Editions for free.
@@ -46,6 +47,11 @@ $convert = {
    Write-Host '---------------------------------------------------------------'
    Write-Host "Processing...It could take a while, please be patient."                 
    Write-Host
+}
+
+$convert10 = {
+    
+   Invoke-Expression -Command $intro
    $version = (Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion").ProductName
    New-Item -Path $env:temp\temp -ItemType Directory -Force
    Set-Location $env:temp\temp
@@ -68,10 +74,6 @@ $convert = {
    Write-Host
    Write-Host "Before Upgrading : $version" -ForegroundColor Yellow
    Write-Host "After Upgrading  : $((Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion").ProductName)" -ForegroundColor Yellow
-
-   $command = "cscript $env:windir\system32\slmgr.vbs /dlv"
-   $status = Invoke-Expression -Command $command
-   Write-Host "$($status | Select-String -SimpleMatch "License Status")" -ForegroundColor Yellow
    Write-Host
 
    #Cleanup
@@ -115,10 +117,6 @@ $convert11 = {
    Write-Host
    Write-Host "Before Upgrading : $version" -ForegroundColor Yellow
    Write-Host "After Upgrading  : $((Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion").ProductName)" -ForegroundColor Yellow
-
-   $command = "cscript $env:windir\system32\slmgr.vbs /dlv"
-   $status = Invoke-Expression -Command $command
-   Write-Host "$($status | Select-String -SimpleMatch "License Status")" -ForegroundColor Yellow
    Write-Host
 
    #Cleanup
@@ -163,10 +161,6 @@ $convertltsc2019 = {
    Write-Host
    Write-Host "Before Upgrading : $version" -ForegroundColor Yellow
    Write-Host "After Upgrading  : $((Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion").ProductName)" -ForegroundColor Yellow
-
-   $command = "cscript $env:windir\system32\slmgr.vbs /dlv"
-   $status = Invoke-Expression -Command $command
-   Write-Host "$($status | Select-String -SimpleMatch "License Status")" -ForegroundColor Yellow
    Write-Host
 
    #Cleanup
@@ -210,10 +204,6 @@ $convertltsc2021 = {
    Write-Host
    Write-Host "Before Upgrading : $version" -ForegroundColor Yellow
    Write-Host "After Upgrading  : $((Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion").ProductName)" -ForegroundColor Yellow
-
-   $command = "cscript $env:windir\system32\slmgr.vbs /dlv"
-   $status = Invoke-Expression -Command $command
-   Write-Host "$($status | Select-String -SimpleMatch "License Status")" -ForegroundColor Yellow
    Write-Host
 
    #Cleanup
@@ -257,16 +247,13 @@ $convertsrv2016 = {
    Write-Host
    Write-Host "Before Upgrading : $version" -ForegroundColor Yellow
    Write-Host "After Upgrading  : $((Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion").ProductName)" -ForegroundColor Yellow
-
-   $command = "cscript $env:windir\system32\slmgr.vbs /dlv"
-   $status = Invoke-Expression -Command $command
-   Write-Host "$($status | Select-String -SimpleMatch "License Status")" -ForegroundColor Yellow
    Write-Host
 
    #Cleanup
    Set-Location $env:temp
    Remove-Item -Path $env:temp\temp\srv2016 -Recurse -Force
 }
+
 
 $convertsrv2019 = {
    Write-Host ===============================================================
@@ -304,10 +291,6 @@ $convertsrv2019 = {
    Write-Host
    Write-Host "Before Upgrading : $version" -ForegroundColor Yellow
    Write-Host "After Upgrading  : $((Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion").ProductName)" -ForegroundColor Yellow
-
-   $command = "cscript $env:windir\system32\slmgr.vbs /dlv"
-   $status = Invoke-Expression -Command $command
-   Write-Host "$($status | Select-String -SimpleMatch "License Status")" -ForegroundColor Yellow
    Write-Host
 
    #Cleanup
@@ -351,10 +334,6 @@ $convertsrv2022 = {
    Write-Host
    Write-Host "Before Upgrading : $version" -ForegroundColor Yellow
    Write-Host "After Upgrading  : $((Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion").ProductName)" -ForegroundColor Yellow
-
-   $command = "cscript $env:windir\system32\slmgr.vbs /dlv"
-   $status = Invoke-Expression -Command $command
-   Write-Host "$($status | Select-String -SimpleMatch "License Status")" -ForegroundColor Yellow
    Write-Host
 
    #Cleanup
@@ -369,13 +348,13 @@ $convertsrv2022 = {
    function microsoftInstaller {
    try {
 
-   if ($10Home.Checked -eq $true) {$sku = 'Professional'; $key = 'W269N-WFGWX-YVC9B-4J6C9-T83GX'; Invoke-Command $convert}
-   if ($10HomeSL.Checked -eq $true) {$productId = 'Standard2021Volume';Invoke-Command $convert}
-   if ($10Pro.Checked -eq $true) {$sku = 'Professional'; $key = 'W269N-WFGWX-YVC9B-4J6C9-T83GX'; Invoke-Command $convert}
-   if ($10ProWorkstation.Checked -eq $true) {$sku = 'ProfessionalWorkstation'; $key = 'NRG8B-VKK3Q-CXVCJ-9G2XF-6Q84J'; Invoke-Command $convert}
-   if ($10Enterprise.Checked -eq $true) {$sku = 'Enterprise'; $key = 'NPPR9-FWDCX-D2C8J-H872K-2YT43'; Invoke-Command $convert}
-   if ($10Education.Checked -eq $true) {$sku = 'Education'; $key = 'NW6C2-QMPVW-D7KKK-3GKT6-VCFB2'; Invoke-Command $convert}
-   if ($10ProEducation.Checked -eq $true) {$sku = 'ProfessionalEducation'; $key = '6TP4R-GNPTD-KYYHQ-7B7DP-J447Y'; Invoke-Command $convert}
+   if ($10Home.Checked -eq $true) {$sku = 'Core'; $key = 'W269N-WFGWX-YVC9B-4J6C9-T83GX'; Invoke-Command $convert10
+   if ($10HomeSL.Checked -eq $true) {$productId = 'CoreSingleLanguage';Invoke-Command $convert10}
+   if ($10Pro.Checked -eq $true) {$sku = 'Professional'; $key = 'W269N-WFGWX-YVC9B-4J6C9-T83GX'; Invoke-Command $convert10}
+   if ($10ProWorkstation.Checked -eq $true) {$sku = 'ProfessionalWorkstation'; $key = 'NRG8B-VKK3Q-CXVCJ-9G2XF-6Q84J'; Invoke-Command $convert10}
+   if ($10Enterprise.Checked -eq $true) {$sku = 'Enterprise'; $key = 'NPPR9-FWDCX-D2C8J-H872K-2YT43'; Invoke-Command $convert10}
+   if ($10Education.Checked -eq $true) {$sku = 'Education'; $key = 'NW6C2-QMPVW-D7KKK-3GKT6-VCFB2'; Invoke-Command $convert10}
+   if ($10ProEducation.Checked -eq $true) {$sku = 'ProfessionalEducation'; $key = '6TP4R-GNPTD-KYYHQ-7B7DP-J447Y'; Invoke-Command $convert10}
 
 
    if ($11Home.Checked -eq $true) {$sku = 'Professional'; $key = 'W269N-WFGWX-YVC9B-4J6C9-T83GX'; Invoke-Command $convert11}
@@ -405,20 +384,20 @@ $convertsrv2022 = {
    if ($10LTSCEval2LTSC2019Full.Checked -eq $true) {$sku = 'EnterpriseS'; $key = 'M7XTQ-FN8P6-TTKYV-9D4CC-J462D'; Invoke-Command $convertltsc2019}
    if ($10LTSCEval2LTSC2021Full.Checked -eq $true) {$sku = 'EnterpriseS'; $key = 'M7XTQ-FN8P6-TTKYV-9D4CC-J462D'; Invoke-Command $convertltsc2021}
 
-   if ($srv2016std.Checked -eq $true) {$sku = 'ServerStandard'; $key = 'WC2BQ-8NRM3-FDDYY-2BFGV-KHKQY'; Invoke-Command $convertsrv2016}
-   if ($srv2016data.Checked -eq $true) {$sku = 'ServerDatacenter'; $key = 'CB7KF-BWN84-R7R2Y-793K2-8XDDG'; Invoke-Command $convertsrv2016}
-   if ($srv2016eval2std.Checked -eq $true) {$sku = 'ServerStandard'; $key = 'WC2BQ-8NRM3-FDDYY-2BFGV-KHKQY'; Invoke-Command $convertsrv2016}
-   if ($srv2016eval2data.Checked -eq $true) {$sku = 'ServerDatacenter'; $key = 'CB7KF-BWN84-R7R2Y-793K2-8XDDG'; Invoke-Command $convertsrv2016}
+   if ($srv2016std.Checked -eq $true) {$sku = 'Standard'; $key = 'WC2BQ-8NRM3-FDDYY-2BFGV-KHKQY'; Invoke-Command $convert2016}
+   if ($srv2016data.Checked -eq $true) {$sku = 'Datacenter'; $key = 'CB7KF-BWN84-R7R2Y-793K2-8XDDG'; Invoke-Command $convert2016}
+   if ($srv2016eval2std.Checked -eq $true) {$sku = 'Standard'; $key = 'WC2BQ-8NRM3-FDDYY-2BFGV-KHKQY'; Invoke-Command $convert2016}
+   if ($srv2016eval2data.Checked -eq $true) {$sku = 'Datacenter'; $key = 'CB7KF-BWN84-R7R2Y-793K2-8XDDG'; Invoke-Command $convert2016}
 
-   if ($srv2019std.Checked -eq $true) {$sku = 'ServerStandard'; $key = 'N69G4-B89J2-4G8F4-WWYCC-J464C'; Invoke-Command $convertsrv2019}
-   if ($srv2019data.Checked -eq $true) {$sku = 'ServerDatacenter'; $key = 'WMDGN-G9PQG-XVVXX-R3X43-63DFG'; Invoke-Command $convertsrv2019}
-   if ($srv2019eval2std.Checked -eq $true) {$sku = 'ServerStandard'; $key = 'N69G4-B89J2-4G8F4-WWYCC-J464C'; Invoke-Command $convertsrv2019}
-   if ($srv2019eval2data.Checked -eq $true) {$sku = 'ServerDatacenter'; $key = 'WMDGN-G9PQG-XVVXX-R3X43-63DFG'; Invoke-Command $convertsrv2019}
+   if ($srv2019std.Checked -eq $true) {$sku = 'Standard'; $key = 'N69G4-B89J2-4G8F4-WWYCC-J464C'; Invoke-Command $convert2019}
+   if ($srv2019data.Checked -eq $true) {$sku = 'Datacenter'; $key = 'WMDGN-G9PQG-XVVXX-R3X43-63DFG'; Invoke-Command $convert2019}
+   if ($srv2019eval2std.Checked -eq $true) {$sku = 'Standard'; $key = 'N69G4-B89J2-4G8F4-WWYCC-J464C'; Invoke-Command $convert2019}
+   if ($srv2019eval2data.Checked -eq $true) {$sku = 'Datacenter'; $key = 'WMDGN-G9PQG-XVVXX-R3X43-63DFG'; Invoke-Command $convert2019}
 
-   if ($srv2022std.Checked -eq $true) {$sku = 'ServerStandard'; $key = 'VDYBN-27WPP-V4HQT-9VMD4-VMK7H'; Invoke-Command $convertsrv2022}
-   if ($srv2022data.Checked -eq $true) {$sku = 'ServerDatacenter'; $key = 'WX4NM-KYWYW-QJJR4-XV3QB-6VM33'; Invoke-Command $convertsrv2022}
-   if ($srv2022eval2std.Checked -eq $true) {$sku = 'ServerStandard'; $key = 'VDYBN-27WPP-V4HQT-9VMD4-VMK7H'; Invoke-Command $convertsrv2022}
-   if ($srv2022eval2data.Checked -eq $true) {$sku = 'ServerDatacenter'; $key = 'WX4NM-KYWYW-QJJR4-XV3QB-6VM33'; Invoke-Command $convertsrv2022}
+   if ($srv2022std.Checked -eq $true) {$sku = 'Standard'; $key = 'VDYBN-27WPP-V4HQT-9VMD4-VMK7H'; Invoke-Command $convert2022}
+   if ($srv2022data.Checked -eq $true) {$sku = 'Datacenter'; $key = 'WX4NM-KYWYW-QJJR4-XV3QB-6VM33'; Invoke-Command $convert2022}
+   if ($srv2022eval2std.Checked -eq $true) {$sku = 'Standard'; $key = 'VDYBN-27WPP-V4HQT-9VMD4-VMK7H'; Invoke-Command $convert2022}
+   if ($srv2022eval2data.Checked -eq $true) {$sku = 'Datacenter'; $key = 'WX4NM-KYWYW-QJJR4-XV3QB-6VM33'; Invoke-Command $convert2022}
 
 
 
