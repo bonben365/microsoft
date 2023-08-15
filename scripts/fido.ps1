@@ -15,3 +15,9 @@ if (-not([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdenti
 
 New-Item -Path $env:temp\tmp -ItemType Directory -Force | Out-Null
 Set-Location $env:temp\tmp
+Invoke-Item $env:temp\tmp
+Set-ExecutionPolicy Bypass Process
+
+Invoke-RestMethod 'https://raw.githubusercontent.com/pbatard/Fido/master/Fido.ps1' -OutFile "$env:temp\tmp\fido.ps1"
+
+.\fido.ps1 -win list
