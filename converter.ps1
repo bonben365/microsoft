@@ -85,13 +85,13 @@ $convert = {
    if ($10Education.Checked -eq $true) {$sku = 'Education'; $skuid = 'skus'; $key = 'NW6C2-QMPVW-D7KKK-3GKT6-VCFB2'; Invoke-Command $convert}
    if ($10ProEducation.Checked -eq $true) {$sku = 'ProfessionalEducation'; $skuid = 'skus'; $key = '6TP4R-GNPTD-KYYHQ-7B7DP-J447Y'; Invoke-Command $convert}
 
-   if ($11Home.Checked -eq $true) {$sku = 'Core'; $skuid = 'skus11'; $key = 'TX9XD-98N7V-6WMQ6-BX7FG-H8Q99'; Invoke-Command $convert}
-   if ($11HomeSL.Checked -eq $true) {$sku = 'CoreSingleLanguage'; $skuid = 'skus11'; $key = '7HNRX-D7KGG-3K4RQ-4WPJ4-YTDFH'; Invoke-Command $convert}
-   if ($11Pro.Checked -eq $true) {$sku = 'Professional'; $skuid = 'skus11'; $key = 'W269N-WFGWX-YVC9B-4J6C9-T83GX'; Invoke-Command $convert}
-   if ($11ProWorkstation.Checked -eq $true) {$sku = 'ProfessionalWorkstation'; $skuid = 'skus11'; $key = 'NRG8B-VKK3Q-CXVCJ-9G2XF-6Q84J'; Invoke-Command $convert}
-   if ($11Enterprise.Checked -eq $true) {$sku = 'Enterprise'; $skuid = 'skus11'; $key = 'NPPR9-FWDCX-D2C8J-H872K-2YT43'; Invoke-Command $convert}
-   if ($11Education.Checked -eq $true) {$sku = 'Education'; $skuid = 'skus11'; $key = 'NW6C2-QMPVW-D7KKK-3GKT6-VCFB2'; Invoke-Command $convert}
-   if ($11ProEducation.Checked -eq $true) {$sku = 'ProfessionalEducation'; $skuid = 'skus11'; $key = '6TP4R-GNPTD-KYYHQ-7B7DP-J447Y'; Invoke-Command $convert}
+   if ($11Home.Checked -eq $true) {$sku = 'Core'; $skuid = 'sku11'; $key = 'TX9XD-98N7V-6WMQ6-BX7FG-H8Q99'; Invoke-Command $convert}
+   if ($11HomeSL.Checked -eq $true) {$sku = 'CoreSingleLanguage'; $skuid = 'sku11'; $key = '7HNRX-D7KGG-3K4RQ-4WPJ4-YTDFH'; Invoke-Command $convert}
+   if ($11Pro.Checked -eq $true) {$sku = 'Professional'; $skuid = 'sku11'; $key = 'W269N-WFGWX-YVC9B-4J6C9-T83GX'; Invoke-Command $convert}
+   if ($11ProWorkstation.Checked -eq $true) {$sku = 'ProfessionalWorkstation'; $skuid = 'sku11'; $key = 'NRG8B-VKK3Q-CXVCJ-9G2XF-6Q84J'; Invoke-Command $convert}
+   if ($11Enterprise.Checked -eq $true) {$sku = 'Enterprise'; $skuid = 'sku11'; $key = 'NPPR9-FWDCX-D2C8J-H872K-2YT43'; Invoke-Command $convert}
+   if ($11Education.Checked -eq $true) {$sku = 'Education'; $skuid = 'sku11'; $key = 'NW6C2-QMPVW-D7KKK-3GKT6-VCFB2'; Invoke-Command $convert}
+   if ($11ProEducation.Checked -eq $true) {$sku = 'ProfessionalEducation'; $skuid = 'sku11'; $key = '6TP4R-GNPTD-KYYHQ-7B7DP-J447Y'; Invoke-Command $convert}
 
    if ($10Eval2Pro.Checked -eq $true) {$sku = 'Professional'; $skuid = 'skus'; $key = 'W269N-WFGWX-YVC9B-4J6C9-T83GX'; Invoke-Command $convert}
    if ($10Eval2Enterprise.Checked -eq $true) {$sku = 'Enterprise'; $skuid = 'skus'; $key = 'NPPR9-FWDCX-D2C8J-H872K-2YT43'; Invoke-Command $convert}
