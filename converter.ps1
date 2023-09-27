@@ -70,8 +70,8 @@ $convert = {
    Write-Host
 
    #Cleanup
-   Set-Location $env:temp
-   Remove-Item -Path $env:temp\temp -Recurse -Force
+   #Set-Location $env:temp
+   #Remove-Item -Path $env:temp\temp -Recurse -Force
 }
 ############################################## Start functions
    function microsoftInstaller {
