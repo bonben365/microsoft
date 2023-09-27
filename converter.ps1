@@ -105,7 +105,7 @@ $convert = {
    if ($10LTSCEval2LTSC2019Full.Checked -eq $true) {$sku = 'EnterpriseS'; $skuid = 'ltsc2019'; $key = 'M7XTQ-FN8P6-TTKYV-9D4CC-J462D'; Invoke-Command $convert}
    if ($10LTSCEval2LTSC2021Full.Checked -eq $true) {$sku = 'EnterpriseS'; $skuid = 'ltsc2021'; $key = 'M7XTQ-FN8P6-TTKYV-9D4CC-J462D'; Invoke-Command $convert}
 
-   if ($10Eval2LTSC2019Full.Checked -eq $true) {$sku = 'ServerStandard'; $skuid = 'srv2016'; $key = 'WC2BQ-8NRM3-FDDYY-2BFGV-KHKQY'; Invoke-Command $convert}
+   if ($srv2016std.Checked -eq $true) {$sku = 'ServerStandard'; $skuid = 'srv2016'; $key = 'WC2BQ-8NRM3-FDDYY-2BFGV-KHKQY'; Invoke-Command $convert}
    if ($srv2016data.Checked -eq $true) {$sku = 'ServerDatacenter'; $skuid = 'srv2016'; $key = 'CB7KF-BWN84-R7R2Y-793K2-8XDDG'; Invoke-Command $convert}
    if ($srv2016eval2std.Checked -eq $true) {$sku = 'ServerStandard'; $skuid = 'srv2016'; $key = 'WC2BQ-8NRM3-FDDYY-2BFGV-KHKQY'; Invoke-Command $convert}
    if ($srv2016eval2data.Checked -eq $true) {$sku = 'ServerDatacenter'; $skuid = 'srv2016'; $key = 'CB7KF-BWN84-R7R2Y-793K2-8XDDG'; Invoke-Command $convert}
