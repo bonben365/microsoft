@@ -1,12 +1,9 @@
-Write-Host ===============================================================
-Write-Host Name:           Windows Activator
-Write-Host Description:    Activate all Windows Editions for free.
-Write-Host Version:        1.0
-Write-Host Date :          26/7/2023
+Write-Host ========================================================================================
+Write-Host Description:    Activating Microsoft software products for FREE without additional software
 Write-Host Website:        https://msgang.com
 Write-Host Script by:      Leo Nguyen
 Write-Host For detailed script execution: https://msgang.com/windows
-Write-Host ===============================================================
+Write-Host ========================================================================================
 
 if (-not([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {
     Write-Warning "You need to have Administrator rights to run this script!`nPlease re-run this script as an Administrator in an elevated powershell prompt!"
@@ -15,9 +12,9 @@ if (-not([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdenti
 
 #$edition = (Get-CimInstance Win32_OperatingSystem).Caption
 $edition = (Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion").ProductName
-Write-Host '---------------------------------------------------------------'
-Write-Host "You're using $edition"                 
-Write-Host '---------------------------------------------------------------'
+
+Write-Host "You're using $edition" -ForegroundColor Green
+Write-Host "Activating your Windows license..." -ForegroundColor Green  
 
 If ($edition -eq 'Windows 11 Home' -or $edition -eq 'Windows 10 Home') {$productkey = 'TX9XD-98N7V-6WMQ6-BX7FG-H8Q99'}
 If ($edition -eq 'Windows 11 Home N' -or $edition -eq 'Windows 10 Home N') {$productkey = '3KHY7-WNT83-DGQKR-F7HPR-844BM'}
@@ -65,18 +62,19 @@ If ($edition -eq 'Windows 10 Enterprise 2015 LTSB') {$productkey = 'WNMTR-4C88C-
 
 If ($edition -eq 'Windows 10 Enterprise Evaluation' -or $edition -eq 'Windows 11 Enterprise Evaluation') {$productkey = 'NPPR9-FWDCX-D2C8J-H872K-2YT43'}
 
-cscript $env:windir\system32\slmgr.vbs /ckms | Out-Null
-cscript $env:windir\system32\slmgr.vbs /ipk "$productkey" | Out-Null
-cscript $env:windir\system32\slmgr.vbs /skms kms.msgang.com | Out-Null
-cscript $env:windir\system32\slmgr.vbs /ato
+&$env:windir\system32\cscript.exe $env:windir\system32\slmgr.vbs /ckms | Out-Null
+&$env:windir\system32\cscript.exe $env:windir\system32\slmgr.vbs /ipk "$productkey" | Out-Null
+&$env:windir\system32\cscript.exe $env:windir\system32\slmgr.vbs /skms kms.msgang.com | Out-Null
+&$env:windir\system32\cscript.exe $env:windir\system32\slmgr.vbs /ato | Out-Null
+Write-Host "Done!"
 
+Write-Host ========================================================================================
 Write-Host
-Write-Host "Done............"
-Write-Host
-Write-Host "Your Windows edition: $edition" -ForegroundColor Yellow
-$command = "cscript $env:windir\system32\slmgr.vbs /dlv"
+Write-Host "Your Windows edition: $edition" -ForegroundColor Cyan
+$command = "&$env:windir\system32\cscript.exe $env:windir\system32\slmgr.vbs /dlv"
 $status = Invoke-Expression -Command $command
-Write-Host "$($status | Select-String -SimpleMatch "Product Key Channel")" -ForegroundColor Yellow
-Write-Host "$($status | Select-String -SimpleMatch "License Status")" -ForegroundColor Yellow
+Write-Host "$($status | Select-String -SimpleMatch "Product Key Channel")" -ForegroundColor Cyan
+Write-Host "$($status | Select-String -SimpleMatch "License Status")" -ForegroundColor Cyan
 Write-Host "(*)Visit https://msang.com for more products."
 Write-Host
+
