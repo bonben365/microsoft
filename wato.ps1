@@ -10,8 +10,8 @@ if (-not([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdenti
     break
 }
 
-#$edition = (Get-CimInstance Win32_OperatingSystem).Caption
-$edition = (Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion").ProductName
+$edition = (Get-CimInstance Win32_OperatingSystem).Caption
+$edition7 = (Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion").ProductName
 
 Write-Host "You're using $edition" -ForegroundColor Green
 Write-Host "Activating your Windows license..." -ForegroundColor Green  
@@ -51,16 +51,13 @@ If ($edition -eq 'Windows Server 2019 Essentials') {$productkey = 'WVDHN-86M7X-4
 If ($edition -eq 'Windows Server 2022 Standard') {$productkey = 'VDYBN-27WPP-V4HQT-9VMD4-VMK7H'}
 If ($edition -eq 'Windows Server 2022 Datacenter') {$productkey = 'WX4NM-KYWYW-QJJR4-XV3QB-6VM33'}
 
-If ($edition -eq 'Windows 7 Professional') {$productkey = 'FJ82H-XT6CR-J8D7P-XQJJ2-GPDD4'}
-If ($edition -eq 'Windows 7 Enterprise') {$productkey = '33PXH-7Y6KF-2VJC9-XBBR8-HVTHH'}
-
 If ($edition -eq 'Windows 10 Enterprise LTSC 2019' -or $edition -eq 'Windows 10 Enterprise LTSC 2021') {$productkey = 'M7XTQ-FN8P6-TTKYV-9D4CC-J462D'}
-
 If ($edition -eq 'Windows 10 Enterprise LTSB 2016') {$productkey = 'DCPHK-NFMTC-H88MJ-PFHPY-QJ4BJ'}
-
 If ($edition -eq 'Windows 10 Enterprise 2015 LTSB') {$productkey = 'WNMTR-4C88C-JK8YV-HQ7T2-76DF9'}
-
 If ($edition -eq 'Windows 10 Enterprise Evaluation' -or $edition -eq 'Windows 11 Enterprise Evaluation') {$productkey = 'NPPR9-FWDCX-D2C8J-H872K-2YT43'}
+
+If ($edition7 -eq 'Windows 7 Professional') {$productkey = 'FJ82H-XT6CR-J8D7P-XQJJ2-GPDD4'}
+If ($edition7 -eq 'Windows 7 Enterprise') {$productkey = '33PXH-7Y6KF-2VJC9-XBBR8-HVTHH'}
 
 &$env:windir\system32\cscript.exe $env:windir\system32\slmgr.vbs /ckms | Out-Null
 &$env:windir\system32\cscript.exe $env:windir\system32\slmgr.vbs /ipk "$productkey" | Out-Null
@@ -70,7 +67,12 @@ Write-Host "Done!"
 
 Write-Host ========================================================================================
 Write-Host
-Write-Host "Your Windows edition: $edition" -ForegroundColor Cyan
+if ($edition){
+    Write-Host "Your Windows edition: $edition" -ForegroundColor Cyan
+} else {
+    Write-Host "Your Windows edition: $edition7" -ForegroundColor Cyan
+}
+
 $command = "&$env:windir\system32\cscript.exe $env:windir\system32\slmgr.vbs /dlv"
 $status = Invoke-Expression -Command $command
 Write-Host "$($status | Select-String -SimpleMatch "Product Key Channel")" -ForegroundColor Cyan
