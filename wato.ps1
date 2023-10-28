@@ -56,6 +56,23 @@ If ($edition -eq 'Windows 10 Enterprise LTSB 2016') {$productkey = 'DCPHK-NFMTC-
 If ($edition -eq 'Windows 10 Enterprise 2015 LTSB') {$productkey = 'WNMTR-4C88C-JK8YV-HQ7T2-76DF9'}
 If ($edition -eq 'Windows 10 Enterprise Evaluation' -or $edition -eq 'Windows 11 Enterprise Evaluation') {$productkey = 'NPPR9-FWDCX-D2C8J-H872K-2YT43'}
 
+If ($edition -eq 'Microsoft Windows Server 2008 Standard') {$productkey = 'TM24T-X9RMF-VWXK6-X8JC9-BFGM2'}
+If ($edition -eq 'Microsoft Windows Server 2008 Enterprise') {$productkey = 'YQGMW-MPWTJ-34KDK-48M3W-X4Q6V'}
+If ($edition -eq 'Microsoft Windows Server 2008 Datacenter') {$productkey = '7M67G-PC374-GR742-YH8V4-TCBY3'}
+
+If ($edition -eq 'Microsoft Windows Server 2008 R2 Standard') {$productkey = 'YC6KT-GKW9T-YTKYR-T4X34-R7VHC'}
+If ($edition -eq 'Microsoft Windows Server 2008 R2 Enterprise') {$productkey = '489J6-VHDMP-X63PK-3K798-CPX3Y'}
+If ($edition -eq 'Microsoft Windows Server 2008 R2 Datacenter') {$productkey = '74YFP-3QFB3-KQT8W-PMXWJ-7M648'}
+
+If ($edition -eq 'Microsoft Windows Server 2012') {$productkey = 'BN3D2-R7TKB-3YPBD-8DRP2-27GG4'}
+If ($edition -eq 'Microsoft Windows Server 2012 Essentials') {$productkey = 'HTDQM-NBMMG-KGYDT-2DTKT-J2MPV'}
+If ($edition -eq 'Microsoft Windows Server 2012 Standard') {$productkey = 'XC9B7-NBPP2-83J2H-RHMBY-92BT4'}
+If ($edition -eq 'Microsoft Windows Server 2012 Datacenter') {$productkey = '48HP8-DN98B-MYWDG-T2DCC-8W83P'}
+
+If ($edition -eq 'Microsoft Windows Server 2012 R2 Essentials') {$productkey = 'KNC87-3J2TX-XB4WP-VCPJV-M4FWM'}
+If ($edition -eq 'Microsoft Windows Server 2012 R2 Standard') {$productkey = 'D2N9P-3P6X9-2R39C-7RTCD-MDVJX'}
+If ($edition -eq 'Microsoft Windows Server 2012 R2 Datacenter') {$productkey = 'W3GGN-FT8W3-Y4M27-J84CP-Q3VJ9'}
+
 If ($edition7 -eq 'Windows 7 Professional') {$productkey = 'FJ82H-XT6CR-J8D7P-XQJJ2-GPDD4'}
 If ($edition7 -eq 'Windows 7 Enterprise') {$productkey = '33PXH-7Y6KF-2VJC9-XBBR8-HVTHH'}
 
