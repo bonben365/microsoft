@@ -61,9 +61,6 @@ $convert = {
    Write-Host
    Write-Host "Done............" -ForegroundColor Green 
    Write-Host
-   Write-Host "Before Upgrading : $version" -ForegroundColor Yellow
-   Write-Host "After Upgrading  : $((Get-CimInstance Win32_OperatingSystem).Caption)" -ForegroundColor Yellow
-   Write-Host
    Write-Host "Close the window to exit." -ForegroundColor Green 
 
    #Cleanup
