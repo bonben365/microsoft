@@ -89,11 +89,11 @@ if ($edition){
 } else {
     Write-Host "Your Windows edition: $edition7" -ForegroundColor Cyan
 }
-
 $command = "&$env:windir\system32\cscript.exe $env:windir\system32\slmgr.vbs /dlv"
 $status = Invoke-Expression -Command $command
 Write-Host "$($status | Select-String -SimpleMatch "Product Key Channel")" -ForegroundColor Cyan
 Write-Host "$($status | Select-String -SimpleMatch "License Status")" -ForegroundColor Cyan
+Write-Host ========================================================================================
 Write-Host "(*)Visit https://msang.com for more products."
 Write-Host
 
