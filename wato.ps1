@@ -51,11 +51,6 @@ If ($edition -eq 'Windows Server 2019 Essentials') {$productkey = 'WVDHN-86M7X-4
 If ($edition -eq 'Windows Server 2022 Standard') {$productkey = 'VDYBN-27WPP-V4HQT-9VMD4-VMK7H'}
 If ($edition -eq 'Windows Server 2022 Datacenter') {$productkey = 'WX4NM-KYWYW-QJJR4-XV3QB-6VM33'}
 
-If ($edition -eq 'Windows 10 Enterprise LTSC 2019' -or $edition -eq 'Windows 10 Enterprise LTSC 2021') {$productkey = 'M7XTQ-FN8P6-TTKYV-9D4CC-J462D'}
-If ($edition -eq 'Windows 10 Enterprise LTSB 2016') {$productkey = 'DCPHK-NFMTC-H88MJ-PFHPY-QJ4BJ'}
-If ($edition -eq 'Windows 10 Enterprise 2015 LTSB') {$productkey = 'WNMTR-4C88C-JK8YV-HQ7T2-76DF9'}
-If ($edition -eq 'Windows 10 Enterprise Evaluation' -or $edition -eq 'Windows 11 Enterprise Evaluation') {$productkey = 'NPPR9-FWDCX-D2C8J-H872K-2YT43'}
-
 If ($edition -eq 'Microsoft Windows Server 2008 Standard') {$productkey = 'TM24T-X9RMF-VWXK6-X8JC9-BFGM2'}
 If ($edition -eq 'Microsoft Windows Server 2008 Enterprise') {$productkey = 'YQGMW-MPWTJ-34KDK-48M3W-X4Q6V'}
 If ($edition -eq 'Microsoft Windows Server 2008 Datacenter') {$productkey = '7M67G-PC374-GR742-YH8V4-TCBY3'}
