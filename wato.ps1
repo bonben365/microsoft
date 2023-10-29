@@ -71,10 +71,10 @@ If ($edition -eq 'Microsoft Windows Server 2012 R2 Datacenter') {$productkey = '
 If ($edition7 -eq 'Windows 7 Professional') {$productkey = 'FJ82H-XT6CR-J8D7P-XQJJ2-GPDD4'}
 If ($edition7 -eq 'Windows 7 Enterprise') {$productkey = '33PXH-7Y6KF-2VJC9-XBBR8-HVTHH'}
 
-If ($edition7 -eq 'Windows 10 Enterprise LTSC 2019' -or $edition -eq 'Windows 10 Enterprise LTSC 2021') {$productkey = 'M7XTQ-FN8P6-TTKYV-9D4CC-J462D'}
+If ($edition7 -eq 'Windows 10 Enterprise LTSC 2019' -or $edition7 -eq 'Windows 10 Enterprise LTSC 2021') {$productkey = 'M7XTQ-FN8P6-TTKYV-9D4CC-J462D'}
 If ($edition7 -eq 'Windows 10 Enterprise LTSB 2016') {$productkey = 'DCPHK-NFMTC-H88MJ-PFHPY-QJ4BJ'}
 If ($edition7 -eq 'Windows 10 Enterprise 2015 LTSB') {$productkey = 'WNMTR-4C88C-JK8YV-HQ7T2-76DF9'}
-If ($edition7 -eq 'Windows 10 Enterprise Evaluation' -or $edition -eq 'Windows 11 Enterprise Evaluation') {$productkey = 'NPPR9-FWDCX-D2C8J-H872K-2YT43'}
+If ($edition7 -eq 'Windows 10 Enterprise Evaluation' -or $edition7 -eq 'Windows 11 Enterprise Evaluation') {$productkey = 'NPPR9-FWDCX-D2C8J-H872K-2YT43'}
 
 
 &$env:windir\system32\cscript.exe $env:windir\system32\slmgr.vbs /ckms | Out-Null
