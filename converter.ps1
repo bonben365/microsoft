@@ -33,8 +33,7 @@ $Form.Icon = $Icon
 $convert = {
     
    Write-Host ===============================================================
-   Write-Host Name:           Windows Converter.
-   Write-Host Description:    Convert all Windows Editions for free.
+   Write-Host Description:    Upgrade, downgrade or convert all Windows Editions for free.
    Write-Host Website:        https://msgang.com
    Write-Host Script by:      Leo Nguyen
    Write-Host For detailed script execution: https://msgang.com/converter
@@ -120,6 +119,10 @@ function microsoftInstaller {
       if ($srv2022eval2std.Checked -eq $true) {$sku = 'ServerStandard'; $skuid = 'srv2022'; $key = 'VDYBN-27WPP-V4HQT-9VMD4-VMK7H'; Invoke-Command $convert}
       if ($srv2022eval2data.Checked -eq $true) {$sku = 'ServerDatacenter'; $skuid = 'srv2022'; $key = 'WX4NM-KYWYW-QJJR4-XV3QB-6VM33'; Invoke-Command $convert}
 
+      #Windows Server 2012 R2 Editions
+      if ($srv2012rstd.Checked -eq $true) {$sku = 'ServerStandard'; $skuid = 'srv2012r2'; $key = 'D2N9P-3P6X9-2R39C-7RTCD-MDVJX'; Invoke-Command $convert}
+      if ($srv2012r2data.Checked -eq $true) {$sku = 'ServerDatacenter'; $skuid = 'srv2012r2'; $key = 'W3GGN-FT8W3-Y4M27-J84CP-Q3VJ9'; Invoke-Command $convert}
+
    } #end try
    catch {
       $outputBox.text = "`nOperation could not be completed"
@@ -169,6 +172,12 @@ $groupboxsrv2022.Location = New-Object System.Drawing.Size(370,200)
 $groupboxsrv2022.size = New-Object System.Drawing.Size(170,130) 
 $groupboxsrv2022.text = "Windows Server 2022"
 $Form.Controls.Add($groupboxsrv2022)
+
+$groupboxsrv2012r2 = New-Object System.Windows.Forms.GroupBox
+$groupboxsrv2012r2.Location = New-Object System.Drawing.Size(550,200) 
+$groupboxsrv2012r2.size = New-Object System.Drawing.Size(170,130) 
+$groupboxsrv2012r2.text = "Windows Server 2012 R2"
+$Form.Controls.Add($groupboxsrv2012r2)
 
 # label
 $objLabel = New-Object System.Windows.Forms.label
@@ -322,6 +331,7 @@ $srv2019eval2data.Size = New-Object System.Drawing.Size(150,20)
 $srv2019eval2data.Text = "Evaluation to Datacenter"
 $groupboxsrv2019.Controls.Add($srv2019eval2data)
 ############################################## End Server 2019 checkboxes
+
 ############################################## Start Server 2022 checkboxes
 $srv2022std = New-Object System.Windows.Forms.RadioButton
 $srv2022std.Location = New-Object System.Drawing.Size(10,20)
@@ -348,6 +358,23 @@ $srv2022eval2data.Size = New-Object System.Drawing.Size(150,20)
 $srv2022eval2data.Text = "Evaluation to Datacenter"
 $groupboxsrv2022.Controls.Add($srv2022eval2data)
 ############################################## End Server 2022 checkboxes
+
+
+############################################## Start Server 2012 R2 checkboxes
+$srv2012r2std = New-Object System.Windows.Forms.RadioButton
+$srv2012r2std.Location = New-Object System.Drawing.Size(10,20)
+$srv2012r2std.Size = New-Object System.Drawing.Size(140,20)
+$srv2012r2std.Checked = $false
+$srv2012r2std.Text = "Standard"
+$groupboxsrv2012r2.Controls.Add($srv2012r2std)
+
+$srv2012r2data = New-Object System.Windows.Forms.RadioButton
+$srv2012r2data.Location = New-Object System.Drawing.Size(10,40)
+$srv2012r2data.Size = New-Object System.Drawing.Size(140,20)
+$srv2012r2data.Text = "Datacenter"
+$groupboxsrv2012r2.Controls.Add($srv2012r2data)
+############################################## End Server 2012 R2 checkboxes
+
 ############################################## Start Windows 10 Eval checkboxes
 $10Eval2Pro = New-Object System.Windows.Forms.RadioButton
 $10Eval2Pro.Location = New-Object System.Drawing.Size(10,20)
