@@ -1,12 +1,9 @@
 
 Write-Host ===============================================================
-Write-Host Name:           Microsoft Office Activator
-Write-Host Description:    Activate all Offices Editions for free.
-Write-Host Version:        1.0
-Write-Host Date :          26/7/2023
+Write-Host Name:           Microsoft Office Activator by Leo with 💖
+Write-Host Description:    Activate all Offices Editions for free without any software.
 Write-Host Website:        https://msgang.com
 Write-Host Script by:      Leo Nguyen
-Write-Host For detailed script execution: https://msgang.com/office
 Write-Host ===============================================================
 
 if (-not([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {
