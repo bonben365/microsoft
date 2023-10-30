@@ -1,10 +1,10 @@
 
-Write-Host ===============================================================
-Write-Host Name:           Microsoft Office Activator by Leo with 💖
+Write-Host =========================================================================
+Write-Host Name:           Microsoft Office Activator by Leo.
 Write-Host Description:    Activate all Offices Editions for free without any software.
 Write-Host Website:        https://msgang.com
 Write-Host Script by:      Leo Nguyen
-Write-Host ===============================================================
+Write-Host =========================================================================
 
 if (-not([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {
     Write-Warning "You need to have Administrator rights to run this script!`nPlease re-run this script as an Administrator in an elevated powershell prompt!"
@@ -18,16 +18,19 @@ if ((Test-Path -Path "$path64\ospp.vbs")) { Set-Location $path64 -ErrorAction Si
 
 #$ospp = (Resolve-Path -Path "C:\Program Files*\Microsoft Office\Office1*\ospp.vbs").Path
 #Find OSPP.vbs path and run the command with the dstatus option (Last 1...)
-Write-Host '---------------------------------------------------------------'
-Write-Host "Processing...It could take a while, please be patient."                 
 Write-Host
-
+Write-Host "Checking installed Office editions..." -ForegroundColor Green
 $dstatus = Invoke-Expression -Command "cscript.exe ospp.vbs /dstatus"
 #$keys = $dstatus | Select-String -SimpleMatch "Last 5" | ForEach-Object -Process { $_.tostring().split(" ")[-1]}
 #foreach ($key in $keys) {
 #    cscript ospp.vbs /unpkey:$key | Out-Null
 #}
 
+$apps = $dstatus | Select-String -SimpleMatch "NAME:" | ForEach-Object -Process { $_.tostring().split(" ")[-2]}
+foreach ($app in $apps) {
+    Write-Host "Installed Office: $app `n" -ForegroundColor Yellow
+    Write-Host "Activating $app, please be patient.`n" -ForegroundColor Green
+}
 #For Office 2019 VL.
 if (($dstatus | Select-String -SimpleMatch "Office19").Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "Office 19, VOLUME").Count -gt 0 ) {
 
@@ -232,4 +235,4 @@ if (($dstatus | Select-String -SimpleMatch "OfficeProfessional").Count -gt 0 -an
 }
 
 cscript ospp.vbs /sethst:kms.msgang.com | Out-Null
-cscript ospp.vbs /act
+cscript //nologo ospp.vbs /act
