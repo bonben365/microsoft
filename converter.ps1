@@ -252,12 +252,12 @@ $11Pro.Size = New-Object System.Drawing.Size(140,20)
 $11Pro.Text = "Pro"
 $groupbox11.Controls.Add($11Pro)
 
-$11ProWorskstation = New-Object System.Windows.Forms.RadioButton
-$11ProWorskstation.Location = New-Object System.Drawing.Size(10,80)
-$11ProWorskstation.Size = New-Object System.Drawing.Size(140,20)
-$11ProWorskstation.Text = "Pro for Workstation"
-$11ProWorskstation.AutoSize = $true
-$groupbox11.Controls.Add($11ProWorskstation)
+$11ProWorkstation = New-Object System.Windows.Forms.RadioButton
+$11ProWorkstation.Location = New-Object System.Drawing.Size(10,80)
+$11ProWorkstation.Size = New-Object System.Drawing.Size(140,20)
+$11ProWorkstation.Text = "Pro for Workstation"
+$11ProWorkstation.AutoSize = $true
+$groupbox11.Controls.Add($11ProWorkstation)
 
 $11Enterprise = New-Object System.Windows.Forms.RadioButton
 $11Enterprise.Location = New-Object System.Drawing.Size(10,100)
