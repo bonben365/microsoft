@@ -63,8 +63,8 @@ $convert = {
    Write-Host "Close the window to exit." -ForegroundColor Green 
 
    #Cleanup
-   Set-Location $env:temp
-   Remove-Item -Path $env:temp\temp -Recurse -Force
+   #Set-Location $env:temp
+   #Remove-Item -Path $env:temp\temp -Recurse -Force
 }
 ############################################## Start functions
 function microsoftInstaller {
