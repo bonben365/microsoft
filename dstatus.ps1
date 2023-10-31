@@ -5,4 +5,4 @@ if (-not([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdenti
 
 $path = "C:\Program Files*\Microsoft Office\Office16\ospp.vbs"
 $ospp = Resolve-Path -Path $path | Select-Object -ExpandProperty Path -Last 1
-cscript $ospp /dstatus
+cscript //nologo $ospp /dstatus
