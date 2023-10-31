@@ -1,9 +1,8 @@
-Write-Host =========================================================================
-Write-Host Name:           Microsoft Office Converter.
+Write-Host ==================================================================
 Write-Host Description:    Converting Office 2016/2019/2021 Retail to Volume.
 Write-Host Website:        https://msgang.com
 Write-Host Script by:      Leo Nguyen
-Write-Host =========================================================================
+Write-Host ==================================================================
 
 if (-not([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {
     Write-Warning "You need to have Administrator rights to run this script!`nPlease re-run this script as an Administrator in an elevated powershell prompt!"
