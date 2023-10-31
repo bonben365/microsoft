@@ -10,13 +10,13 @@ $DStatus = Invoke-Expression -Command $Command
 #Get product keys from OSPP.vbs output.
 $ProductKeys = $DStatus | Select-String -SimpleMatch "Last 5" | ForEach-Object -Process { $_.tostring().split(" ")[-1]}
 if ($ProductKeys) {
-    Write-Output -InputObject "Found $(($ProductKeys | Measure-Object).Count) productkeys, proceeding with deactivation..." -ForegroundColor Green
+    Write-Host "Found $(($ProductKeys | Measure-Object).Count) productkeys, proceeding with deactivation..." -ForegroundColor Green
     #Run OSPP.vbs per key with /unpkey option.
     foreach ($ProductKey in $ProductKeys) {
-        Write-Output -InputObject "Processing productkey $ProductKey" -ForegroundColor Green
+        Write-Host "Processing productkey $ProductKey" -ForegroundColor Green
         $Command = "cscript.exe '$OSPP' /unpkey:$ProductKey"
         Invoke-Expression -Command $Command
     }
 } else {
-    Write-Output -InputObject "Found no keys to remove... " -ForegroundColor Green
+    Write-Host "Found no keys to remove... " -ForegroundColor Green
 }
