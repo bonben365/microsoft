@@ -10,6 +10,19 @@ if (-not([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdenti
     break
 }
 
+function Remove-OfficeRetail {
+    $ProductKeys = $DStatus | Select-String -SimpleMatch "Last 5" | ForEach-Object -Process { $_.tostring().split(" ")[-1]}
+    if ($ProductKeys) {
+    Write-Output -InputObject "Found $(($ProductKeys | Measure-Object).Count) productkeys, proceeding with deactivation..."
+    #Run OSPP.vbs per key with /unpkey option.
+    foreach ($ProductKey in $ProductKeys) {
+        Write-Output -InputObject "Processing productkey $ProductKey"
+        $Command = "cscript.exe ospp.vbs /unpkey:$ProductKey"
+        Invoke-Expression -Command $Command
+    }
+    } else {}
+}
+
 $path64 = "C:\Program Files\Microsoft Office\Office1*"
 $path32 = "C:\Program Files (x86)\Microsoft Office\Office1*"
 if ((Test-Path -Path "$path32\ospp.vbs")) { Set-Location $path32 -ErrorAction SilentlyContinue }
@@ -55,6 +68,7 @@ if (($dstatus | Select-String -SimpleMatch "Office19" | Measure-Object).Count -g
 
 #For Office 2019 Retail.
 if (($dstatus | Select-String -SimpleMatch "Office19Professional" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "Office 19, RETAIL" | Measure-Object).Count -gt 0 ) {
+    Remove-OfficeRetail
     $licenses = Get-Item "..\root\Licenses16\ProPlus2019VL*.xrm-ms"
     foreach ($license in $licenses) {
         cscript ospp.vbs /inslic:"..\root\Licenses16\$($license.Name)" | Out-Null
@@ -63,6 +77,7 @@ if (($dstatus | Select-String -SimpleMatch "Office19Professional" | Measure-Obje
 }
 
 if (($dstatus | Select-String -SimpleMatch "Office19ProPlus" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "Office 19, RETAIL" | Measure-Object).Count -gt 0 ) {
+    Remove-OfficeRetail
     $licenses = Get-Item "..\root\Licenses16\ProPlus2019VL*.xrm-ms"
     foreach ($license in $licenses) {
         cscript ospp.vbs /inslic:"..\root\Licenses16\$($license.Name)" | Out-Null
@@ -71,6 +86,7 @@ if (($dstatus | Select-String -SimpleMatch "Office19ProPlus" | Measure-Object).C
 }
 
 if (($dstatus | Select-String -SimpleMatch "Office19Standard" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "Office 19, RETAIL" | Measure-Object).Count -gt 0 ) {
+    Remove-OfficeRetail
     $licenses = Get-Item "..\root\Licenses16\Standard2019VL*.xrm-ms"
     foreach ($license in $licenses) {
         cscript ospp.vbs /inslic:"..\root\Licenses16\$($license.Name)" | Out-Null
@@ -79,6 +95,7 @@ if (($dstatus | Select-String -SimpleMatch "Office19Standard" | Measure-Object).
 }
 
 if (($dstatus | Select-String -SimpleMatch "Office19VisioPro" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "Office 19, RETAIL" | Measure-Object).Count -gt 0 ) {
+    Remove-OfficeRetail
     $licenses = Get-Item "..\root\Licenses16\VisioPro2019VL*.xrm-ms"
     foreach ($license in $licenses) {
         cscript ospp.vbs /inslic:"..\root\Licenses16\$($license.Name)" | Out-Null
@@ -87,6 +104,7 @@ if (($dstatus | Select-String -SimpleMatch "Office19VisioPro" | Measure-Object).
 }
 
 if (($dstatus | Select-String -SimpleMatch "Office19ProjectPro" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "Office 19, RETAIL" | Measure-Object).Count -gt 0 ) {
+    Remove-OfficeRetail
     $licenses = Get-Item "..\root\Licenses16\ProjectPro2019VL*.xrm-ms"
     foreach ($license in $licenses) {
         cscript ospp.vbs /inslic:"..\root\Licenses16\$($license.Name)" | Out-Null
@@ -119,6 +137,7 @@ if (($dstatus | Select-String -SimpleMatch "Office21" | Measure-Object).Count -g
 
 #For Office 2021 Retail.
 if (($dstatus | Select-String -SimpleMatch "Office21Professional" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "Office 21, RETAIL" | Measure-Object).Count -gt 0 ) {
+    Remove-OfficeRetail
     $licenses = Get-Item "..\root\Licenses16\ProPlus2021VL*.xrm-ms"
     foreach ($license in $licenses) {
         cscript ospp.vbs /inslic:"..\root\Licenses16\$($license.Name)" | Out-Null
@@ -127,6 +146,7 @@ if (($dstatus | Select-String -SimpleMatch "Office21Professional" | Measure-Obje
 }
 
 if (($dstatus | Select-String -SimpleMatch "Office21ProPlus" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "Office 21, RETAIL" | Measure-Object).Count -gt 0 ) {
+    Remove-OfficeRetail
     $licenses = Get-Item "..\root\Licenses16\ProPlus2021VL*.xrm-ms"
     foreach ($license in $licenses) {
         cscript ospp.vbs /inslic:"..\root\Licenses16\$($license.Name)" | Out-Null
@@ -135,6 +155,7 @@ if (($dstatus | Select-String -SimpleMatch "Office21ProPlus" | Measure-Object).C
 }
 
 if (($dstatus | Select-String -SimpleMatch "Office21Standard" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "Office 21, RETAIL" | Measure-Object).Count -gt 0 ) {
+    Remove-OfficeRetail
     $licenses = Get-Item "..\root\Licenses16\Standard2021VL*.xrm-ms"
     foreach ($license in $licenses) {
         cscript ospp.vbs /inslic:"..\root\Licenses16\$($license.Name)" | Out-Null
@@ -143,6 +164,7 @@ if (($dstatus | Select-String -SimpleMatch "Office21Standard" | Measure-Object).
 }
 
 if (($dstatus | Select-String -SimpleMatch "Office21VisioPro" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "Office 21, RETAIL" | Measure-Object).Count -gt 0 ) {
+    Remove-OfficeRetail
     $licenses = Get-Item "..\root\Licenses16\VisioPro2021VL*.xrm-ms"
     foreach ($license in $licenses) {
         cscript ospp.vbs /inslic:"..\root\Licenses16\$($license.Name)" | Out-Null
@@ -151,6 +173,7 @@ if (($dstatus | Select-String -SimpleMatch "Office21VisioPro" | Measure-Object).
 }
 
 if (($dstatus | Select-String -SimpleMatch "Office21ProjectPro" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "Office 21, RETAIL" | Measure-Object).Count -gt 0 ) {
+    Remove-OfficeRetail
     $licenses = Get-Item "..\root\Licenses16\ProjectPro2021VL*.xrm-ms"
     foreach ($license in $licenses) {
         cscript ospp.vbs /inslic:"..\root\Licenses16\$($license.Name)" | Out-Null
@@ -169,6 +192,7 @@ if (($dstatus | Select-String -SimpleMatch "Office16Standard" | Measure-Object).
 
 #For Office 2016 Retail.
 if (($dstatus | Select-String -SimpleMatch "Office16Professional" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "Office 16, RETAIL" | Measure-Object).Count -gt 0 ) {
+    Remove-OfficeRetail
     cscript ospp.vbs /inslic:"..\root\Licenses16\ProPlusVL_KMS_Client-ppd.xrm-ms" | Out-Null
     cscript ospp.vbs /inslic:"..\root\Licenses16\ProPlusVL_KMS_Client-ul.xrm-ms" | Out-Null
     cscript ospp.vbs /inslic:"..\root\Licenses16\ProPlusVL_KMS_Client-ul-oob.xrm-ms" | Out-Null
@@ -180,6 +204,7 @@ if (($dstatus | Select-String -SimpleMatch "Office16Professional" | Measure-Obje
 }
 
 if (($dstatus | Select-String -SimpleMatch "Office16Standard" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "Office 16, RETAIL" | Measure-Object).Count -gt 0 ) {
+    Remove-OfficeRetail
     cscript ospp.vbs /inslic:"..\root\Licenses16\StandardVL_KMS_Client-ppd.xrm-ms" | Out-Null
     cscript ospp.vbs /inslic:"..\root\Licenses16\StandardVL_KMS_Client-ul.xrm-ms" | Out-Null
     cscript ospp.vbs /inslic:"..\root\Licenses16\StandardVL_KMS_Client-ul-oob.xrm-ms" | Out-Null
@@ -191,6 +216,7 @@ if (($dstatus | Select-String -SimpleMatch "Office16Standard" | Measure-Object).
 }
 
 if (($dstatus | Select-String -SimpleMatch "Office16VisioPro" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "Office 16, RETAIL" | Measure-Object).Count -gt 0 ) {
+    Remove-OfficeRetail
     cscript ospp.vbs /inslic:"..\root\Licenses16\VisioProVL_KMS_Client-ppd.xrm-ms" | Out-Null
     cscript ospp.vbs /inslic:"..\root\Licenses16\VisioProVL_KMS_Client-ul.xrm-ms" | Out-Null
     cscript ospp.vbs /inslic:"..\root\Licenses16\VisioProVL_KMS_Client-ul-oob.xrm-ms" | Out-Null
@@ -202,6 +228,7 @@ if (($dstatus | Select-String -SimpleMatch "Office16VisioPro" | Measure-Object).
 }
 
 if (($dstatus | Select-String -SimpleMatch "Office16ProjectPro" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "Office 16, RETAIL" | Measure-Object).Count -gt 0 ) {
+    Remove-OfficeRetail
     cscript ospp.vbs /inslic:"..\root\Licenses16\ProjectProVL_KMS_Client-ppd.xrm-ms" | Out-Null
     cscript ospp.vbs /inslic:"..\root\Licenses16\ProjectProVL_KMS_Client-ul.xrm-ms" | Out-Null
     cscript ospp.vbs /inslic:"..\root\Licenses16\ProjectProVL_KMS_Client-ul-oob.xrm-ms" | Out-Null
@@ -223,6 +250,7 @@ if (($dstatus | Select-String -SimpleMatch "OfficeStandard" | Measure-Object).Co
 
 #For Office 2013 Retail.
 if (($dstatus | Select-String -SimpleMatch "OfficeProfessional" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "RETAIL" | Measure-Object).Count -gt 0 ) {
+    Remove-OfficeRetail
     New-Item -Path $env:temp\tmp -ItemType Directory -Force | Out-Null
     (New-Object Net.WebClient).DownloadFile('https://raw.githubusercontent.com/bonben365/microsoft/main/Office2013_Library/proplusvl_kms_client-ppd.xrm-ms', "$env:temp\tmp\proplusvl_kms_client-ppd.xrm-ms") | Out-Null
     (New-Object Net.WebClient).DownloadFile('https://raw.githubusercontent.com/bonben365/microsoft/main/Office2013_Library/proplusvl_kms_client-ul-oob.xrm-ms', "$env:temp\tmp\proplusvl_kms_client-ul-oob.xrm-ms") | Out-Null
