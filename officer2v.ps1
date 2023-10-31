@@ -20,6 +20,7 @@ function Remove-OfficeRetail {
             $Command = "cscript.exe //nologo ospp.vbs /unpkey:$ProductKey"
             Invoke-Expression -Command $Command
         }
+        Write-Host "Converting Office Retail to Volume..." -ForegroundColor Green
     } else {}
 }
 
@@ -37,7 +38,6 @@ foreach ($app in $apps) {
     Write-Host "Installed Office: $app `n" -ForegroundColor Yellow
 }
 
-Write-Host "Converting Office Retail to Volume..." -ForegroundColor Green
 #For Office 2019 VL.
 if (($dstatus | Select-String -SimpleMatch "Office19" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "Office 19, VOLUME" | Measure-Object).Count -gt 0 ) {
 
