@@ -1,5 +1,5 @@
 Write-Host ==================================================================
-Write-Host Description:    Converting Office 2016/2019/2021 Retail to Volume.
+Write-Host Description:    Converting Office 2013/2016/2019/2021 Retail to Volume.
 Write-Host Website:        https://msgang.com
 Write-Host Script by:      Leo Nguyen
 Write-Host ==================================================================
