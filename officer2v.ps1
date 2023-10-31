@@ -21,6 +21,7 @@ function Remove-OfficeRetail {
             Invoke-Expression -Command $Command | Out-Null
         }
         Write-Host "Converting Office Retail to Volume..." -ForegroundColor Green
+        Write-Host
     } else {}
 }
 
