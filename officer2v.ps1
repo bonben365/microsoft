@@ -13,11 +13,11 @@ if (-not([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdenti
 function Remove-OfficeRetail {
     $ProductKeys = $DStatus | Select-String -SimpleMatch "Last 5" | ForEach-Object -Process { $_.tostring().split(" ")[-1]}
     if ($ProductKeys) {
-    Write-Host -InputObject "Found $(($ProductKeys | Measure-Object).Count) productkeys, proceeding with deactivation..." -ForegroundColor Green
+    Write-Host "Found $(($ProductKeys | Measure-Object).Count) productkeys, proceeding with deactivation..." -ForegroundColor Green
     
     foreach ($ProductKey in $ProductKeys) {
-        Write-Host -InputObject "Processing productkey $ProductKey" -ForegroundColor Green
-        $Command = "cscript.exe ospp.vbs /unpkey:$ProductKey"
+        Write-Host "Processing productkey $ProductKey" -ForegroundColor Green
+        $Command = "cscript.exe //nologo ospp.vbs /unpkey:$ProductKey"
         Invoke-Expression -Command $Command
     }
     } else {}
