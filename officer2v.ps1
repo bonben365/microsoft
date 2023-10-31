@@ -18,7 +18,7 @@ function Remove-OfficeRetail {
         foreach ($ProductKey in $ProductKeys) {
             Write-Host "Processing productkey $ProductKey" -ForegroundColor Green
             $Command = "cscript.exe //nologo ospp.vbs /unpkey:$ProductKey"
-            Invoke-Expression -Command $Command
+            Invoke-Expression -Command $Command | Out-Null
         }
         Write-Host "Converting Office Retail to Volume..." -ForegroundColor Green
     } else {}
