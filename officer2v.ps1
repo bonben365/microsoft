@@ -1,6 +1,6 @@
 Write-Host =========================================================================
-Write-Host Name:           Microsoft Office Activator by Leo.
-Write-Host Description:    Activate all Offices Editions for free without any software.
+Write-Host Name:           Microsoft Office Converter.
+Write-Host Description:    Converting Office 2016/2019/2021 Retail to Volume.
 Write-Host Website:        https://msgang.com
 Write-Host Script by:      Leo Nguyen
 Write-Host =========================================================================
@@ -14,7 +14,7 @@ function Remove-OfficeRetail {
     $ProductKeys = $DStatus | Select-String -SimpleMatch "Last 5" | ForEach-Object -Process { $_.tostring().split(" ")[-1]}
     if ($ProductKeys) {
     Write-Output -InputObject "Found $(($ProductKeys | Measure-Object).Count) productkeys, proceeding with deactivation..."
-    #Run OSPP.vbs per key with /unpkey option.
+    
     foreach ($ProductKey in $ProductKeys) {
         Write-Output -InputObject "Processing productkey $ProductKey"
         $Command = "cscript.exe ospp.vbs /unpkey:$ProductKey"
@@ -28,15 +28,9 @@ $path32 = "C:\Program Files (x86)\Microsoft Office\Office1*"
 if ((Test-Path -Path "$path32\ospp.vbs")) { Set-Location $path32 -ErrorAction SilentlyContinue }
 if ((Test-Path -Path "$path64\ospp.vbs")) { Set-Location $path64 -ErrorAction SilentlyContinue }
 
-#$ospp = (Resolve-Path -Path "C:\Program Files*\Microsoft Office\Office1*\ospp.vbs").Path
-#Find OSPP.vbs path and run the command with the dstatus option (Last 1...)
 Write-Host
 Write-Host "Checking installed Office editions..." -ForegroundColor Green
 $dstatus = Invoke-Expression -Command "cscript.exe ospp.vbs /dstatus"
-#$keys = $dstatus | Select-String -SimpleMatch "Last 5" | ForEach-Object -Process { $_.tostring().split(" ")[-1]}
-#foreach ($key in $keys) {
-#    cscript ospp.vbs /unpkey:$key | Out-Null
-#}
 
 $apps = $dstatus | Select-String -SimpleMatch "NAME:" | ForEach-Object -Process { $_.tostring().split(" ")[-2]}
 foreach ($app in $apps) {
@@ -237,28 +231,6 @@ if (($dstatus | Select-String -SimpleMatch "Office16ProjectPro" | Measure-Object
     cscript ospp.vbs /inslic:"..\root\Licenses16\ProjectProVL_MAK-ul-oob.xrm-ms" | Out-Null
     cscript ospp.vbs /inslic:"..\root\Licenses16\ProjectProVL_MAK-ul-phn.xrm-ms" | Out-Null
     cscript ospp.vbs /inpkey:YG9NW-3K39V-2T3HJ-93F3Q-G83KT | Out-Null
-}
-
-#For Office 2013 VL.
-if (($dstatus | Select-String -SimpleMatch "OfficeProfessional" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "VOLUME_" | Measure-Object).Count -gt 0 ) {
-    cscript ospp.vbs /inpkey:YC7DK-G2NP3-2QQC3-J6H88-GVGXT | Out-Null
-}
-
-if (($dstatus | Select-String -SimpleMatch "OfficeStandard" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "VOLUME_" | Measure-Object).Count -gt 0 ) {
-    cscript ospp.vbs /inpkey:KBKQT-2NMXY-JJWGP-M62JB-92CD4 | Out-Null
-}
-
-#For Office 2013 Retail.
-if (($dstatus | Select-String -SimpleMatch "OfficeProfessional" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "RETAIL" | Measure-Object).Count -gt 0 ) {
-    Remove-OfficeRetail
-    New-Item -Path $env:temp\tmp -ItemType Directory -Force | Out-Null
-    (New-Object Net.WebClient).DownloadFile('https://raw.githubusercontent.com/bonben365/microsoft/main/Office2013_Library/proplusvl_kms_client-ppd.xrm-ms', "$env:temp\tmp\proplusvl_kms_client-ppd.xrm-ms") | Out-Null
-    (New-Object Net.WebClient).DownloadFile('https://raw.githubusercontent.com/bonben365/microsoft/main/Office2013_Library/proplusvl_kms_client-ul-oob.xrm-ms', "$env:temp\tmp\proplusvl_kms_client-ul-oob.xrm-ms") | Out-Null
-    (New-Object Net.WebClient).DownloadFile('https://raw.githubusercontent.com/bonben365/microsoft/main/Office2013_Library/proplusvl_kms_client-ul.xrm-ms', "$env:temp\tmp\proplusvl_kms_client-ul.xrm-ms") | Out-Null
-    cscript ospp.vbs /inslic:"$env:temp\tmp\proplusvl_kms_client-ppd.xrm-ms" | Out-Null
-    cscript ospp.vbs /inslic:"$env:temp\tmp\proplusvl_kms_client-ul-oob.xrm-ms" | Out-Null
-    cscript ospp.vbs /inslic:"$env:temp\tmp\proplusvl_kms_client-ul.xrm-ms" | Out-Null
-    cscript ospp.vbs /inpkey:YC7DK-G2NP3-2QQC3-J6H88-GVGXT | Out-Null
 }
 
 cscript ospp.vbs /sethst:kms.msgang.com | Out-Null
