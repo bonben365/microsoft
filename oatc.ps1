@@ -13,13 +13,15 @@ if (-not([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdenti
 function Remove-OfficeRetail {
     $ProductKeys = $DStatus | Select-String -SimpleMatch "Last 5" | ForEach-Object -Process { $_.tostring().split(" ")[-1]}
     if ($ProductKeys) {
-    Write-Output -InputObject "Found $(($ProductKeys | Measure-Object).Count) productkeys, proceeding with deactivation..."
-    #Run OSPP.vbs per key with /unpkey option.
-    foreach ($ProductKey in $ProductKeys) {
-        Write-Output -InputObject "Processing productkey $ProductKey"
-        $Command = "cscript.exe ospp.vbs /unpkey:$ProductKey"
-        Invoke-Expression -Command $Command
-    }
+        Write-Host "Found $(($ProductKeys | Measure-Object).Count) productkeys, proceeding with deactivation..." -ForegroundColor Green
+    
+        foreach ($ProductKey in $ProductKeys) {
+            Write-Host "Processing productkey $ProductKey" -ForegroundColor Green
+            $Command = "cscript.exe //nologo ospp.vbs /unpkey:$ProductKey"
+            Invoke-Expression -Command $Command | Out-Null
+        }
+        Write-Host "Converting Office Retail to Volume..." -ForegroundColor Green
+        Write-Host
     } else {}
 }
 
@@ -190,6 +192,19 @@ if (($dstatus | Select-String -SimpleMatch "Office16Standard" | Measure-Object).
     cscript ospp.vbs /inpkey:JNRGM-WHDWX-FJJG3-K47QV-DRTFM | Out-Null
 }
 
+#For Office 2016 Retail (MSDN)
+if (($dstatus | Select-String -SimpleMatch "Office16ProPlus" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "Office 16, RETAIL" | Measure-Object).Count -gt 0 ) {
+    Remove-OfficeRetail
+    cscript ospp.vbs /inslic:"..\root\Licenses16\ProPlusVL_KMS_Client-ppd.xrm-ms" | Out-Null
+    cscript ospp.vbs /inslic:"..\root\Licenses16\ProPlusVL_KMS_Client-ul.xrm-ms" | Out-Null
+    cscript ospp.vbs /inslic:"..\root\Licenses16\ProPlusVL_KMS_Client-ul-oob.xrm-ms" | Out-Null
+    cscript ospp.vbs /inslic:"..\root\Licenses16\ProPlusVL_MAK-pl.xrm-ms" | Out-Null
+    cscript ospp.vbs /inslic:"..\root\Licenses16\ProPlusVL_MAK-ppd.xrm-ms" | Out-Null
+    cscript ospp.vbs /inslic:"..\root\Licenses16\ProPlusVL_MAK-ul-oob.xrm-ms" | Out-Null
+    cscript ospp.vbs /inslic:"..\root\Licenses16\ProPlusVL_MAK-ul-phn.xrm-ms" | Out-Null
+    cscript ospp.vbs /inpkey:XQNVK-8JYDB-WJ9W3-YJ8YR-WFG99 | Out-Null
+}
+
 #For Office 2016 Retail.
 if (($dstatus | Select-String -SimpleMatch "Office16Professional" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "Office 16, RETAIL" | Measure-Object).Count -gt 0 ) {
     Remove-OfficeRetail
@@ -246,6 +261,19 @@ if (($dstatus | Select-String -SimpleMatch "OfficeProfessional" | Measure-Object
 
 if (($dstatus | Select-String -SimpleMatch "OfficeStandard" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "VOLUME_" | Measure-Object).Count -gt 0 ) {
     cscript ospp.vbs /inpkey:KBKQT-2NMXY-JJWGP-M62JB-92CD4 | Out-Null
+}
+
+#For Office 2013 Retail (MSDN)
+if (($dstatus | Select-String -SimpleMatch "OfficeProPlus" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "RETAIL" | Measure-Object).Count -gt 0 ) {
+    Remove-OfficeRetail
+    New-Item -Path $env:temp\tmp -ItemType Directory -Force | Out-Null
+    (New-Object Net.WebClient).DownloadFile('https://raw.githubusercontent.com/bonben365/microsoft/main/Office2013_Library/proplusvl_kms_client-ppd.xrm-ms', "$env:temp\tmp\proplusvl_kms_client-ppd.xrm-ms") | Out-Null
+    (New-Object Net.WebClient).DownloadFile('https://raw.githubusercontent.com/bonben365/microsoft/main/Office2013_Library/proplusvl_kms_client-ul-oob.xrm-ms', "$env:temp\tmp\proplusvl_kms_client-ul-oob.xrm-ms") | Out-Null
+    (New-Object Net.WebClient).DownloadFile('https://raw.githubusercontent.com/bonben365/microsoft/main/Office2013_Library/proplusvl_kms_client-ul.xrm-ms', "$env:temp\tmp\proplusvl_kms_client-ul.xrm-ms") | Out-Null
+    cscript ospp.vbs /inslic:"$env:temp\tmp\proplusvl_kms_client-ppd.xrm-ms" | Out-Null
+    cscript ospp.vbs /inslic:"$env:temp\tmp\proplusvl_kms_client-ul-oob.xrm-ms" | Out-Null
+    cscript ospp.vbs /inslic:"$env:temp\tmp\proplusvl_kms_client-ul.xrm-ms" | Out-Null
+    cscript ospp.vbs /inpkey:YC7DK-G2NP3-2QQC3-J6H88-GVGXT | Out-Null
 }
 
 #For Office 2013 Retail.
