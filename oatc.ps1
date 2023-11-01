@@ -35,10 +35,6 @@ if ((Test-Path -Path "$path64\ospp.vbs")) { Set-Location $path64 -ErrorAction Si
 Write-Host
 Write-Host "Checking installed Office editions..." -ForegroundColor Green
 $dstatus = Invoke-Expression -Command "cscript.exe ospp.vbs /dstatus"
-#$keys = $dstatus | Select-String -SimpleMatch "Last 5" | ForEach-Object -Process { $_.tostring().split(" ")[-1]}
-#foreach ($key in $keys) {
-#    cscript ospp.vbs /unpkey:$key | Out-Null
-#}
 
 $apps = $dstatus | Select-String -SimpleMatch "NAME:" | ForEach-Object -Process { $_.tostring().split(" ")[-2]}
 foreach ($app in $apps) {
