@@ -3,7 +3,7 @@ if (-not([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdenti
     break
 }
 #Find OSPP.vbs path and run the command with the dstatus option (Last 1...)
-$OSPP = Resolve-Path -Path "C:\Program Files*\Microsoft Office\Office16\ospp.vbs" | Select-Object -ExpandProperty Path -Last 1
+$OSPP = Resolve-Path -Path "C:\Program Files*\Microsoft Office\Office1*\ospp.vbs" | Select-Object -ExpandProperty Path -Last 1
 Write-Host "OSPP Location is: $OSPP" -ForegroundColor Green
 $Command = "cscript.exe //nologo '$OSPP' /dstatus"
 $DStatus = Invoke-Expression -Command $Command
