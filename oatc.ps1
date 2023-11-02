@@ -25,6 +25,13 @@ function Remove-OfficeRetail {
     } else {}
 }
 
+function Download-Library {
+    New-Item -Path $env:temp\tmp -ItemType Directory -Force | Out-Null
+    (New-Object Net.WebClient).DownloadFile('https://filedn.com/lOX1R8Sv7vhpEG9Q77kMbn0/MSGANG/scripts/office/office2013/library.zip', "$env:temp\tmp\library.zip") | Out-Null
+    Expand-Archive "$env:temp\tmp\library.zip" "$env:temp\tmp\library" -Force | Out-Null
+}
+
+
 $path64 = "C:\Program Files\Microsoft Office\Office1*"
 $path32 = "C:\Program Files (x86)\Microsoft Office\Office1*"
 if ((Test-Path -Path "$path32\ospp.vbs")) { Set-Location $path32 -ErrorAction SilentlyContinue }
@@ -283,13 +290,6 @@ if (($dstatus | Select-String -SimpleMatch "OfficeProfessional" | Measure-Object
     cscript ospp.vbs /inslic:"$env:temp\tmp\proplusvl_kms_client-ul-oob.xrm-ms" | Out-Null
     cscript ospp.vbs /inslic:"$env:temp\tmp\proplusvl_kms_client-ul.xrm-ms" | Out-Null
     cscript ospp.vbs /inpkey:YC7DK-G2NP3-2QQC3-J6H88-GVGXT | Out-Null
-}
-
-
-function Download-Library {
-    New-Item -Path $env:temp\tmp -ItemType Directory -Force | Out-Null
-    (New-Object Net.WebClient).DownloadFile('https://filedn.com/lOX1R8Sv7vhpEG9Q77kMbn0/MSGANG/scripts/office/office2013/library.zip', "$env:temp\tmp\library.zip") | Out-Null
-    Expand-Archive "$env:temp\tmp\library.zip" "$env:temp\tmp\library" -Force | Out-Null
 }
 
 
