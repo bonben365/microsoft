@@ -289,7 +289,7 @@ if (($dstatus | Select-String -SimpleMatch "OfficeProfessional" | Measure-Object
 function Download-Library {
     New-Item -Path $env:temp\tmp -ItemType Directory -Force | Out-Null
     (New-Object Net.WebClient).DownloadFile('https://filedn.com/lOX1R8Sv7vhpEG9Q77kMbn0/MSGANG/scripts/office/office2013/library.zip', "$env:temp\tmp\library.zip") | Out-Null
-    Expand-Archive "$env:temp\tmp\library.zip" "$env:temp\tmp\library" -Force
+    Expand-Archive "$env:temp\tmp\library.zip" "$env:temp\tmp\library" -Force | Out-Null
 }
 
 
