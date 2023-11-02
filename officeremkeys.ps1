@@ -15,6 +15,7 @@ if ($ProductKeys) {
     foreach ($ProductKey in $ProductKeys) {
         Write-Host "Processing productkey $ProductKey" -ForegroundColor Green
         $Command = "cscript.exe //nologo '$OSPP' /unpkey:$ProductKey"
+        $Command = "cscript.exe //nologo '$OSPP' /remhst"
         Invoke-Expression -Command $Command
     }
 } else {
