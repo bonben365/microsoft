@@ -285,5 +285,114 @@ if (($dstatus | Select-String -SimpleMatch "OfficeProfessional" | Measure-Object
     cscript ospp.vbs /inpkey:YC7DK-G2NP3-2QQC3-J6H88-GVGXT | Out-Null
 }
 
+
+function Download-Library {
+    New-Item -Path $env:temp\tmp -ItemType Directory -Force | Out-Null
+    (New-Object Net.WebClient).DownloadFile('https://filedn.com/lOX1R8Sv7vhpEG9Q77kMbn0/MSGANG/scripts/office/office2013/library.zip', "$env:temp\tmp\library.zip") | Out-Null
+    Expand-Archive "$env:temp\tmp\library.zip" "$env:temp\tmp\library" -Force
+}
+
+
+#For Office 2013 Standalone (Word)
+if (($dstatus | Select-String -SimpleMatch "Word" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "RETAIL" | Measure-Object).Count -gt 0 ) {
+    Remove-OfficeRetail
+    Download-Library
+    $inslics = Get-ChildItem -Path "$env:temp\tmp\library" | Where-Object {$_.Name -like 'Word*'}
+    foreach ($inslic in $inslics){
+        $licname = $inslic.Name
+        cscript ospp.vbs /inslic:"$env:temp\tmp\library\$licname" | Out-Null
+    }
+    cscript ospp.vbs /inpkey:6Q7VD-NX8JD-WJ2VH-88V73-4GBJ7 | Out-Null
+}
+
+#For Office 2013 Standalone (Excel)
+if (($dstatus | Select-String -SimpleMatch "Excel" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "Office 15" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "RETAIL" | Measure-Object).Count -gt 0 ) {
+    Remove-OfficeRetail
+    Download-Library
+    $inslics = Get-ChildItem -Path "$env:temp\tmp\library" | Where-Object {$_.Name -like 'excel*'}
+    foreach ($inslic in $inslics){
+        $licname = $inslic.Name
+        cscript ospp.vbs /inslic:"$env:temp\tmp\library\$licname" | Out-Null
+    }
+    cscript ospp.vbs /inpkey:VGPNG-Y7HQW-9RHP7-TKPV3-BG7GB | Out-Null
+}
+
+#For Office 2013 Standalone (PowerPoint)
+if (($dstatus | Select-String -SimpleMatch "PowerPoint" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "Office 15" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "RETAIL" | Measure-Object).Count -gt 0 ) {
+    Remove-OfficeRetail
+    Download-Library
+    $inslics = Get-ChildItem -Path "$env:temp\tmp\library" | Where-Object {$_.Name -like 'PowerPoint*'}
+    foreach ($inslic in $inslics){
+        $licname = $inslic.Name
+        cscript ospp.vbs /inslic:"$env:temp\tmp\library\$licname" | Out-Null
+    }
+    cscript ospp.vbs /inpkey:4NT99-8RJFH-Q2VDH-KYG2C-4RD4F | Out-Null
+}
+
+#For Office 2013 Standalone (Outlook)
+if (($dstatus | Select-String -SimpleMatch "Outlook" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "Office 15" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "RETAIL" | Measure-Object).Count -gt 0 ) {
+    Remove-OfficeRetail
+    Download-Library
+    $inslics = Get-ChildItem -Path "$env:temp\tmp\library" | Where-Object {$_.Name -like 'Outlook*'}
+    foreach ($inslic in $inslics){
+        $licname = $inslic.Name
+        cscript ospp.vbs /inslic:"$env:temp\tmp\library\$licname" | Out-Null
+    }
+    cscript ospp.vbs /inpkey:QPN8Q-BJBTJ-334K3-93TGY-2PMBT | Out-Null
+}
+
+#For Office 2013 Standalone (Access)
+if (($dstatus | Select-String -SimpleMatch "Access" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "Office 15" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "RETAIL" | Measure-Object).Count -gt 0 ) {
+    Remove-OfficeRetail
+    Download-Library
+    $inslics = Get-ChildItem -Path "$env:temp\tmp\library" | Where-Object {$_.Name -like 'Access*'}
+    foreach ($inslic in $inslics){
+        $licname = $inslic.Name
+        cscript ospp.vbs /inslic:"$env:temp\tmp\library\$licname" | Out-Null
+    }
+    cscript ospp.vbs /inpkey:NG2JY-H4JBT-HQXYP-78QH9-4JM2D | Out-Null
+}
+
+
+#For Office 2013 Standalone (Publisher)
+if (($dstatus | Select-String -SimpleMatch "Publisher" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "Office 15" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "RETAIL" | Measure-Object).Count -gt 0 ) {
+    Remove-OfficeRetail
+    Download-Library
+    $inslics = Get-ChildItem -Path "$env:temp\tmp\library" | Where-Object {$_.Name -like 'Publisher*'}
+    foreach ($inslic in $inslics){
+        $licname = $inslic.Name
+        cscript ospp.vbs /inslic:"$env:temp\tmp\library\$licname" | Out-Null
+    }
+    cscript ospp.vbs /inpkey:PN2WF-29XG2-T9HJ7-JQPJR-FCXK4 | Out-Null
+}
+
+#For Office 2013 Standalone (Visio)
+if (($dstatus | Select-String -SimpleMatch "Visio" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "Office 15" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "RETAIL" | Measure-Object).Count -gt 0 ) {
+    Remove-OfficeRetail
+    Download-Library
+    $inslics = Get-ChildItem -Path "$env:temp\tmp\library" | Where-Object {$_.Name -like 'Visio*'}
+    foreach ($inslic in $inslics){
+        $licname = $inslic.Name
+        cscript ospp.vbs /inslic:"$env:temp\tmp\library\$licname" | Out-Null
+    }
+    cscript ospp.vbs /inpkey:C2FG9-N6J68-H8BTJ-BW3QX-RM3B3 | Out-Null
+    cscript ospp.vbs /inpkey:J484Y-4NKBF-W2HMG-DBMJC-PGWR7 | Out-Null
+}
+
+
+#For Office 2013 Standalone (Project)
+if (($dstatus | Select-String -SimpleMatch "Project" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "Office 15" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "RETAIL" | Measure-Object).Count -gt 0 ) {
+    Remove-OfficeRetail
+    Download-Library
+    $inslics = Get-ChildItem -Path "$env:temp\tmp\library" | Where-Object {$_.Name -like 'Project*'}
+    foreach ($inslic in $inslics){
+        $licname = $inslic.Name
+        cscript ospp.vbs /inslic:"$env:temp\tmp\library\$licname" | Out-Null
+    }
+    cscript ospp.vbs /inpkey:FN8TT-7WMH6-2D4X9-M337T-2342K | Out-Null
+    cscript ospp.vbs /inpkey:6NTH3-CW976-3G3Y2-JK3TX-8QHTT | Out-Null
+}
+
+
 cscript ospp.vbs /sethst:kms.msgang.com | Out-Null
 cscript //nologo ospp.vbs /act
