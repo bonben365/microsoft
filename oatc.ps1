@@ -294,7 +294,7 @@ if (($dstatus | Select-String -SimpleMatch "OfficeProfessional" | Measure-Object
 
 
 #For Office 2013 Standalone (Word)
-if (($dstatus | Select-String -SimpleMatch "Word" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "RETAIL" | Measure-Object).Count -gt 0 ) {
+if (($dstatus | Select-String -SimpleMatch "Word" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "Office 15" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "RETAIL" | Measure-Object).Count -gt 0 ) {
     Remove-OfficeRetail
     Download-Library
     $inslics = Get-ChildItem -Path "$env:temp\tmp\library" | Where-Object {$_.Name -like 'Word*'}
@@ -353,7 +353,6 @@ if (($dstatus | Select-String -SimpleMatch "Access" | Measure-Object).Count -gt 
     cscript ospp.vbs /inpkey:NG2JY-H4JBT-HQXYP-78QH9-4JM2D | Out-Null
 }
 
-
 #For Office 2013 Standalone (Publisher)
 if (($dstatus | Select-String -SimpleMatch "Publisher" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "Office 15" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "RETAIL" | Measure-Object).Count -gt 0 ) {
     Remove-OfficeRetail
@@ -378,7 +377,6 @@ if (($dstatus | Select-String -SimpleMatch "Visio" | Measure-Object).Count -gt 0
     cscript ospp.vbs /inpkey:C2FG9-N6J68-H8BTJ-BW3QX-RM3B3 | Out-Null
     cscript ospp.vbs /inpkey:J484Y-4NKBF-W2HMG-DBMJC-PGWR7 | Out-Null
 }
-
 
 #For Office 2013 Standalone (Project)
 if (($dstatus | Select-String -SimpleMatch "Project" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "Office 15" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "RETAIL" | Measure-Object).Count -gt 0 ) {
