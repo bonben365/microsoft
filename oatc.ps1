@@ -267,7 +267,7 @@ if (($dstatus | Select-String -SimpleMatch "OfficeStandard" | Measure-Object).Co
 }
 
 #For Office 2013 Retail (MSDN)
-if (($dstatus | Select-String -SimpleMatch "OfficeProPlus" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "RETAIL" | Measure-Object).Count -gt 0 ) {
+if (($dstatus | Select-String -SimpleMatch "OfficeProPlus" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "Office 15" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "RETAIL" | Measure-Object).Count -gt 0 ) {
     Remove-OfficeRetail
     New-Item -Path $env:temp\tmp -ItemType Directory -Force | Out-Null
     (New-Object Net.WebClient).DownloadFile('https://raw.githubusercontent.com/bonben365/microsoft/main/Office2013_Library/proplusvl_kms_client-ppd.xrm-ms', "$env:temp\tmp\proplusvl_kms_client-ppd.xrm-ms") | Out-Null
@@ -280,7 +280,7 @@ if (($dstatus | Select-String -SimpleMatch "OfficeProPlus" | Measure-Object).Cou
 }
 
 #For Office 2013 Retail.
-if (($dstatus | Select-String -SimpleMatch "OfficeProfessional" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "RETAIL" | Measure-Object).Count -gt 0 ) {
+if (($dstatus | Select-String -SimpleMatch "OfficeProfessional" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "Office 15" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "RETAIL" | Measure-Object).Count -gt 0 ) {
     Remove-OfficeRetail
     New-Item -Path $env:temp\tmp -ItemType Directory -Force | Out-Null
     (New-Object Net.WebClient).DownloadFile('https://raw.githubusercontent.com/bonben365/microsoft/main/Office2013_Library/proplusvl_kms_client-ppd.xrm-ms', "$env:temp\tmp\proplusvl_kms_client-ppd.xrm-ms") | Out-Null
