@@ -1,37 +1,16 @@
-Write-Host =========================================================================
-Write-Host Name:           Microsoft Office Activator by Leo.
-Write-Host Description:    Activate all Offices Editions for free without any software.
-Write-Host Website:        https://msgang.com
-Write-Host Script by:      Leo Nguyen
-Write-Host =========================================================================
+#Write-Host =========================================================================
+#Write-Host Name:           Microsoft Office Activator by Leo.
+#Write-Host Description:    Activate all Offices Editions for free without any software.
+#Write-Host Website:        https://msgang.com
+#Write-Host Script by:      Leo Nguyen
+#Write-Host =========================================================================
 
 if (-not([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {
     Write-Warning "You need to have Administrator rights to run this script!`nPlease re-run this script as an Administrator in an elevated powershell prompt!"
     break
 }
 
-function Remove-OfficeRetail {
-    $ProductKeys = $DStatus | Select-String -SimpleMatch "Last 5" | ForEach-Object -Process { $_.tostring().split(" ")[-1]}
-    if ($ProductKeys) {
-        Write-Host "Found $(($ProductKeys | Measure-Object).Count) productkeys, proceeding with deactivation..." -ForegroundColor Green
-    
-        foreach ($ProductKey in $ProductKeys) {
-            Write-Host "Processing productkey $ProductKey" -ForegroundColor Green
-            $Command = "cscript.exe //nologo ospp.vbs /unpkey:$ProductKey"
-            Invoke-Expression -Command $Command | Out-Null
-        }
-        Write-Host "Converting Office Retail to Volume..." -ForegroundColor Green
-        Write-Host
-    } else {}
-}
-
-function Download-Library {
-    New-Item -Path $env:temp\tmp -ItemType Directory -Force | Out-Null
-    (New-Object Net.WebClient).DownloadFile('https://filedn.com/lOX1R8Sv7vhpEG9Q77kMbn0/MSGANG/scripts/office/office2013/library.zip', "$env:temp\tmp\library.zip") | Out-Null
-    Expand-Archive "$env:temp\tmp\library.zip" "$env:temp\tmp\library" -Force | Out-Null
-}
-
-
+#Detect Office installations
 $path64 = "C:\Program Files\Microsoft Office\Office1*"
 $path32 = "C:\Program Files (x86)\Microsoft Office\Office1*"
 if ((Test-Path -Path "$path32\ospp.vbs")) { Set-Location $path32 -ErrorAction SilentlyContinue }
@@ -40,14 +19,14 @@ if ((Test-Path -Path "$path64\ospp.vbs")) { Set-Location $path64 -ErrorAction Si
 #$ospp = (Resolve-Path -Path "C:\Program Files*\Microsoft Office\Office1*\ospp.vbs").Path
 #Find OSPP.vbs path and run the command with the dstatus option (Last 1...)
 Write-Host
-Write-Host "Checking installed Office editions..." -ForegroundColor Green
+Write-Host "Checking Installed Office editions..." -ForegroundColor Green
 $dstatus = Invoke-Expression -Command "cscript.exe ospp.vbs /dstatus"
 
 $apps = $dstatus | Select-String -SimpleMatch "NAME:" | ForEach-Object -Process { $_.tostring().split(" ")[-2]}
-foreach ($app in $apps) {
-    Write-Host "Installed Office: $app `n" -ForegroundColor Yellow
-    Write-Host "Activating $app, please be patient.`n" -ForegroundColor Green
-}
+$retailCount = ($dstatus | Select-String -SimpleMatch "RETAIL" | Measure-Object).Count
+$volumeCount = ($dstatus | Select-String -SimpleMatch "VOLUME" | Measure-Object).Count
+Write-Host "Number of Installed Office apps: VOLUME: $volumeCount - RETAIL: $retailCount" -ForegroundColor Green
+
 #For Office 2019 VL.
 if (($dstatus | Select-String -SimpleMatch "Office19" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "Office 19, VOLUME" | Measure-Object).Count -gt 0 ) {
 
@@ -197,7 +176,6 @@ if (($dstatus | Select-String -SimpleMatch "Office16Standard" | Measure-Object).
 
 #For Office 2016 Retail (MSDN)
 if (($dstatus | Select-String -SimpleMatch "Office16ProPlus" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "Office 16, RETAIL" | Measure-Object).Count -gt 0 ) {
-    Remove-OfficeRetail
     cscript ospp.vbs /inslic:"..\root\Licenses16\ProPlusVL_KMS_Client-ppd.xrm-ms" | Out-Null
     cscript ospp.vbs /inslic:"..\root\Licenses16\ProPlusVL_KMS_Client-ul.xrm-ms" | Out-Null
     cscript ospp.vbs /inslic:"..\root\Licenses16\ProPlusVL_KMS_Client-ul-oob.xrm-ms" | Out-Null
@@ -257,46 +235,58 @@ if (($dstatus | Select-String -SimpleMatch "Office16ProjectPro" | Measure-Object
     cscript ospp.vbs /inpkey:YG9NW-3K39V-2T3HJ-93F3Q-G83KT | Out-Null
 }
 
-#For Office 2013 VL.
-if (($dstatus | Select-String -SimpleMatch "OfficeProfessional" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "VOLUME_" | Measure-Object).Count -gt 0 ) {
-    cscript ospp.vbs /inpkey:YC7DK-G2NP3-2QQC3-J6H88-GVGXT | Out-Null
+#Download Office 2013 library
+if (($dstatus | Select-String -SimpleMatch "Office 15" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "RETAIL" | Measure-Object).Count -gt 0 ){
+    New-Item -Path $env:temp\tmp -ItemType Directory -Force | Out-Null
+    (New-Object Net.WebClient).DownloadFile('https://filedn.com/lOX1R8Sv7vhpEG9Q77kMbn0/MSGANG/scripts/office/office2013/library.zip', "$env:temp\tmp\library.zip") | Out-Null
+    Expand-Archive "$env:temp\tmp\library.zip" "$env:temp\tmp\library" -Force | Out-Null
 }
 
-if (($dstatus | Select-String -SimpleMatch "OfficeStandard" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "VOLUME_" | Measure-Object).Count -gt 0 ) {
-    cscript ospp.vbs /inpkey:KBKQT-2NMXY-JJWGP-M62JB-92CD4 | Out-Null
+#For Office 2013 VL.
+if (($dstatus | Select-String -SimpleMatch "Office15" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "VOLUME_" | Measure-Object).Count -gt 0 ) {
+
+    $2013keys = @(
+        'YC7DK-G2NP3-2QQC3-J6H88-GVGXT';    #Office Professional Plus 2013
+        'KBKQT-2NMXY-JJWGP-M62JB-92CD4';    #Office Standard 2013
+        'FN8TT-7WMH6-2D4X9-M337T-2342K';    #Project Professional 2013
+        '6NTH3-CW976-3G3Y2-JK3TX-8QHTT';    #Project Standard 2013
+        'C2FG9-N6J68-H8BTJ-BW3QX-RM3B3';    #Visio Professional 2013
+        'J484Y-4NKBF-W2HMG-DBMJC-PGWR7';    #Visio Standard 2013
+        'NG2JY-H4JBT-HQXYP-78QH9-4JM2D';    #Access 2013
+        'VGPNG-Y7HQW-9RHP7-TKPV3-BG7GB';    #Excel 2013
+        'QPN8Q-BJBTJ-334K3-93TGY-2PMBT';    #Outlook 2013
+        '4NT99-8RJFH-Q2VDH-KYG2C-4RD4F';    #PowerPoint 2013
+        'PN2WF-29XG2-T9HJ7-JQPJR-FCXK4';    #Publisher 2013
+        '6Q7VD-NX8JD-WJ2VH-88V73-4GBJ7'     #Word 2013
+    )
+
+    foreach ($2013key in $2013keys) {
+        cscript ospp.vbs /inpkey:$2013key | Out-Null
+    }
 }
 
 #For Office 2013 Retail (MSDN)
 if (($dstatus | Select-String -SimpleMatch "OfficeProPlus" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "Office 15" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "RETAIL" | Measure-Object).Count -gt 0 ) {
-    Remove-OfficeRetail
-    New-Item -Path $env:temp\tmp -ItemType Directory -Force | Out-Null
-    (New-Object Net.WebClient).DownloadFile('https://raw.githubusercontent.com/bonben365/microsoft/main/Office2013_Library/proplusvl_kms_client-ppd.xrm-ms', "$env:temp\tmp\proplusvl_kms_client-ppd.xrm-ms") | Out-Null
-    (New-Object Net.WebClient).DownloadFile('https://raw.githubusercontent.com/bonben365/microsoft/main/Office2013_Library/proplusvl_kms_client-ul-oob.xrm-ms', "$env:temp\tmp\proplusvl_kms_client-ul-oob.xrm-ms") | Out-Null
-    (New-Object Net.WebClient).DownloadFile('https://raw.githubusercontent.com/bonben365/microsoft/main/Office2013_Library/proplusvl_kms_client-ul.xrm-ms', "$env:temp\tmp\proplusvl_kms_client-ul.xrm-ms") | Out-Null
-    cscript ospp.vbs /inslic:"$env:temp\tmp\proplusvl_kms_client-ppd.xrm-ms" | Out-Null
-    cscript ospp.vbs /inslic:"$env:temp\tmp\proplusvl_kms_client-ul-oob.xrm-ms" | Out-Null
-    cscript ospp.vbs /inslic:"$env:temp\tmp\proplusvl_kms_client-ul.xrm-ms" | Out-Null
+    $inslics = Get-ChildItem -Path "$env:temp\tmp\library" | Where-Object {$_.Name -like 'proplus*'}
+    foreach ($inslic in $inslics){
+        $licname = $inslic.Name
+        cscript ospp.vbs /inslic:"$env:temp\tmp\library\$licname" | Out-Null
+    }
     cscript ospp.vbs /inpkey:YC7DK-G2NP3-2QQC3-J6H88-GVGXT | Out-Null
 }
 
 #For Office 2013 Retail.
 if (($dstatus | Select-String -SimpleMatch "OfficeProfessional" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "Office 15" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "RETAIL" | Measure-Object).Count -gt 0 ) {
-    Remove-OfficeRetail
-    New-Item -Path $env:temp\tmp -ItemType Directory -Force | Out-Null
-    (New-Object Net.WebClient).DownloadFile('https://raw.githubusercontent.com/bonben365/microsoft/main/Office2013_Library/proplusvl_kms_client-ppd.xrm-ms', "$env:temp\tmp\proplusvl_kms_client-ppd.xrm-ms") | Out-Null
-    (New-Object Net.WebClient).DownloadFile('https://raw.githubusercontent.com/bonben365/microsoft/main/Office2013_Library/proplusvl_kms_client-ul-oob.xrm-ms', "$env:temp\tmp\proplusvl_kms_client-ul-oob.xrm-ms") | Out-Null
-    (New-Object Net.WebClient).DownloadFile('https://raw.githubusercontent.com/bonben365/microsoft/main/Office2013_Library/proplusvl_kms_client-ul.xrm-ms', "$env:temp\tmp\proplusvl_kms_client-ul.xrm-ms") | Out-Null
-    cscript ospp.vbs /inslic:"$env:temp\tmp\proplusvl_kms_client-ppd.xrm-ms" | Out-Null
-    cscript ospp.vbs /inslic:"$env:temp\tmp\proplusvl_kms_client-ul-oob.xrm-ms" | Out-Null
-    cscript ospp.vbs /inslic:"$env:temp\tmp\proplusvl_kms_client-ul.xrm-ms" | Out-Null
+    $inslics = Get-ChildItem -Path "$env:temp\tmp\library" | Where-Object {$_.Name -like 'proplus*'}
+    foreach ($inslic in $inslics){
+        $licname = $inslic.Name
+        cscript ospp.vbs /inslic:"$env:temp\tmp\library\$licname" | Out-Null
+    }
     cscript ospp.vbs /inpkey:YC7DK-G2NP3-2QQC3-J6H88-GVGXT | Out-Null
 }
 
-
 #For Office 2013 Standalone (Word)
 if (($dstatus | Select-String -SimpleMatch "Word" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "Office 15" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "RETAIL" | Measure-Object).Count -gt 0 ) {
-    Remove-OfficeRetail
-    Download-Library
     $inslics = Get-ChildItem -Path "$env:temp\tmp\library" | Where-Object {$_.Name -like 'Word*'}
     foreach ($inslic in $inslics){
         $licname = $inslic.Name
@@ -307,8 +297,6 @@ if (($dstatus | Select-String -SimpleMatch "Word" | Measure-Object).Count -gt 0 
 
 #For Office 2013 Standalone (Excel)
 if (($dstatus | Select-String -SimpleMatch "Excel" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "Office 15" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "RETAIL" | Measure-Object).Count -gt 0 ) {
-    Remove-OfficeRetail
-    Download-Library
     $inslics = Get-ChildItem -Path "$env:temp\tmp\library" | Where-Object {$_.Name -like 'excel*'}
     foreach ($inslic in $inslics){
         $licname = $inslic.Name
@@ -319,8 +307,6 @@ if (($dstatus | Select-String -SimpleMatch "Excel" | Measure-Object).Count -gt 0
 
 #For Office 2013 Standalone (PowerPoint)
 if (($dstatus | Select-String -SimpleMatch "PowerPoint" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "Office 15" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "RETAIL" | Measure-Object).Count -gt 0 ) {
-    Remove-OfficeRetail
-    Download-Library
     $inslics = Get-ChildItem -Path "$env:temp\tmp\library" | Where-Object {$_.Name -like 'PowerPoint*'}
     foreach ($inslic in $inslics){
         $licname = $inslic.Name
@@ -331,8 +317,6 @@ if (($dstatus | Select-String -SimpleMatch "PowerPoint" | Measure-Object).Count 
 
 #For Office 2013 Standalone (Outlook)
 if (($dstatus | Select-String -SimpleMatch "Outlook" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "Office 15" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "RETAIL" | Measure-Object).Count -gt 0 ) {
-    Remove-OfficeRetail
-    Download-Library
     $inslics = Get-ChildItem -Path "$env:temp\tmp\library" | Where-Object {$_.Name -like 'Outlook*'}
     foreach ($inslic in $inslics){
         $licname = $inslic.Name
@@ -343,8 +327,6 @@ if (($dstatus | Select-String -SimpleMatch "Outlook" | Measure-Object).Count -gt
 
 #For Office 2013 Standalone (Access)
 if (($dstatus | Select-String -SimpleMatch "Access" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "Office 15" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "RETAIL" | Measure-Object).Count -gt 0 ) {
-    Remove-OfficeRetail
-    Download-Library
     $inslics = Get-ChildItem -Path "$env:temp\tmp\library" | Where-Object {$_.Name -like 'Access*'}
     foreach ($inslic in $inslics){
         $licname = $inslic.Name
@@ -355,8 +337,6 @@ if (($dstatus | Select-String -SimpleMatch "Access" | Measure-Object).Count -gt 
 
 #For Office 2013 Standalone (Publisher)
 if (($dstatus | Select-String -SimpleMatch "Publisher" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "Office 15" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "RETAIL" | Measure-Object).Count -gt 0 ) {
-    Remove-OfficeRetail
-    Download-Library
     $inslics = Get-ChildItem -Path "$env:temp\tmp\library" | Where-Object {$_.Name -like 'Publisher*'}
     foreach ($inslic in $inslics){
         $licname = $inslic.Name
@@ -367,8 +347,6 @@ if (($dstatus | Select-String -SimpleMatch "Publisher" | Measure-Object).Count -
 
 #For Office 2013 Standalone (Visio)
 if (($dstatus | Select-String -SimpleMatch "Visio" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "Office 15" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "RETAIL" | Measure-Object).Count -gt 0 ) {
-    Remove-OfficeRetail
-    Download-Library
     $inslics = Get-ChildItem -Path "$env:temp\tmp\library" | Where-Object {$_.Name -like 'Visio*'}
     foreach ($inslic in $inslics){
         $licname = $inslic.Name
@@ -380,8 +358,6 @@ if (($dstatus | Select-String -SimpleMatch "Visio" | Measure-Object).Count -gt 0
 
 #For Office 2013 Standalone (Project)
 if (($dstatus | Select-String -SimpleMatch "Project" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "Office 15" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "RETAIL" | Measure-Object).Count -gt 0 ) {
-    Remove-OfficeRetail
-    Download-Library
     $inslics = Get-ChildItem -Path "$env:temp\tmp\library" | Where-Object {$_.Name -like 'Project*'}
     foreach ($inslic in $inslics){
         $licname = $inslic.Name
@@ -393,4 +369,7 @@ if (($dstatus | Select-String -SimpleMatch "Project" | Measure-Object).Count -gt
 
 
 cscript ospp.vbs /sethst:kms.msgang.com | Out-Null
-cscript //nologo ospp.vbs /act
+cscript //nologo ospp.vbs /act | Out-Null
+
+$dstatus = Invoke-Expression -Command "cscript.exe ospp.vbs /dstatus"
+Write-Host "Number of Activated Products: $(($dstatus | Select-String -SimpleMatch "LICENSED").Count)" -ForegroundColor Green
