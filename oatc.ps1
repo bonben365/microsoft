@@ -74,7 +74,9 @@ if (($dstatus | Select-String -SimpleMatch "Office19Outlook" | Measure-Object).C
 if (($dstatus | Select-String -SimpleMatch "Office19Access" | Measure-Object).Count -gt 0 -and $matchingOffice2019Retail -gt 0 ) {$licName = 'Access2019VL*'; $2019kmskey = '9N9PT-27V4Y-VJ2PD-YXFMF-YTFQT'} #For Office 2019 Standalone (Access)
 if (($dstatus | Select-String -SimpleMatch "Office19Publisher" | Measure-Object).Count -gt 0 -and $matchingOffice2019Retail -gt 0 ) {$licName = 'Publisher2019VL*'; $2019kmskey = 'G2KWX-3NW6P-PY93R-JXK2T-C9Y9V'} #For Office 2019 Standalone (Publisher)
 
-Office2019-V2R
+if ($matchingOffice2019Retail -gt 0 ) { Office2019-V2R }
+
+
 
 #-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 #-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
