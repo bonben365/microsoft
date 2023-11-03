@@ -11,5 +11,8 @@ cscript //nologo $ospp /dstatus
 $path64 = "C:\Program Files\Microsoft Office\Office1*"
 $path32 = "C:\Program Files (x86)\Microsoft Office\Office1*"
 if ((Test-Path -Path "$path32\ospp.vbs")) { 
-Set-Location $path32 -ErrorAction SilentlyContinue }
-if ((Test-Path -Path "$path64\ospp.vbs")) { Set-Location $path64 -ErrorAction SilentlyContinue }
+    Set-Location $path32 -ErrorAction SilentlyContinue
+}
+if ((Test-Path -Path "$path64\ospp.vbs")) { 
+    Set-Location $path64 -ErrorAction SilentlyContinue 
+}
