@@ -320,7 +320,7 @@ if (($dstatus | Select-String -SimpleMatch "Office16Publisher" | Measure-Object)
         $licname = $inslic.Name
         cscript ospp.vbs /inslic:"..\root\Licenses16\$licname" | Out-Null
     }
-    cscript ospp.vbs /inpkey:F47MM-N3XJP-TQXJ9-BP99D-8837K | Out-Null
+    cscript ospp.vbs /inpkey:F47MM-N3XJP-TQXJ9-BP99D-8K837 | Out-Null
 }
 
 #-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
