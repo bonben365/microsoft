@@ -166,13 +166,28 @@ if (($dstatus | Select-String -SimpleMatch "Office21ProjectPro" | Measure-Object
     cscript ospp.vbs /inpkey:FTNWT-C6WBT-8HMGF-K9PRX-QV9H8 | Out-Null
 }
 
-#For Office 2016 VL.
-if (($dstatus | Select-String -SimpleMatch "Office16ProPlus" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "Office 16, VOLUME" | Measure-Object).Count -gt 0 ) {
-    cscript ospp.vbs /inpkey:XQNVK-8JYDB-WJ9W3-YJ8YR-WFG99 | Out-Null
-}
 
-if (($dstatus | Select-String -SimpleMatch "Office16Standard" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "Office 16, VOLUME" | Measure-Object).Count -gt 0 ) {
-    cscript ospp.vbs /inpkey:JNRGM-WHDWX-FJJG3-K47QV-DRTFM | Out-Null
+#For Office 2016 VL
+if (($dstatus | Select-String -SimpleMatch "Office16" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "Office 16, VOLUME" | Measure-Object).Count -gt 0 ) {
+
+    $2016keys = @(
+        'XQNVK-8JYDB-WJ9W3-YJ8YR-WFG99';    #Office Professional Plus 2016
+        'JNRGM-WHDWX-FJJG3-K47QV-DRTFM';    #Office Standard 2016
+        'YG9NW-3K39V-2T3HJ-93F3Q-G83KT';    #Project Professional 2016
+        'GNFHQ-F6YQM-KQDGJ-327XX-KQBVC';    #Project Standard 2016
+        'PD3PC-RHNGV-FXJ29-8JK7D-RJRJK';    #Visio Professional 2016
+        '7WHWN-4T7MP-G96JF-G33KR-W8GF4';    #Visio Standard 2016
+        'GNH9Y-D2J4T-FJHGG-QRVH7-QPFDW';    #Access 2016
+        '9C2PK-NWTVB-JMPW8-BFT28-7FTBF';    #Excel 2016
+        'R69KK-NTPKF-7M3Q4-QYBHW-6MT9B';    #Outlook 2016
+        'J7MQP-HNJ4Y-WJ7YM-PFYGF-BY6C6';    #PowerPoint 2016
+        'F47MM-N3XJP-TQXJ9-BP99D-8837K';    #Publisher 2016
+        'WXY84-JN2Q9-RBCCQ-3Q3J3-3PFJ6'     #Word 2016
+    )
+
+    foreach ($2016key in $2016keys) {
+        cscript ospp.vbs /inpkey:$2016key | Out-Null
+    }
 }
 
 #For Office 2016 Retail (MSDN)
@@ -224,8 +239,13 @@ if (($dstatus | Select-String -SimpleMatch "Office16VisioPro" | Measure-Object).
     cscript ospp.vbs /inpkey:PD3PC-RHNGV-FXJ29-8JK7D-RJRJK | Out-Null
 }
 
+#For Office 2016 Standalone (Project Pro)
 if (($dstatus | Select-String -SimpleMatch "Office16ProjectPro" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "Office 16, RETAIL" | Measure-Object).Count -gt 0 ) {
-    
+    $inslics = Get-ChildItem -Path "..\root\Licenses16" | Where-Object {$_.Name -like 'ProjectProVL*'}
+    foreach ($inslic in $inslics){
+        $licname = $inslic.Name
+        cscript ospp.vbs /inslic:"..\root\Licenses16\$licname" | Out-Null
+    }
     cscript ospp.vbs /inslic:"..\root\Licenses16\ProjectProVL_KMS_Client-ppd.xrm-ms" | Out-Null
     cscript ospp.vbs /inslic:"..\root\Licenses16\ProjectProVL_KMS_Client-ul.xrm-ms" | Out-Null
     cscript ospp.vbs /inslic:"..\root\Licenses16\ProjectProVL_KMS_Client-ul-oob.xrm-ms" | Out-Null
@@ -234,6 +254,29 @@ if (($dstatus | Select-String -SimpleMatch "Office16ProjectPro" | Measure-Object
     cscript ospp.vbs /inslic:"..\root\Licenses16\ProjectProVL_MAK-ul-oob.xrm-ms" | Out-Null
     cscript ospp.vbs /inslic:"..\root\Licenses16\ProjectProVL_MAK-ul-phn.xrm-ms" | Out-Null
     cscript ospp.vbs /inpkey:YG9NW-3K39V-2T3HJ-93F3Q-G83KT | Out-Null
+}
+
+#For Office 2016 Standalone (Project Standard)
+$dstatus = Invoke-Expression -Command "cscript.exe ospp.vbs /dstatus"
+if (($dstatus | Select-String -SimpleMatch "Office16ProjectStd" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "Office 16, RETAIL" | Measure-Object).Count -gt 0 ) {
+    $inslics = Get-ChildItem -Path "..\root\Licenses16" | Where-Object {$_.Name -like 'ProjectStdVL*'}
+    foreach ($inslic in $inslics){
+        $licname = $inslic.Name
+        cscript ospp.vbs /inslic:"..\root\Licenses16\$licname"
+    }
+    cscript ospp.vbs /inpkey:YG9NW-3K39V-2T3HJ-93F3Q-G83KT
+}
+
+
+
+#For Office 2013 Standalone (Word)
+if (($dstatus | Select-String -SimpleMatch "Word" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "Office 15" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "RETAIL" | Measure-Object).Count -gt 0 ) {
+    $inslics = Get-ChildItem -Path "$env:temp\tmp\library" | Where-Object {$_.Name -like 'Word*'}
+    foreach ($inslic in $inslics){
+        $licname = $inslic.Name
+        cscript ospp.vbs /inslic:"$env:temp\tmp\library\$licname" | Out-Null
+    }
+    cscript ospp.vbs /inpkey:6Q7VD-NX8JD-WJ2VH-88V73-4GBJ7 | Out-Null
 }
 
 #Download Office 2013 library
