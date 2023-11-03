@@ -247,7 +247,7 @@ if (($dstatus | Select-String -SimpleMatch "Office16VisioPro" | Measure-Object).
 }
 
 #For Office 2016 Standalone (Visio Standard)
-if (($dstatus | Select-String -SimpleMatch "Office16Standard" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "Office 16, RETAIL" | Measure-Object).Count -gt 0 ) {
+if (($dstatus | Select-String -SimpleMatch "Office16VisioStd" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "Office 16, RETAIL" | Measure-Object).Count -gt 0 ) {
     Write-Host "Converting from Retail to Volume..." -ForegroundColor Green
     Write-Host "Converting from Retail to Volume..." -ForegroundColor Green
     $inslics = Get-ChildItem -Path "..\root\Licenses16" | Where-Object {$_.Name -like 'VisioStdVL*'}
