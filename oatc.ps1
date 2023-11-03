@@ -293,7 +293,7 @@ if (($dstatus | Select-String -SimpleMatch "Office16PowerPoint" | Measure-Object
 #For Office 2016 Standalone (Outlook)
 if (($dstatus | Select-String -SimpleMatch "Office16Outlook" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "Office 16, RETAIL" | Measure-Object).Count -gt 0 ) {
     Write-Host "Converting from Retail to Volume..." -ForegroundColor Green
-    $inslics = Get-ChildItem -Path "..\root\Licenses16" | Where-Object {$_.Name -like 'OutlooklVL*'}
+    $inslics = Get-ChildItem -Path "..\root\Licenses16" | Where-Object {$_.Name -like 'OutlookVL*'}
     foreach ($inslic in $inslics){
         $licname = $inslic.Name
         cscript ospp.vbs /inslic:"..\root\Licenses16\$licname" | Out-Null
