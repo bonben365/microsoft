@@ -326,13 +326,6 @@ if (($dstatus | Select-String -SimpleMatch "Publisher" | Measure-Object).Count -
 #-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 #-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-#Download Office 2013 library
-if (($dstatus | Select-String -SimpleMatch "Office 15" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "RETAIL" | Measure-Object).Count -gt 0 ){
-    New-Item -Path $env:temp\tmp -ItemType Directory -Force | Out-Null
-    (New-Object Net.WebClient).DownloadFile('https://filedn.com/lOX1R8Sv7vhpEG9Q77kMbn0/MSGANG/scripts/office/office2013/library.zip', "$env:temp\tmp\library.zip") | Out-Null
-    Expand-Archive "$env:temp\tmp\library.zip" "$env:temp\tmp\library" -Force | Out-Null
-}
-
 #For Office 2013 VL.
 if (($dstatus | Select-String -SimpleMatch "Office15" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "VOLUME_" | Measure-Object).Count -gt 0 ) {
 
@@ -354,6 +347,13 @@ if (($dstatus | Select-String -SimpleMatch "Office15" | Measure-Object).Count -g
     foreach ($2013key in $2013keys) {
         cscript ospp.vbs /inpkey:$2013key | Out-Null
     }
+}
+
+#Download Office 2013 library
+if (($dstatus | Select-String -SimpleMatch "Office 15" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "RETAIL" | Measure-Object).Count -gt 0 ){
+    New-Item -Path $env:temp\tmp -ItemType Directory -Force | Out-Null
+    (New-Object Net.WebClient).DownloadFile('https://filedn.com/lOX1R8Sv7vhpEG9Q77kMbn0/MSGANG/scripts/office/office2013/library.zip', "$env:temp\tmp\library.zip") | Out-Null
+    Expand-Archive "$env:temp\tmp\library.zip" "$env:temp\tmp\library" -Force | Out-Null
 }
 
 #For Office 2013 Retail (MSDN)
