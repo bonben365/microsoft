@@ -76,8 +76,6 @@ if (($dstatus | Select-String -SimpleMatch "Office19Publisher" | Measure-Object)
 
 if ($matchingOffice2019Retail -gt 0 ) { Office2019-V2R }
 
-
-
 #-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 #-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 #For Office 2021 VL.
@@ -97,57 +95,37 @@ if (($dstatus | Select-String -SimpleMatch "Office21" | Measure-Object).Count -g
         '2MW9D-N4BXM-9VBPG-Q7W6M-KFBGQ';    #Publisher LTSC 2021
         'TN8H9-M34D3-Y64V9-TR72V-X79KV'     #Word LTSC 2021
     )
-
     foreach ($2021key in $2021keys) {
         cscript ospp.vbs /inpkey:$2021key | Out-Null
     }
 }
 
 #For Office 2021 Retail.
-if (($dstatus | Select-String -SimpleMatch "Office21Professional" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "Office 21, RETAIL" | Measure-Object).Count -gt 0 ) {
-    
-    $licenses = Get-Item "..\root\Licenses16\ProPlus2021VL*.xrm-ms"
-    foreach ($license in $licenses) {
-        cscript ospp.vbs /inslic:"..\root\Licenses16\$($license.Name)" | Out-Null
+function Office2021-V2R {
+    Write-Host "Converting from Retail to Volume..." -ForegroundColor Green
+    $inslics = Get-ChildItem -Path "..\root\Licenses16" | Where-Object {$_.Name -like "$licName"}
+    foreach ($inslic in $inslics){
+        cscript ospp.vbs /inslic:"..\root\Licenses16\$($inslic.Name)" | Out-Null
     }
-    cscript ospp.vbs /inpkey:FXYTK-NJJ8C-GB6DW-3DYQT-6F7TH | Out-Null
+    cscript ospp.vbs /inpkey:$2021kmskey | Out-Null
 }
 
-if (($dstatus | Select-String -SimpleMatch "Office21ProPlus" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "Office 21, RETAIL" | Measure-Object).Count -gt 0 ) {
-    
-    $licenses = Get-Item "..\root\Licenses16\ProPlus2021VL*.xrm-ms"
-    foreach ($license in $licenses) {
-        cscript ospp.vbs /inslic:"..\root\Licenses16\$($license.Name)" | Out-Null
-    }
-    cscript ospp.vbs /inpkey:FXYTK-NJJ8C-GB6DW-3DYQT-6F7TH | Out-Null
-}
+$matchingOffice2021Retail = ($dstatus | Select-String -SimpleMatch "Office 21, RETAIL" | Measure-Object).Count
+if (($dstatus | Select-String -SimpleMatch "Office21Professional" | Measure-Object).Count -gt 0 -and $matchingOffice2021Retail -gt 0 ) {$licName = 'ProPlus2021VL*'; $2021kmskey = 'FXYTK-NJJ8C-GB6DW-3DYQT-6F7TH'} #For Office 2021 Retail (Pro)
+if (($dstatus | Select-String -SimpleMatch "Office21ProPlus" | Measure-Object).Count -gt 0 -and $matchingOffice2021Retail -gt 0 ) {$licName = 'ProPlus2021VL*'; $2021kmskey = 'FXYTK-NJJ8C-GB6DW-3DYQT-6F7TH'} #For Office 2021 Retail (Pro) (MSDN)
+if (($dstatus | Select-String -SimpleMatch "Office21Standard" | Measure-Object).Count -gt 0 -and $matchingOffice2021Retail -gt 0 ) {$licName = 'Standard2021VL*'; $2021kmskey = 'KDX7X-BNVR8-TXXGX-4Q7Y8-78VT3'} #For Office 2021 Retail (Standard)
+if (($dstatus | Select-String -SimpleMatch "Office21ProjectPro" | Measure-Object).Count -gt 0 -and $matchingOffice2021Retail -gt 0 ) {$licName = 'ProjectPro2021VL*'; $2021kmskey = 'FTNWT-C6WBT-8HMGF-K9PRX-QV9H8'} #For Office 2021 Standalone (Project Pro)
+if (($dstatus | Select-String -SimpleMatch "Office21ProjectStd" | Measure-Object).Count -gt 0 -and $matchingOffice2021Retail -gt 0 ) {$licName = 'ProjectStd2021VL*'; $2021kmskey = 'J2JDC-NJCYY-9RGQ4-YXWMH-T3D4T'} #For Office 2021 Standalone (Project Standard)
+if (($dstatus | Select-String -SimpleMatch "Office21VisioPro" | Measure-Object).Count -gt 0 -and $matchingOffice2021Retail -gt 0 ) {$licName = 'VisioPro2021VL*'; $2021kmskey = 'KNH8D-FGHT4-T8RK3-CTDYJ-K2HT4'} #For Office 2021 Standalone (Visio Pro)
+if (($dstatus | Select-String -SimpleMatch "Office21VisioStd" | Measure-Object).Count -gt 0 -and $matchingOffice2021Retail -gt 0 ) {$licName = 'VisioStd2021VL*'; $2021kmskey = 'MJVNY-BYWPY-CWV6J-2RKRT-4M8QG'} #For Office 2021 Standalone (Visio Standard)
+if (($dstatus | Select-String -SimpleMatch "Office21Word" | Measure-Object).Count -gt 0 -and $matchingOffice2021Retail -gt 0 ) {$licName = 'Word2021VL*'; $2021kmskey = 'TN8H9-M34D3-Y64V9-TR72V-X79KV'} #For Office 2021 Standalone (Word)
+if (($dstatus | Select-String -SimpleMatch "Office21Excel" | Measure-Object).Count -gt 0 -and $matchingOffice2021Retail -gt 0 ) {$licName = 'Excel2021VL*'; $2021kmskey = 'NWG3X-87C9K-TC7YY-BC2G7-G6RVC'} #For Office 2021 Standalone (Excel)
+if (($dstatus | Select-String -SimpleMatch "Office21PowerPoint" | Measure-Object).Count -gt 0 -and $matchingOffice2021Retail -gt 0 ) {$licName = 'PowerPoint2021VL*'; $2021kmskey = 'TY7XF-NFRBR-KJ44C-G83KF-GX27K'} #For Office 2021 Standalone (PowerPoint)
+if (($dstatus | Select-String -SimpleMatch "Office21Outlook" | Measure-Object).Count -gt 0 -and $matchingOffice2021Retail -gt 0 ) {$licName = 'Outlook2021VL*'; $2021kmskey = 'C9FM6-3N72F-HFJXB-TM3V9-T86R9'} #For Office 2021 Standalone (Outlook)
+if (($dstatus | Select-String -SimpleMatch "Office21Access" | Measure-Object).Count -gt 0 -and $matchingOffice2021Retail -gt 0 ) {$licName = 'Access2021VL*'; $2021kmskey = 'WM8YG-YNGDD-4JHDC-PG3F4-FC4T4'} #For Office 2021 Standalone (Access)
+if (($dstatus | Select-String -SimpleMatch "Office21Publisher" | Measure-Object).Count -gt 0 -and $matchingOffice2021Retail -gt 0 ) {$licName = 'Publisher2021VL*'; $2021kmskey = '2MW9D-N4BXM-9VBPG-Q7W6M-KFBGQ'} #For Office 2021 Standalone (Publisher)
 
-if (($dstatus | Select-String -SimpleMatch "Office21Standard" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "Office 21, RETAIL" | Measure-Object).Count -gt 0 ) {
-    
-    $licenses = Get-Item "..\root\Licenses16\Standard2021VL*.xrm-ms"
-    foreach ($license in $licenses) {
-        cscript ospp.vbs /inslic:"..\root\Licenses16\$($license.Name)" | Out-Null
-    }
-    cscript ospp.vbs /inpkey:KDX7X-BNVR8-TXXGX-4Q7Y8-78VT3 | Out-Null
-}
-
-if (($dstatus | Select-String -SimpleMatch "Office21VisioPro" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "Office 21, RETAIL" | Measure-Object).Count -gt 0 ) {
-    
-    $licenses = Get-Item "..\root\Licenses16\VisioPro2021VL*.xrm-ms"
-    foreach ($license in $licenses) {
-        cscript ospp.vbs /inslic:"..\root\Licenses16\$($license.Name)" | Out-Null
-    }
-    cscript ospp.vbs /inpkey:KNH8D-FGHT4-T8RK3-CTDYJ-K2HT4 | Out-Null
-}
-
-if (($dstatus | Select-String -SimpleMatch "Office21ProjectPro" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "Office 21, RETAIL" | Measure-Object).Count -gt 0 ) {
-    
-    $licenses = Get-Item "..\root\Licenses16\ProjectPro2021VL*.xrm-ms"
-    foreach ($license in $licenses) {
-        cscript ospp.vbs /inslic:"..\root\Licenses16\$($license.Name)" | Out-Null
-    }
-    cscript ospp.vbs /inpkey:FTNWT-C6WBT-8HMGF-K9PRX-QV9H8 | Out-Null
-}
+if ($matchingOffice2021Retail -gt 0 ) { Office2021-V2R }
 
 #-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 #-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
