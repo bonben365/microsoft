@@ -315,7 +315,7 @@ if (($dstatus | Select-String -SimpleMatch "Office16Access" | Measure-Object).Co
 #For Office 2016 Standalone (Publisher)
 if (($dstatus | Select-String -SimpleMatch "Office16Publisher" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "Office 16, RETAIL" | Measure-Object).Count -gt 0 ) {
     Write-Host "Converting from Retail to Volume..." -ForegroundColor Green
-    $inslics = Get-ChildItem -Path "..\root\Licenses16" | Where-Object {$_.Name -like 'PublisherlVL*'}
+    $inslics = Get-ChildItem -Path "..\root\Licenses16" | Where-Object {$_.Name -like 'PublisherVL*'}
     foreach ($inslic in $inslics){
         $licname = $inslic.Name
         cscript ospp.vbs /inslic:"..\root\Licenses16\$licname" | Out-Null
