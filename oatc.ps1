@@ -26,7 +26,7 @@ $apps = $dstatus | Select-String -SimpleMatch "NAME:" | ForEach-Object -Process 
 $retailCount = ($dstatus | Select-String -SimpleMatch "RETAIL" | Measure-Object).Count
 $volumeCount = ($dstatus | Select-String -SimpleMatch "VOLUME" | Measure-Object).Count
 Write-Host "Number of Installed Office apps: VOLUME: $volumeCount - RETAIL: $retailCount" -ForegroundColor Green
-Write-Host "Activating..." -ForegroundColor Green
+Write-Host "Activating Microsoft Office products..." -ForegroundColor Green
 
 #For Office 2019 VL.
 if (($dstatus | Select-String -SimpleMatch "Office19" | Measure-Object).Count -gt 0 -and ($dstatus | Select-String -SimpleMatch "Office 19, VOLUME" | Measure-Object).Count -gt 0 ) {
