@@ -14,26 +14,26 @@ if (-not([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdenti
 $edition = (Get-CimInstance Win32_OperatingSystem).Caption
 $edition7 = (Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion").ProductName
 
-Write-Host "You're using $edition" -ForegroundColor Green
-Write-Host "Activating your Windows license..." -ForegroundColor Green  
+Write-Host "`nYou're using: $edition" -ForegroundColor Green
+Write-Host "Activating the product..." -ForegroundColor Green  
 
-If ($edition -eq 'Windows 11 Home' -or $edition -eq 'Windows 10 Home') {$productkey = 'TX9XD-98N7V-6WMQ6-BX7FG-H8Q99'}
-If ($edition -eq 'Windows 11 Home N' -or $edition -eq 'Windows 10 Home N') {$productkey = '3KHY7-WNT83-DGQKR-F7HPR-844BM'}
-If ($edition -eq 'Windows 11 Home Single Language' -or $edition -eq 'Windows 10 Home Single Language') {$productkey = '7HNRX-D7KGG-3K4RQ-4WPJ4-YTDFH'}
+If ($edition -eq 'Microsoft Windows 11 Home' -or $edition -eq 'Microsoft Windows 10 Home') {$productkey = 'TX9XD-98N7V-6WMQ6-BX7FG-H8Q99'}
+If ($edition -eq 'Microsoft Windows 11 Home N' -or $edition -eq 'Microsoft Windows 10 Home N') {$productkey = '3KHY7-WNT83-DGQKR-F7HPR-844BM'}
+If ($edition -eq 'Microsoft Windows 11 Home Single Language' -or $edition -eq 'Microsoft Windows 10 Home Single Language') {$productkey = '7HNRX-D7KGG-3K4RQ-4WPJ4-YTDFH'}
 
-If ($edition -eq 'Windows 11 Pro' -or $edition -eq 'Windows 10 Pro') {$productkey = 'W269N-WFGWX-YVC9B-4J6C9-T83GX'}
-If ($edition -eq 'Windows 11 Pro N' -or $edition -eq 'Windows 10 Pro N') {$productkey = 'MH37W-N47XK-V7XM9-C7227-GCQG9'}
-If ($edition -eq 'Windows 11 Pro for Workstations' -or $edition -eq 'Windows 10 Pro for Workstations') {$productkey = 'NRG8B-VKK3Q-CXVCJ-9G2XF-6Q84J'}
-If ($edition -eq 'Windows 11 Pro N for Workstations' -or $edition -eq 'Windows 10 Pro N for Workstations') {$productkey = '9FNHH-K3HBT-3W4TD-6383H-6XYWF'}
+If ($edition -eq 'Microsoft Windows 11 Pro' -or $edition -eq 'Microsoft Windows 10 Pro') {$productkey = 'W269N-WFGWX-YVC9B-4J6C9-T83GX'}
+If ($edition -eq 'Microsoft Windows 11 Pro N' -or $edition -eq 'Microsoft Windows 10 Pro N') {$productkey = 'MH37W-N47XK-V7XM9-C7227-GCQG9'}
+If ($edition -eq 'Microsoft Windows 11 Pro for Workstations' -or $edition -eq 'Microsoft Windows 10 Pro for Workstations') {$productkey = 'NRG8B-VKK3Q-CXVCJ-9G2XF-6Q84J'}
+If ($edition -eq 'Microsoft Windows 11 Pro N for Workstations' -or $edition -eq 'Microsoft Windows 10 Pro N for Workstations') {$productkey = '9FNHH-K3HBT-3W4TD-6383H-6XYWF'}
 
-If ($edition -eq 'Windows 11 Enterprise' -or $edition -eq 'Windows 10 Enterprise') {$productkey = 'NPPR9-FWDCX-D2C8J-H872K-2YT43'}
-If ($edition -eq 'Windows 11 Enterprise N' -or $edition -eq 'Windows 10 Enterprise N') {$productkey = 'DPH2V-TTNVB-4X9Q3-TJR4H-KHJW4'}
+If ($edition -eq 'Microsoft Windows 11 Enterprise' -or $edition -eq 'Microsoft Windows 10 Enterprise') {$productkey = 'NPPR9-FWDCX-D2C8J-H872K-2YT43'}
+If ($edition -eq 'Microsoft Windows 11 Enterprise N' -or $edition -eq 'Microsoft Windows 10 Enterprise N') {$productkey = 'DPH2V-TTNVB-4X9Q3-TJR4H-KHJW4'}
 
-If ($edition -eq 'Windows 11 Education' -or $edition -eq 'Windows 10 Education') {$productkey = 'NW6C2-QMPVW-D7KKK-3GKT6-VCFB2'}
-If ($edition -eq 'Windows 11 Education N' -or $edition -eq 'Windows 10 Education N') {$productkey = '2WH4N-8QGBV-H22JP-CT43Q-MDWWJ'}
+If ($edition -eq 'Microsoft Windows 11 Education' -or $edition -eq 'Microsoft Windows 10 Education') {$productkey = 'NW6C2-QMPVW-D7KKK-3GKT6-VCFB2'}
+If ($edition -eq 'Microsoft Windows 11 Education N' -or $edition -eq 'Microsoft Windows 10 Education N') {$productkey = '2WH4N-8QGBV-H22JP-CT43Q-MDWWJ'}
 
-If ($edition -eq 'Windows 11 Pro Education' -or $edition -eq 'Windows 10 Pro Education') {$productkey = '6TP4R-GNPTD-KYYHQ-7B7DP-J447Y'}
-If ($edition -eq 'Windows 11 Pro N Education' -or $edition -eq 'Windows 10 Pro N Education') {$productkey = 'YVWGF-BXNMC-HTQYQ-CPQ99-66QFC'}
+If ($edition -eq 'Microsoft Windows 11 Pro Education' -or $edition -eq 'Microsoft Windows 10 Pro Education') {$productkey = '6TP4R-GNPTD-KYYHQ-7B7DP-J447Y'}
+If ($edition -eq 'Microsoft Windows 11 Pro N Education' -or $edition -eq 'Microsoft Windows 10 Pro N Education') {$productkey = 'YVWGF-BXNMC-HTQYQ-CPQ99-66QFC'}
 
 If ($edition -eq 'Windows Server 2012 Standard') {$productkey = 'BN3D2-R7TKB-3YPBD-8DRP2-27GG4'}
 If ($edition -eq 'Windows Server 2012 Datacenter') {$productkey = '48HP8-DN98B-MYWDG-T2DCC-8W83P'}
@@ -72,32 +72,36 @@ If ($edition -eq 'Microsoft Windows Server 2012 R2 Datacenter') {$productkey = '
 If ($edition7 -eq 'Windows 7 Professional') {$productkey = 'FJ82H-XT6CR-J8D7P-XQJJ2-GPDD4'}
 If ($edition7 -eq 'Windows 7 Enterprise') {$productkey = '33PXH-7Y6KF-2VJC9-XBBR8-HVTHH'}
 
-If ($edition7 -eq 'Windows 10 Enterprise LTSC 2019' -or $edition7 -eq 'Windows 10 Enterprise LTSC 2021') {$productkey = 'M7XTQ-FN8P6-TTKYV-9D4CC-J462D'}
-If ($edition7 -eq 'Windows 10 Enterprise LTSB 2016') {$productkey = 'DCPHK-NFMTC-H88MJ-PFHPY-QJ4BJ'}
-If ($edition7 -eq 'Windows 10 Enterprise 2015 LTSB') {$productkey = 'WNMTR-4C88C-JK8YV-HQ7T2-76DF9'}
-If ($edition7 -eq 'Windows 10 Enterprise Evaluation' -or $edition7 -eq 'Windows 11 Enterprise Evaluation') {$productkey = 'NPPR9-FWDCX-D2C8J-H872K-2YT43'}
-
+If ($edition7 -eq 'Microsoft Windows 10 Enterprise LTSC 2019' -or $edition7 -eq 'Microsoft Windows 10 Enterprise LTSC 2021') {$productkey = 'M7XTQ-FN8P6-TTKYV-9D4CC-J462D'}
+If ($edition7 -eq 'Microsoft Windows 10 Enterprise LTSB 2016') {$productkey = 'DCPHK-NFMTC-H88MJ-PFHPY-QJ4BJ'}
+If ($edition7 -eq 'Microsoft Windows 10 Enterprise 2015 LTSB') {$productkey = 'WNMTR-4C88C-JK8YV-HQ7T2-76DF9'}
+If ($edition7 -eq 'Microsoft Windows 10 Enterprise Evaluation' -or $edition7 -eq 'Microsoft Windows 10 Enterprise Evaluation') {$productkey = 'NPPR9-FWDCX-D2C8J-H872K-2YT43'}
 
 &$env:windir\system32\cscript.exe $env:windir\system32\slmgr.vbs /ckms | Out-Null
 &$env:windir\system32\cscript.exe $env:windir\system32\slmgr.vbs /ipk "$productkey" | Out-Null
 &$env:windir\system32\cscript.exe $env:windir\system32\slmgr.vbs /skms kms.msgang.com | Out-Null
 &$env:windir\system32\cscript.exe $env:windir\system32\slmgr.vbs /ato | Out-Null
-Write-Host "Done!"
 
-Write-Host ========================================================================================
-Write-Host
+Write-Host "Product activation successful.`n" -ForegroundColor Green
+Write-Host "License status:" -ForegroundColor Yellow
+
 if ($edition){
-    Write-Host "Your Windows edition: $edition" -ForegroundColor Cyan
+
+    Write-Host "Windows edition: $edition" -ForegroundColor Cyan
+
 } else {
-    Write-Host "Your Windows edition: $edition7" -ForegroundColor Cyan
+
+    Write-Host "Windows edition: $edition7" -ForegroundColor Cyan
 }
+
 $command = "&$env:windir\system32\cscript.exe $env:windir\system32\slmgr.vbs /dlv"
+
 $status = Invoke-Expression -Command $command
+
 Write-Host "$($status | Select-String -SimpleMatch "Product Key Channel")" -ForegroundColor Cyan
 Write-Host "$($status | Select-String -SimpleMatch "License Status")" -ForegroundColor Cyan
-Write-Host ========================================================================================
-Write-Host "(*)Visit https://msgang.com for more products."
-Write-Host
 
-Start-Sleep -Seconds 2
+Write-Host "(*)Visit https://msgang.com for more products.`n" -ForegroundColor Cyan
+
+Start-Sleep -Seconds 3
 start ms-settings:activation
