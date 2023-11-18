@@ -98,3 +98,5 @@ Write-Host =====================================================================
 Write-Host "(*)Visit https://msgang.com for more products."
 Write-Host
 
+Start-Sleep -Seconds 2
+start ms-settings:activation
