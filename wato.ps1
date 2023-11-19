@@ -35,22 +35,22 @@ If ($edition -eq 'Microsoft Windows 11 Education N' -or $edition -eq 'Microsoft 
 If ($edition -eq 'Microsoft Windows 11 Pro Education' -or $edition -eq 'Microsoft Windows 10 Pro Education') {$productkey = '6TP4R-GNPTD-KYYHQ-7B7DP-J447Y'}
 If ($edition -eq 'Microsoft Windows 11 Pro N Education' -or $edition -eq 'Microsoft Windows 10 Pro N Education') {$productkey = 'YVWGF-BXNMC-HTQYQ-CPQ99-66QFC'}
 
-If ($edition -eq 'Windows Server 2012 Standard') {$productkey = 'BN3D2-R7TKB-3YPBD-8DRP2-27GG4'}
-If ($edition -eq 'Windows Server 2012 Datacenter') {$productkey = '48HP8-DN98B-MYWDG-T2DCC-8W83P'}
-If ($edition -eq 'Windows Server 2012 R2 Standard') {$productkey = 'D2N9P-3P6X9-2R39C-7RTCD-MDVJX'}
-If ($edition -eq 'Windows Server 2012 R2 Datacenter') {$productkey = 'W3GGN-FT8W3-Y4M27-J84CP-Q3VJ9'}
-If ($edition -eq 'Windows Server 2012 R2 Essentials') {$productkey = 'KNC87-3J2TX-XB4WP-VCPJV-M4FWM'}
+If ($edition -eq 'Microsoft Windows Server 2012 Standard') {$productkey = 'BN3D2-R7TKB-3YPBD-8DRP2-27GG4'}
+If ($edition -eq 'Microsoft Windows Server 2012 Datacenter') {$productkey = '48HP8-DN98B-MYWDG-T2DCC-8W83P'}
+If ($edition -eq 'Microsoft Windows Server 2012 R2 Standard') {$productkey = 'D2N9P-3P6X9-2R39C-7RTCD-MDVJX'}
+If ($edition -eq 'Microsoft Windows Server 2012 R2 Datacenter') {$productkey = 'W3GGN-FT8W3-Y4M27-J84CP-Q3VJ9'}
+If ($edition -eq 'Microsoft Windows Server 2012 R2 Essentials') {$productkey = 'KNC87-3J2TX-XB4WP-VCPJV-M4FWM'}
 
-If ($edition -eq 'Windows Server 2016 Standard') {$productkey = 'WC2BQ-8NRM3-FDDYY-2BFGV-KHKQY'}
-If ($edition -eq 'Windows Server 2016 Datacenter') {$productkey = 'CB7KF-BWN84-R7R2Y-793K2-8XDDG'}
-If ($edition -eq 'Windows Server 2016 Essentials') {$productkey = 'JCKRF-N37P4-C2D82-9YXRT-4M63B'}
+If ($edition -eq 'Microsoft Windows Server 2016 Standard') {$productkey = 'WC2BQ-8NRM3-FDDYY-2BFGV-KHKQY'}
+If ($edition -eq 'Microsoft Windows Server 2016 Datacenter') {$productkey = 'CB7KF-BWN84-R7R2Y-793K2-8XDDG'}
+If ($edition -eq 'Microsoft Windows Server 2016 Essentials') {$productkey = 'JCKRF-N37P4-C2D82-9YXRT-4M63B'}
 
-If ($edition -eq 'Windows Server 2019 Standard') {$productkey = 'N69G4-B89J2-4G8F4-WWYCC-J464C'}
-If ($edition -eq 'Windows Server 2019 Datacenter') {$productkey = 'WMDGN-G9PQG-XVVXX-R3X43-63DFG'}
-If ($edition -eq 'Windows Server 2019 Essentials') {$productkey = 'WVDHN-86M7X-466P6-VHXV7-YY726'}
+If ($edition -eq 'Microsoft Windows Server 2019 Standard') {$productkey = 'N69G4-B89J2-4G8F4-WWYCC-J464C'}
+If ($edition -eq 'Microsoft Windows Server 2019 Datacenter') {$productkey = 'WMDGN-G9PQG-XVVXX-R3X43-63DFG'}
+If ($edition -eq 'Microsoft Windows Server 2019 Essentials') {$productkey = 'WVDHN-86M7X-466P6-VHXV7-YY726'}
 
-If ($edition -eq 'Windows Server 2022 Standard') {$productkey = 'VDYBN-27WPP-V4HQT-9VMD4-VMK7H'}
-If ($edition -eq 'Windows Server 2022 Datacenter') {$productkey = 'WX4NM-KYWYW-QJJR4-XV3QB-6VM33'}
+If ($edition -eq 'Microsoft Windows Server 2022 Standard') {$productkey = 'VDYBN-27WPP-V4HQT-9VMD4-VMK7H'}
+If ($edition -eq 'Microsoft Windows Server 2022 Datacenter') {$productkey = 'WX4NM-KYWYW-QJJR4-XV3QB-6VM33'}
 
 If ($edition -eq 'Microsoft Windows Server 2008 Standard') {$productkey = 'TM24T-X9RMF-VWXK6-X8JC9-BFGM2'}
 If ($edition -eq 'Microsoft Windows Server 2008 Enterprise') {$productkey = 'YQGMW-MPWTJ-34KDK-48M3W-X4Q6V'}
