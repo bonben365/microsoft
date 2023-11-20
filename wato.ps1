@@ -12,7 +12,7 @@ if (-not([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdenti
 }
 
 $edition = (Get-CimInstance Win32_OperatingSystem).Caption
-$edition7 = (Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion").ProductName
+$editionx = (Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion").ProductName
 
 Write-Host "`nYou're using: $edition" -ForegroundColor Green
 Write-Host "Activating the product..." -ForegroundColor Green  
@@ -71,23 +71,23 @@ If ($edition -eq 'Microsoft Windows Server 2012 R2 Datacenter') {$productkey = '
 If ($edition -eq 'Microsoft Windows Server 2012 R2 Essentials') {$productkey = 'KNC87-3J2TX-XB4WP-VCPJV-M4FWM'}
 
 If ($edition -eq 'Microsoft Windows 8.1') {$productkey = '-------------------------------'}
-If ($edition -eq 'Microsoft Windows 8.1 Professional') {$productkey = 'GCRJD-8NW9H-F2CDX-CCM8D-9D6T9'
-If ($edition -eq 'Microsoft Windows 8.1 Professional N') {$productkey = 'HMCNV-VVBFX-7HMBH-CTY9B-B4FXY'
-If ($edition -eq 'Microsoft Windows 8.1 Enterprise') {$productkey = 'MHF9N-XY6XB-WVXMC-BTDCT-MKKG7'
-If ($edition -eq 'Microsoft Windows 8.1 Enterprise N') {$productkey = 'TT4HM-HN7YT-62K67-RGRQJ-JFFXW'
+If ($edition -eq 'Microsoft Windows 8.1 Professional') {$productkey = 'GCRJD-8NW9H-F2CDX-CCM8D-9D6T9'}
+If ($edition -eq 'Microsoft Windows 8.1 Professional N') {$productkey = 'HMCNV-VVBFX-7HMBH-CTY9B-B4FXY'}
+If ($edition -eq 'Microsoft Windows 8.1 Enterprise') {$productkey = 'MHF9N-XY6XB-WVXMC-BTDCT-MKKG7'}
+If ($edition -eq 'Microsoft Windows 8.1 Enterprise N') {$productkey = 'TT4HM-HN7YT-62K67-RGRQJ-JFFXW'}
 
-If ($edition -eq 'Microsoft Windows 8 Professional') {$productkey = 'NG4HW-VH26C-733KW-K6F98-J8CK4'
-If ($edition -eq 'Microsoft Windows 8 Professional N') {$productkey = 'XCVCF-2NXM9-723PB-MHCB7-2RYQQ'
-If ($edition -eq 'Microsoft Windows 8 Enterprise') {$productkey = '	32JNW-9KQ84-P47T8-D8GGY-CWCK7'
-If ($edition -eq 'Microsoft Windows 8 Enterprise N') {$productkey = 'JMNMF-RHW7P-DMY6X-RF3DR-X2BQT'
+If ($edition -eq 'Microsoft Windows 8 Professional') {$productkey = 'NG4HW-VH26C-733KW-K6F98-J8CK4'}
+If ($edition -eq 'Microsoft Windows 8 Professional N') {$productkey = 'XCVCF-2NXM9-723PB-MHCB7-2RYQQ'}
+If ($edition -eq 'Microsoft Windows 8 Enterprise') {$productkey = '	32JNW-9KQ84-P47T8-D8GGY-CWCK7'}
+If ($edition -eq 'Microsoft Windows 8 Enterprise N') {$productkey = 'JMNMF-RHW7P-DMY6X-RF3DR-X2BQT'}
 
-If ($edition7 -eq 'Microsoft Windows 10 Enterprise LTSC 2019' -or $edition7 -eq 'Microsoft Windows 10 Enterprise LTSC 2021') {$productkey = 'M7XTQ-FN8P6-TTKYV-9D4CC-J462D'}
-If ($edition7 -eq 'Microsoft Windows 10 Enterprise LTSB 2016') {$productkey = 'DCPHK-NFMTC-H88MJ-PFHPY-QJ4BJ'}
-If ($edition7 -eq 'Microsoft Windows 10 Enterprise 2015 LTSB') {$productkey = 'WNMTR-4C88C-JK8YV-HQ7T2-76DF9'}
-If ($edition7 -eq 'Microsoft Windows 10 Enterprise Evaluation' -or $edition7 -eq 'Microsoft Windows 10 Enterprise Evaluation') {$productkey = 'NPPR9-FWDCX-D2C8J-H872K-2YT43'}
+If ($editionx -eq 'Microsoft Windows 10 Enterprise LTSC 2019' -or $editionx -eq 'Microsoft Windows 10 Enterprise LTSC 2021') {$productkey = 'M7XTQ-FN8P6-TTKYV-9D4CC-J462D'}
+If ($editionx -eq 'Microsoft Windows 10 Enterprise LTSB 2016') {$productkey = 'DCPHK-NFMTC-H88MJ-PFHPY-QJ4BJ'}
+If ($editionx -eq 'Microsoft Windows 10 Enterprise 2015 LTSB') {$productkey = 'WNMTR-4C88C-JK8YV-HQ7T2-76DF9'}
+If ($editionx -eq 'Microsoft Windows 10 Enterprise Evaluation' -or $editionx -eq 'Microsoft Windows 10 Enterprise Evaluation') {$productkey = 'NPPR9-FWDCX-D2C8J-H872K-2YT43'}
 
-If ($edition7 -eq 'Windows 7 Professional') {$productkey = 'FJ82H-XT6CR-J8D7P-XQJJ2-GPDD4'}
-If ($edition7 -eq 'Windows 7 Enterprise') {$productkey = '33PXH-7Y6KF-2VJC9-XBBR8-HVTHH'}
+If ($editionx -eq 'Windows 7 Professional') {$productkey = 'FJ82H-XT6CR-J8D7P-XQJJ2-GPDD4'}
+If ($editionx -eq 'Windows 7 Enterprise') {$productkey = '33PXH-7Y6KF-2VJC9-XBBR8-HVTHH'}
 
 &$env:windir\system32\cscript.exe $env:windir\system32\slmgr.vbs /ckms | Out-Null
 &$env:windir\system32\cscript.exe $env:windir\system32\slmgr.vbs /ipk "$productkey" | Out-Null
@@ -103,7 +103,7 @@ if ($edition){
 
 } else {
 
-    Write-Host "Windows edition: $edition7" -ForegroundColor Cyan
+    Write-Host "Windows edition: $editionx" -ForegroundColor Cyan
 }
 
 $command = "&$env:windir\system32\cscript.exe $env:windir\system32\slmgr.vbs /dlv"
