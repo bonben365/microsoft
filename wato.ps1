@@ -69,8 +69,13 @@ If ($edition -eq 'Microsoft Windows Server 2012 R2 Essentials') {$productkey = '
 If ($edition -eq 'Microsoft Windows Server 2012 R2 Standard') {$productkey = 'D2N9P-3P6X9-2R39C-7RTCD-MDVJX'}
 If ($edition -eq 'Microsoft Windows Server 2012 R2 Datacenter') {$productkey = 'W3GGN-FT8W3-Y4M27-J84CP-Q3VJ9'}
 
-If ($edition7 -eq 'Windows 7 Professional') {$productkey = 'FJ82H-XT6CR-J8D7P-XQJJ2-GPDD4'}
-If ($edition7 -eq 'Windows 7 Enterprise') {$productkey = '33PXH-7Y6KF-2VJC9-XBBR8-HVTHH'}
+If ($edition -eq 'Microsoft Windows Server 2012 R2 Essentials') {$productkey = 'KNC87-3J2TX-XB4WP-VCPJV-M4FWM'}
+
+If ($edition -eq 'Microsoft Windows 8.1') {$productkey = '-------------------------------'}
+If ($edition -eq 'Microsoft Windows 8.1 Professional') {$productkey = 'GCRJD-8NW9H-F2CDX-CCM8D-9D6T9'
+If ($edition -eq 'Microsoft Windows 8.1 Professional N') {$productkey = 'HMCNV-VVBFX-7HMBH-CTY9B-B4FXY'
+If ($edition -eq 'Microsoft Windows 8.1 Enterprise') {$productkey = 'MHF9N-XY6XB-WVXMC-BTDCT-MKKG7'
+If ($edition -eq 'Microsoft Windows 8.1 Enterprise N') {$productkey = 'TT4HM-HN7YT-62K67-RGRQJ-JFFXW'
 
 If ($edition7 -eq 'Microsoft Windows 10 Enterprise LTSC 2019' -or $edition7 -eq 'Microsoft Windows 10 Enterprise LTSC 2021') {$productkey = 'M7XTQ-FN8P6-TTKYV-9D4CC-J462D'}
 If ($edition7 -eq 'Microsoft Windows 10 Enterprise LTSB 2016') {$productkey = 'DCPHK-NFMTC-H88MJ-PFHPY-QJ4BJ'}
