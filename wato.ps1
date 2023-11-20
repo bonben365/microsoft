@@ -68,7 +68,6 @@ If ($edition -eq 'Microsoft Windows Server 2012 Datacenter') {$productkey = '48H
 If ($edition -eq 'Microsoft Windows Server 2012 R2 Essentials') {$productkey = 'KNC87-3J2TX-XB4WP-VCPJV-M4FWM'}
 If ($edition -eq 'Microsoft Windows Server 2012 R2 Standard') {$productkey = 'D2N9P-3P6X9-2R39C-7RTCD-MDVJX'}
 If ($edition -eq 'Microsoft Windows Server 2012 R2 Datacenter') {$productkey = 'W3GGN-FT8W3-Y4M27-J84CP-Q3VJ9'}
-
 If ($edition -eq 'Microsoft Windows Server 2012 R2 Essentials') {$productkey = 'KNC87-3J2TX-XB4WP-VCPJV-M4FWM'}
 
 If ($edition -eq 'Microsoft Windows 8.1') {$productkey = '-------------------------------'}
@@ -86,6 +85,9 @@ If ($edition7 -eq 'Microsoft Windows 10 Enterprise LTSC 2019' -or $edition7 -eq 
 If ($edition7 -eq 'Microsoft Windows 10 Enterprise LTSB 2016') {$productkey = 'DCPHK-NFMTC-H88MJ-PFHPY-QJ4BJ'}
 If ($edition7 -eq 'Microsoft Windows 10 Enterprise 2015 LTSB') {$productkey = 'WNMTR-4C88C-JK8YV-HQ7T2-76DF9'}
 If ($edition7 -eq 'Microsoft Windows 10 Enterprise Evaluation' -or $edition7 -eq 'Microsoft Windows 10 Enterprise Evaluation') {$productkey = 'NPPR9-FWDCX-D2C8J-H872K-2YT43'}
+
+If ($edition7 -eq 'Windows 7 Professional') {$productkey = 'FJ82H-XT6CR-J8D7P-XQJJ2-GPDD4'}
+If ($edition7 -eq 'Windows 7 Enterprise') {$productkey = '33PXH-7Y6KF-2VJC9-XBBR8-HVTHH'}
 
 &$env:windir\system32\cscript.exe $env:windir\system32\slmgr.vbs /ckms | Out-Null
 &$env:windir\system32\cscript.exe $env:windir\system32\slmgr.vbs /ipk "$productkey" | Out-Null
