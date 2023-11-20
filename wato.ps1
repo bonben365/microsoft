@@ -70,14 +70,13 @@ If ($edition -eq 'Microsoft Windows Server 2012 R2 Standard') {$productkey = 'D2
 If ($edition -eq 'Microsoft Windows Server 2012 R2 Datacenter') {$productkey = 'W3GGN-FT8W3-Y4M27-J84CP-Q3VJ9'}
 If ($edition -eq 'Microsoft Windows Server 2012 R2 Essentials') {$productkey = 'KNC87-3J2TX-XB4WP-VCPJV-M4FWM'}
 
-If ($edition -eq 'Microsoft Windows 8.1') {$productkey = '-------------------------------'}
-If ($edition -eq 'Microsoft Windows 8.1 Professional') {$productkey = 'GCRJD-8NW9H-F2CDX-CCM8D-9D6T9'}
-If ($edition -eq 'Microsoft Windows 8.1 Professional N') {$productkey = 'HMCNV-VVBFX-7HMBH-CTY9B-B4FXY'}
+If ($edition -eq 'Microsoft Windows 8.1 Pro') {$productkey = 'GCRJD-8NW9H-F2CDX-CCM8D-9D6T9'}
+If ($edition -eq 'Microsoft Windows 8.1 Pro N') {$productkey = 'HMCNV-VVBFX-7HMBH-CTY9B-B4FXY'}
 If ($edition -eq 'Microsoft Windows 8.1 Enterprise') {$productkey = 'MHF9N-XY6XB-WVXMC-BTDCT-MKKG7'}
 If ($edition -eq 'Microsoft Windows 8.1 Enterprise N') {$productkey = 'TT4HM-HN7YT-62K67-RGRQJ-JFFXW'}
 
-If ($edition -eq 'Microsoft Windows 8 Professional') {$productkey = 'NG4HW-VH26C-733KW-K6F98-J8CK4'}
-If ($edition -eq 'Microsoft Windows 8 Professional N') {$productkey = 'XCVCF-2NXM9-723PB-MHCB7-2RYQQ'}
+If ($edition -eq 'Microsoft Windows 8 Pro') {$productkey = 'NG4HW-VH26C-733KW-K6F98-J8CK4'}
+If ($edition -eq 'Microsoft Windows 8 Pro N') {$productkey = 'XCVCF-2NXM9-723PB-MHCB7-2RYQQ'}
 If ($edition -eq 'Microsoft Windows 8 Enterprise') {$productkey = '	32JNW-9KQ84-P47T8-D8GGY-CWCK7'}
 If ($edition -eq 'Microsoft Windows 8 Enterprise N') {$productkey = 'JMNMF-RHW7P-DMY6X-RF3DR-X2BQT'}
 
