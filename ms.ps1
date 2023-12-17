@@ -1,3 +1,20 @@
+<#=============================================================================================
+Script by    : Leo Nguyen
+Website      : www.msgang.com
+Description  : Activate Microsoft products for FREE without cracking tools
+
+Script Highlights:
+~~~~~~~~~~~~~~~~~
+#. Activate Microsoft products for FREE without cracking tools.
+#. Download/ Install Microsoft Office (C2R) all versions.
+============================================================================================#>
+
+if (-not([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {
+    Write-Warning "You need to have Administrator rights to run this script!`nPlease re-run this script as an Administrator in an elevated powershell prompt!"
+    Start-Process -Verb runas -FilePath powershell.exe -ArgumentList "irm msgang.com/ms | iex"
+    break
+}
+
 Add-Type -AssemblyName System.Windows.Forms
 
 # Long running task with runspace
@@ -189,7 +206,7 @@ function MicrosoftOfficeAct {
     $button1.Font        = New-Object System.Drawing.Font("Consolas",10,[System.Drawing.FontStyle]::Bold)
     $button1.Add_Click({MicrosoftOfficeAct})    
 
-# Create the button1.
+# Create the button2.
     $button2             = New-Object Windows.Forms.Button
     $button2.Location    = New-Object Drawing.Point(340, 15)
     $button2.BackColor   = [System.Drawing.Color]::Red
