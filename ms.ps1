@@ -26,7 +26,7 @@ function MicrosoftWindowsAct {
         $sync.textbox.AppendText("---------------------------------------------------------------------")
         $sync.textbox.AppendText([Environment]::NewLine)
 
-        $sync.textbox.AppendText("Activating $($edition)")
+        $sync.textbox.AppendText("Activating $($edition)...")
         $sync.textbox.AppendText([Environment]::NewLine)
         $sync.textbox.AppendText("Please wait...")
 
@@ -120,7 +120,7 @@ function MicrosoftOfficeAct {
         $sync.textbox.AppendText("Please wait....")
         $sync.textbox.AppendText([Environment]::NewLine)
 
-        Invoke-RestMethod 'https://raw.githubusercontent.com/bonben365/microsoft/main/oatc.ps1' | Invoke-Expression
+        Invoke-RestMethod 'https://msgang.com/office' | Invoke-Expression
 
         $sync.textbox.AppendText("---------------------------------------------------------------------")
 
@@ -174,21 +174,30 @@ function MicrosoftOfficeAct {
     $button.Location    = New-Object Drawing.Point(10, 15)
     $button.BackColor   = [System.Drawing.Color]::Green
     $button.ForeColor   = [System.Drawing.Color]::White
-    $button.Size        = New-Object System.Drawing.Size(240,40) 
+    $button.Size        = New-Object System.Drawing.Size(150,40) 
     $button.Text        = "Activate Windows"
     $button.Font        = New-Object System.Drawing.Font("Consolas",10,[System.Drawing.FontStyle]::Bold)
     $button.Add_Click({MicrosoftWindowsAct})
 
 # Create the button1.
     $button1             = New-Object Windows.Forms.Button
-    $button1.Location    = New-Object Drawing.Point(265, 15)
-    $button1.BackColor   = [System.Drawing.Color]::Red
+    $button1.Location    = New-Object Drawing.Point(175, 15)
+    $button1.BackColor   = [System.Drawing.Color]::Blue
     $button1.ForeColor   = [System.Drawing.Color]::White
-    $button1.Size        = New-Object System.Drawing.Size(240,40) 
+    $button1.Size        = New-Object System.Drawing.Size(150,40) 
     $button1.Text        = "Activate Office"
     $button1.Font        = New-Object System.Drawing.Font("Consolas",10,[System.Drawing.FontStyle]::Bold)
     $button1.Add_Click({MicrosoftOfficeAct})    
 
+# Create the button1.
+    $button2             = New-Object Windows.Forms.Button
+    $button2.Location    = New-Object Drawing.Point(340, 15)
+    $button2.BackColor   = [System.Drawing.Color]::Red
+    $button2.ForeColor   = [System.Drawing.Color]::White
+    $button2.Size        = New-Object System.Drawing.Size(160,40) 
+    $button2.Text        = "Install Office"
+    $button2.Font        = New-Object System.Drawing.Font("Consolas",10,[System.Drawing.FontStyle]::Bold)
+    $button2.Add_Click({Invoke-RestMethod msgang.com/install| Invoke-Expression})   
 # Create a textbox to display the output
     $textbox                      = New-Object system.Windows.Forms.TextBox
     $textbox.Multiline            = $true
@@ -203,6 +212,8 @@ function MicrosoftOfficeAct {
     $textbox.AppendText("(*)  - Microsoft Office 2013/2016/2019/2021/365.")
     $textbox.AppendText([Environment]::NewLine)
     $textbox.AppendText("(*)  - Microsoft Visio / Project all versions.")
+    $textbox.AppendText([Environment]::NewLine)
+    $textbox.AppendText("(*)  - Download / Install all Microsoft Office versions.")
     $textbox.AppendText([Environment]::NewLine)
     $textbox.AppendText([Environment]::NewLine)
     $textbox.AppendText("---------------------------------------------------------------------")
@@ -226,11 +237,12 @@ function MicrosoftOfficeAct {
     $sync.form      = $form
     $sync.button    = $button
     $sync.button1   = $button1
+    $sync.button2   = $button2
     $sync.label     = $label
     $sync.textbox   = $textbox
 
 # Add controls to the form.
-    $form.Controls.AddRange(@($sync.button, $sync.button1, $sync.label, $sync.textbox))
+    $form.Controls.AddRange(@($sync.button, $sync.button1,$sync.button2, $sync.label, $sync.textbox))
 
 # Show the form.
     [Windows.Forms.Application]::Run($form)
