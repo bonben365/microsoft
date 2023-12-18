@@ -114,7 +114,7 @@ function MicrosoftOfficeAct {
         $sync.textbox.AppendText([Environment]::NewLine)
 
 
-        #Detect Office installations
+        # Detect Office installations
         $path64 = "C:\Program Files\Microsoft Office\Office1*"
         $path32 = "C:\Program Files (x86)\Microsoft Office\Office1*"
         if ((Test-Path -Path "$path32\ospp.vbs")) { Set-Location $path32 -ErrorAction SilentlyContinue }
