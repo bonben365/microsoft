@@ -17,7 +17,6 @@ Script Highlights:
 
 # Load .NET assemblies into Windows PowerShell
     Add-Type -AssemblyName PresentationFramework, WindowsFormsIntegration, PresentationCore
-    [System.Windows.Forms.Application]::EnableVisualStyles()
 
 # Place your xaml code from Visual Studio in here string (between @ symbols)
 # $xamlinput = @'<xaml code here'@
