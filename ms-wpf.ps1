@@ -143,7 +143,7 @@ $form = [Windows.Markup.XamlReader]::Load( $xmlReader )
     }    
 
 
-# Creating script block for activation Windows
+# Creating script block for activation Office
 function OfficeActivation {
     # The main script block
     $scriptBlock = {
